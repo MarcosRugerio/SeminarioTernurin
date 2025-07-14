@@ -1,2 +1,2 @@
 # SeminarioTernurin
-Seminario de Nayeli
+Proyecto de Nayeli para poder titularse.
