@@ -1,0 +1,2 @@
+# SeminarioTernurin
+Seminario de Nayeli
