@@ -27,7 +27,7 @@ id int PRIMARY KEY AUTO_INCREMENT,
 nombre char NOT NULL,
 precio float NOT NULL,
 descripcion char(100),
-tamanio char NOT NULL, -- EJEM 'C', 'M', 'G', 'XG'
+tamanio char() NOT NULL, -- EJEM 'C', 'M', 'G'
 );
 
 CREATE TABLE CATEGORIA(
