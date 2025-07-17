@@ -7,3 +7,5 @@ Recursos en línea:
 [DBiagram](https://dbdiagram.io/d): segunda opción para crear diagrama ER
 
 Hola Marcos
+
+Esto es una prueba
