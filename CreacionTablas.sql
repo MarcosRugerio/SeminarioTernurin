@@ -16,6 +16,14 @@ precio_total float NOT NULL,
 cargo_domicilio char NOT NULL, --Validar este campo con Naye
 );
 
+CREATE TABLE PRODUCTOS(
+id int PRIMARY KEY AUTO_INCREMENT,
+nombre char NOT NULL,
+precio float NOT NULL,
+descripcion char(100),
+tamanio char() NOT NULL, -- EJEM 'C', 'M', 'G'
+);
+
 -- INSERTS de 100 productos aleatorios
 INSERT INTO PRODUCTOS (nombre, precio, descripcion, tamanio) VALUES ('Crema Antiarrugas 1', 40.77, 'Para todo tipo de piel', 'M');
 INSERT INTO PRODUCTOS (nombre, precio, descripcion, tamanio) VALUES ('Aceite Facial 2', 71.82, 'Con colágeno', 'M');
@@ -122,14 +130,6 @@ CREATE TABLE CONTIENE( --lleva llave foranea
 id int PRIMARY KEY AUTO_INCREMENT,
 cantidad int NOT NULL,
 precio float NOT NULL,
-);
-
-CREATE TABLE PRODUCTOS(
-id int PRIMARY KEY AUTO_INCREMENT,
-nombre char NOT NULL,
-precio float NOT NULL,
-descripcion char(100),
-tamanio char() NOT NULL, -- EJEM 'C', 'M', 'G'
 );
 
 CREATE TABLE CATEGORIA(
