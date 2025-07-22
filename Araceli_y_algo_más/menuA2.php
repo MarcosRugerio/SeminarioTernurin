@@ -48,12 +48,12 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-          <li><a href="index.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #f0cea5">INICIO</a>
+          <li><a href="index.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #78b36f">INICIO</a>
           </li>
 
 
           <li>
-            <a class="nav-link dropdown-toggle" style=" color:#6E0023; display:inline;  border-right: 2px solid  #f0cea5" href=" #" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" style=" color:#6E0023; display:inline;  border-right: 2px solid  #78b36f" href=" #" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               MENÚ
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -62,7 +62,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
               <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Alimentos</a></li>
             </ul>
           </li>
-          <li><a href="VerEventosGabcy.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #f0cea5;">EVENTOS</a>
+          <li><a href="VerEventosGabcy.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #78b36f;">EVENTOS</a>
           </li>
 
           <li><a href="conocenos.php" class="nav-link px-3 text" style=" color: #6E0023; display:inline; ">ACERCA
@@ -96,7 +96,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
               <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
                <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Cliente...</a></li>
                <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
-               <hr class="dropdown-divider" style="color: #f0cea5">
+               <hr class="dropdown-divider" style="color: #78b36f">
                <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
               }
               if ($_SESSION['permiso'] == 2) {
@@ -110,7 +110,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
              <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Empleado...</a></li>
              <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="Menu_empleado.php">Menú Empleado</a></li>
              <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
-             <hr class="dropdown-divider" style="color: #f0cea5">
+             <hr class="dropdown-divider" style="color: #78b36f">
              <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
               }
               if ($_SESSION['permiso'] == 3) {
@@ -124,7 +124,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
            <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Administrador...</a></li>
            <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="MenuAdmn.php">Menú Administrador</a></li>
            <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
-           <hr class="dropdown-divider" style="color: #f0cea5">
+           <hr class="dropdown-divider" style="color: #78b36f">
            <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
               }
             } else {
@@ -136,7 +136,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
                 <ul class="dropdown-menu text-small" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;">
                   <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;" href="inicioSesion.php">Iniciar Sesión</a></li>
-                  <hr class="dropdown-divider" style="color: #f0cea5">
+                  <hr class="dropdown-divider" style="color: #78b36f">
                   <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;" href="registro.php">Crear Cuenta</a></li>
                 <?php
               }

@@ -72,13 +72,13 @@ if ($productos != null) {
         >
 
         <li><a href="index.php" class="nav-link px-3 text"
-            style="color: #6E0023; display:inline; border-right: 2px solid  #f0cea5">INICIO</a>
+            style="color: #6E0023; display:inline; border-right: 2px solid  #78b36f">INICIO</a>
         </li>
 
 
         <li>
           <a class="nav-link dropdown-toggle"
-            style=" color:#6E0023; display:inline;  border-right: 2px solid  #f0cea5"  href=" #"
+            style=" color:#6E0023; display:inline;  border-right: 2px solid  #78b36f"  href=" #"
             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             PRODUCTOS
           </a>
@@ -89,7 +89,7 @@ if ($productos != null) {
           </ul>
         </li>
         <li><a href="VerEventosGabcy.php" class="nav-link px-3 text"
-            style="color: #6E0023; display:inline; border-right: 2px solid  #f0cea5;">MARCAS</a>
+            style="color: #6E0023; display:inline; border-right: 2px solid  #78b36f;">MARCAS</a>
         </li>
 
       </ul>
@@ -122,7 +122,7 @@ if ($productos != null) {
               <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
                <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Cliente...</a></li>
                <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
-               <hr class="dropdown-divider" style="color: #f0cea5">
+               <hr class="dropdown-divider" style="color: #78b36f">
                <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
               }
               if ($_SESSION['permiso'] == 2) {
@@ -136,7 +136,7 @@ if ($productos != null) {
              <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Empleado...</a></li>
              <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="#">Menú Empleado</a></li>
              <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
-             <hr class="dropdown-divider" style="color: #f0cea5">
+             <hr class="dropdown-divider" style="color: #78b36f">
              <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
               }
               if ($_SESSION['permiso'] == 3) {
@@ -150,7 +150,7 @@ if ($productos != null) {
            <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Administrador...</a></li>
            <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="MenuAdmn.php">Menú Administrador</a></li>
            <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
-           <hr class="dropdown-divider" style="color: #f0cea5">
+           <hr class="dropdown-divider" style="color: #78b36f">
            <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
               }
             } else {
@@ -162,7 +162,7 @@ if ($productos != null) {
 
                 <ul class="dropdown-menu text-small" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;">
                   <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;" href="inicioSesion.php">Iniciar Sesión</a></li>
-                  <hr class="dropdown-divider" style="color: #f0cea5">
+                  <hr class="dropdown-divider" style="color: #78b36f">
                   <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;" href="registro.php">Crear Cuenta</a></li>
                 <?php
               }
