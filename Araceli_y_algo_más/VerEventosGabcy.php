@@ -21,7 +21,7 @@ $con = $db->conectar();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
-    <link rel=" shortcut icon" href="img/CGABCY.jpg" type="image/x-icon">
+    <link rel=" shortcut icon" href="img/logotipo_araceli.png" type="image/x-icon">
     <script src="js-global/FancyZoom.js" type="text/javascript"></script>
     <script src="js-global/FancyZoomHTML.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/7f4ac6925c.js" crossorigin="anonymous"></script>

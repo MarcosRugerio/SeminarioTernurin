@@ -21,7 +21,7 @@ require 'php/confi.php'
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
  <!-- Core theme CSS (includes Bootstrap)-->
- <link rel="shortcut icon" href="img/CGABCY.jpg">
+ <link rel="shortcut icon" href="img/logotipo_araceli.png">
     <script src="https://kit.fontawesome.com/7f4ac6925c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="estilos/estilosDesarrolladoras.css">
 

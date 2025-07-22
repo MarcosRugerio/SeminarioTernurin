@@ -51,7 +51,7 @@ if ($id_transaccion == '') {
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
-  <link rel="shortcut icon" href="img/CGABCY.jpg">
+  <link rel="shortcut icon" href="img/logotipo_araceli.png">
   <script src="https://kit.fontawesome.com/7f4ac6925c.js" crossorigin="anonymous"></script>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');

@@ -85,7 +85,7 @@ if (!$productos) {
 
 <body>
     <div class="ticket">
-        <img src="img/CGABCY.jpg" alt="Logotipo">
+        <img src="img/logotipo_araceli.png" alt="Logotipo">
         <p class="centrado">TICKET DE VENTA
             <br><?php echo $venta->fecha; ?>
         </p>
