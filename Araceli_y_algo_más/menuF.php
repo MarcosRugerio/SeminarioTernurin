@@ -22,7 +22,7 @@ session_start();
 
   <link rel="stylesheet" type="text/css" href="estilos/estilosMenuF.css">
 
-  <link rel="shortcut icon" href="img/Gabcy_vector.png">
+  <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
   <script type="text/javascript" src="librerias/jquery.js"></script>
   <script type="text/javascript" src="js/main-scripts.js"> </script>

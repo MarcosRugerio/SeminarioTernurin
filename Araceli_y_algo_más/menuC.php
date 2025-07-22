@@ -28,7 +28,7 @@ session_start();
 
     <link rel="stylesheet" type="text/css" href="estilos/estilosMenu.css">
 
-    <link rel="shortcut icon" href="img/Gabcy_vector.png">
+    <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
 <body>
 

@@ -54,7 +54,7 @@ while ($elemento = readdir($directorio)) {
   <script type="text/javascript" src="librerias/jquery.js"></script>
   <script type="text/javascript" src="js/main-scripts.js"> </script>
 
-  <link rel="shortcut icon" href="img/Gabcy_vector.png">
+  <link rel="shortcut icon" href="img/logotipo_araceli.png">
   <script type="text/javascript" src="js/main-scripts.js"> </script>
 
 </head>
@@ -149,7 +149,7 @@ while ($elemento = readdir($directorio)) {
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-          <img src="img/Gabcy_cafeteria.png" width="150" height="120" alt="" title="Página Principal">
+          <img src="img/logotipo_araceli.png" width="150" height="120" alt="" title="Página Principal">
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
