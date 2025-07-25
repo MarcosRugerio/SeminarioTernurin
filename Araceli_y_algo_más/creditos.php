@@ -95,61 +95,53 @@
   </style>
 
 
-<footer style="background-color:  #F9ECDC;">
-    <div class="container">
-      <footer class="py-5" style="background-color:   #F9ECDC;">
-        <div class="row">
-          <div class="col-md-4 offset-md-1 mb-3" style="color: #6E0023; font-family:Helvética ; font-size: 0.8rem;">
-            <form>
-              <h5>Ubicación</h5>
-              <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3753.1888642246595!2d-99.25337052610291!3d19.831960127808536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d226e97b2cdeef%3A0xeafc0656ef2aca20!2sYerbabuena%206%2C%2054694%20Santa%20Teresa%2C%20M%C3%A9x.!5e0!3m2!1ses!2smx!4v1753218793664!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-              </div>
-              <p>Yerbabuena 6, 54694 Santa Teresa, Méx.</p>
-            </form>
-            <br>
-
-          </div>
-          <div class="col-6 col-md-2 mb-3" style="color: #6E0023; font-family:Helvética ;font-size: 0.8rem;">
-            <h5 >Más información </h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="conocenos.php" class="nav-link p-0 text-dark">Conócenos</a></li>
-              <li class="nav-item mb-2"> <a href="terminosYcondiciones.php" class="nav-link p-0 text-dark">Términos y condiciones</a></li>
-              <li class="nav-item mb-2"><a href="avisoPrivacidad.php" class="nav-link p-0 text-dark">Aviso de privacidad</a></li>
-            </ul>
-          </div>
-
-          <div class="col-6 col-md-2 mb-3" style="color: #6E0023; font-family:Helvética ; font-size: 0.8rem;">
-            <h5>Contactanos</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2">Email</li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark">almarazaraceli777@gmail.com</a></li>
-              <li class="nav-item mb-2">WhatsApp</li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-dark">55-1260-3194</a></li>
-            </ul>
-          </div>
-
-          <div class="col-6 col-md-2 mb-3" style="color: #6E0023;font-family:Helvética ; font-size: 0.8rem; ">
-            <h5>Síguenos</h5>
-            <ul class="nav flex-fila">
-              <ul class="list-unstyled d-flex">
-                <li class="ms-3"><a class="link-dark" href="#"><img src="img/facebook.png" width="35" height="35"></a>
-                </li>
-                <li class="ms-3"><a class="link-dark" href="#"><img src="img/instagram.png" width="35" height="35"></a>
-                </li>
-                <li class="ms-3"><a class="link-dark" href="#"><img src="img/whatsapp.png" width="35" height="35"></a>
-                </li>
-              </ul>
-            </ul>
-          </div>
-
-
-        </div>
-        <hr class="featurette-divider" style="color:  #CC6645;" size="2">
-        <div class="d-flex flex-column flex-sm-row justify-content-around">
-          <h6 class="text-center">&copy; Hecho en México, todos los derechos reservados.</h6>
-
+<footer style="background-color: #cce3c0;">
+  <div class="container">
+    <footer class="py-5" style="background-color: #cce3c0;">
+      <div class="row">
+        <div class="col-md-4 offset-md-1 mb-3" style="color: #2e5339; font-family: Helvetica; font-size: 0.8rem;">
+          <form>
+            <h5 style="color: #4a7c59;">Ubicación</h5>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p>Yerbabuena 6, 54694 Santa Teresa, Méx.</p>
+          </form>
         </div>
 
-      </footer>
+        <div class="col-6 col-md-2 mb-3" style="color: #2e5339; font-family: Helvetica; font-size: 0.8rem;">
+          <h5 style="color: #4a7c59;">Más información</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="conocenos.php" class="nav-link p-0" style="color: #2e5339;">Conócenos</a></li>
+            <li class="nav-item mb-2"><a href="terminosYcondiciones.php" class="nav-link p-0" style="color: #2e5339;">Términos y condiciones</a></li>
+            <li class="nav-item mb-2"><a href="avisoPrivacidad.php" class="nav-link p-0" style="color: #2e5339;">Aviso de privacidad</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-2 mb-3" style="color: #2e5339; font-family: Helvetica; font-size: 0.8rem;">
+          <h5 style="color: #4a7c59;">Contáctanos</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">Email</li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0" style="color: #2e5339;">almarazaraceli777@gmail.com</a></li>
+            <li class="nav-item mb-2">WhatsApp</li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0" style="color: #2e5339;">55-1260-3194</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-2 mb-3" style="color: #2e5339; font-family: Helvetica; font-size: 0.8rem;">
+          <h5 style="color: #4a7c59;">Síguenos</h5>
+          <ul class="list-unstyled d-flex">
+            <li class="ms-3"><a href="#"><img src="img/facebook.png" width="35" height="35"></a></li>
+            <li class="ms-3"><a href="#"><img src="img/instagram.png" width="35" height="35"></a></li>
+            <li class="ms-3"><a href="#"><img src="img/whatsapp.png" width="35" height="35"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="featurette-divider" style="color: #8c6f54;" size="2">
+      <div class="d-flex flex-column flex-sm-row justify-content-around">
+        <h6 class="text-center" style="color: #2e5339;">&copy; Hecho en México, todos los derechos reservados.</h6>
+      </div>
+    </footer>
+  </div>
+</footer>
