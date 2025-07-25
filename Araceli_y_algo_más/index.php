@@ -252,10 +252,10 @@ $con = $db->conectar();
 
         <article class="contain">
           <br><br>
-          <h2 class="display-1" style="color: white;  font-family: 'Playfair Display', serif; ">¿Echamos un cafécito?</h2>
-          <h3 class="display-3" style="color: white; ">Visitanos</h3>
+          <h2 class="display-1" style="color: white;  font-family: 'Playfair Display', serif; ">¿Eres fan del skincare?</h2>
+          <h3 class="display-3" style="color: white; ">Tu nueva rutina de cuidado aqui</h3>
           <div class="zoom"  style="overflow:hidden">
-          <a class="img2" href="https://www.google.com/maps/place/Cafeter%C3%ADa+Gabcy/@19.693799,-99.336757,10z/data=!4m6!3m5!1s0x85d219815473b387:0x5383cc770847315!8m2!3d19.6937989!4d-99.3367569!16s%2Fg%2F11tft1f6y9?hl=es-419"><img src="img/ubicacion2.png" width="50" height="50"></a>
+          <a class="img2" href="https://www.google.com/maps/place/Cafeter%C3%ADa+Gabcy/@19.693799,-99.336757,10z/data=!4m6!3m5!1s0x85d219815473b387:0x5383cc770847315!8m2!3d19.6937989!4d-99.3367569!16s%2Fg%2F11tft1f6y9?hl=es-419"><img src="img/gotero.png" width="50" height="50"></a>
 
           </div>
        

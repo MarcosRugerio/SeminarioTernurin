@@ -3,7 +3,7 @@
   @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
 
   .price {
-    background: url(img/fachada.jpg) no-repeat center;
+    background: url(img/banner_skincare.png) no-repeat center;
     background-attachment: fixed;
     background-size: cover;
     text-align: center;
