@@ -255,7 +255,7 @@ $con = $db->conectar();
           <h2 class="display-1" style="color: white;  font-family: 'Playfair Display', serif; ">¿Eres fan del skincare?</h2>
           <h3 class="display-3" style="color: white; ">Tu nueva rutina de cuidado aqui</h3>
           <div class="zoom"  style="overflow:hidden">
-          <a class="img2" href="https://www.google.com/maps/place/Cafeter%C3%ADa+Gabcy/@19.693799,-99.336757,10z/data=!4m6!3m5!1s0x85d219815473b387:0x5383cc770847315!8m2!3d19.6937989!4d-99.3367569!16s%2Fg%2F11tft1f6y9?hl=es-419"><img src="img/gotero.png" width="50" height="50"></a>
+          <a class="img2" href="ANEXAR AQUI LA URL DE BLOG "><img src="img/gotero.png" width="50" height="50"></a>
 
           </div>
        
@@ -270,20 +270,20 @@ $con = $db->conectar();
         <div class="row featurette">
           <div class="col-md-7">
             <br>
-            <h2 class="featurette-heading">Producto destacado
+            <h2 class="featurette-heading">Los famosisimos jabones artesanales
             </h2>
             <br><br>
             <center>
-              <h3 class="featurette-heading"><span class="text-muted">Esencias para el hogar</span>
+              <h3 class="featurette-heading"><span class="text-muted">Diferentes tipos para diferentes necesidades</span>
               </h3>
-              <p class="lead">Fórmula súper concentrada concentrada que permite una dosificación en pequeñas cantidades para la optimización y asi eliminando eficazmente malos olores de todo el hogar.</p>
+              <p class="lead">Están contenidos en cajas elaboradas con papel ecológico fácil de reciclar y con un diseño increíble, y con mensajes especialmente pensados en ti.¡Conocelos!</p>
               <br>
-              <p><a class="btn btn-dark fs 4" href="#">Comprar producto &raquo;</a></p>
+              <p><a class="btn btn-dark fs 4" href="Agregar aqui una URL">Visitarlos&raquo;</a></p>
               </p>
             </center>
           </div>
           <div class="col-md-4">
-            <img src="img/esenciassth.jpeg" width="500" height="500">
+            <img src="img/banner_jabones.png" width="500" height="500">
           </div>
         </div>
       </div>
