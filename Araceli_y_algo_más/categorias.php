@@ -64,17 +64,17 @@
 	box-shadow: 0 0 1px rgba(255,255,255,0.9);
 }
 .ch-img-1 { 
-	background-image: url(img/cafe_categoria.jpg);
-	z-index: 12;
+	background-image: url(img/categoria_herbal.png);
+	z-index: 14;
 }
 
 .ch-img-2 { 
-	background-image: url(img/frape_categoria2.jpg);
+	background-image: url(img/categoria_nutri.png);
 	z-index: 11;
 }
 
 .ch-img-3 { 
-	background-image: url(img/alimentos_categoria.jpg);
+	background-image: url(img/categoria_belleza.png);
 	z-index: 10;
 }
 .ch-info {
@@ -153,8 +153,8 @@
 <li>
 	<div class="ch-item">	
 		<div class="ch-info">
-			<h3>Café & expreso</h3>
-			<p>Consulta <a href="menuC2.php">MENÚ</a></p>
+			<h3>Herbales</h3>
+			<p>Visita<a href="menuC2.php">Ir</a></p>
 		</div>
 		<div class="ch-thumb ch-img-1"></div>
 	</div>
@@ -162,8 +162,8 @@
 <li>
 	<div class="ch-item">	
 		<div class="ch-info">
-			<h3>Bebidas heladas</h3>
-			<p>Consulta<a href="menuF2.php">MENÚ</a></p>
+			<h3>Nutrición</h3>
+			<p>Visita<a href="menuF2.php">Ir</a></p>
 		</div>
 		<div class="ch-thumb ch-img-2"></div>
 	</div>
@@ -171,8 +171,8 @@
 <li>
 	<div class="ch-item">	
 		<div class="ch-info">
-			<h3>COMIDA & POSTRES</h3>
-			<p>Consulta <a href="menuA2.php">MENÚ</a></p>
+			<h3>Cuidado y belleza</h3>
+			<p>Visita<a href="menuA2.php">Ir</a></p>
 		</div>
 		<div class="ch-thumb ch-img-3"></div>
 	</div>
