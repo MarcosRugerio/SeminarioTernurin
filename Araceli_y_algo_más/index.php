@@ -202,19 +202,17 @@ $con = $db->conectar();
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active ">
-            <img src="img/Gabcy_cafe_portada.png " class="d-block w-100" width="80" height="550">
-            <div class="carousel-caption d-none d-md-block text-dark">
-              <h4>Cafetería GABCY</h4>
-              <p>Café con esencia de amor</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="img/coffee-imagen.jpg" class="d-block w-100" width="80" height="550">
+            <img src="img/BANNER2.png " class="d-block w-100" width="80" height="550">
             <div class="carousel-caption d-none d-md-block text-dark">
             </div>
           </div>
           <div class="carousel-item">
-            <img src="img/fachada.jpg" class="d-block w-100" width="80" height="550">
+            <img src="img/BANNEREUCALIPTO.png" class="d-block w-100" width="80" height="550">
+            <div class="carousel-caption d-none d-md-block text-dark">
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/BANNERSUPLE.png" class="d-block w-100" width="80" height="550">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
