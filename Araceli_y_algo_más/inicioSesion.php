@@ -35,14 +35,14 @@ require 'confi/database.php';
   <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
   <style>
-    <style>
+  
   body {
-    background: linear-gradient(135deg, #d8f3dc, #b7e4c7);
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
+  background: #ffffff; /* o 'transparent' si prefieres */
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
   .overlay {
     display: flex;
@@ -179,9 +179,6 @@ require 'confi/database.php';
     }
   }
 </style>
-
-
-  </style>
 
 <body>
 
