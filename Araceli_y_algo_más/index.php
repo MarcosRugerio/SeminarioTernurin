@@ -100,8 +100,8 @@ $con = $db->conectar();
             <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Nutricosmenticos</a></li>
           </ul>
         </li>
-        <li><a href="VerEventosGabcy.php" class="nav-link px-3 text"
-            style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">EVENTOS</a>
+       <li><a href="blog.php" class="nav-link px-3 text"
+            style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
         </li>
 
         <li><a href="conocenos.php" class="nav-link px-3 text" style=" color: #6E0023; display:inline; ">ACERCA
@@ -255,7 +255,7 @@ $con = $db->conectar();
           <h2 class="display-1" style="color: white;  font-family: 'Playfair Display', serif; ">¿Eres fan del skincare?</h2>
           <h3 class="display-3" style="color: white; ">Tu nueva rutina de cuidado aqui</h3>
           <div class="zoom"  style="overflow:hidden">
-          <a class="img2" href="ANEXAR AQUI LA URL DE BLOG "><img src="img/gotero.png" width="50" height="50"></a>
+          <a class="img2" href="blog.php"><img src="img/gotero.png" width="50" height="50"></a>
 
           </div>
        

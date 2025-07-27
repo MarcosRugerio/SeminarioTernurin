@@ -196,7 +196,7 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
               <li><a class="dropdown-item" style="color: #6E0023;" href="#">Extras</a></li>
             </ul>
           </li>
-          <li><a href="VerEventosGabcy.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">EVENTOS</a>
+         <li><a href="blog.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
           </li>
 
           <li><a href="conocenos.php" class="nav-link px-3 text" style=" color: #6E0023; display:inline; ">ACERCA

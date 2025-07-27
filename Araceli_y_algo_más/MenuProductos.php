@@ -306,7 +306,7 @@ $con = $db->conectar();
             <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Ropa y algo más</a></li>
           </ul>
         </li>
-        <li><a href="VerEventosGabcy.php" class="nav-link px-3 text"
+       <li><a href="blog.php" class="nav-link px-3 text"
             style="color: #6E0023; display:inline; border-right: 2px solid  #f0cea5;">MARCAS</a>
         </li>
 
