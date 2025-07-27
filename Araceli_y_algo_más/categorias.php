@@ -83,7 +83,7 @@
 	height: inherit;
 	border-radius: 50%;
 	overflow: hidden;
-	background: #c9512e url(../images/noise.png);
+	background: #85a72bff url(../images/noise.png);
 	box-shadow: inset 0 0 0 5px rgba(0,0,0,0.05);
 }
 .ch-info h3 {

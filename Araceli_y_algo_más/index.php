@@ -39,7 +39,7 @@ $con = $db->conectar();
       font-size: 45px;
       text-align: center;
       font-family: 'Playfair Display', serif;
-      color: #CC6645;
+      color: #050505ff;
       text-decoration: underline;
     }
 
@@ -283,12 +283,12 @@ $con = $db->conectar();
     <!--Categoria--->
 
     <div class="px-4 py-5 my-5 text-center">
-      <h1 class="display-5 fw-bold">Hechale un viztazo a</h1>
+      <h1 class="display-5 fw-bold" style="color:  #070707be">Hechale un viztazo a</h1>
       <div class="col-lg-6 mx-auto">
         <p class="lead mb-4"> </p>
       </div>
       <?php include("categorias.php"); ?>
-      <hr class="featurette-divider" style="color:  #CC6645;" size="2">
+      <hr class="featurette-divider" style="color:  #2f8d26be;" size="2">
       <br>
     </div>
     <div>
@@ -300,8 +300,9 @@ $con = $db->conectar();
 
         <article class="contain">
           <br><br>
-          <h2 class="display-1" style="color: white;  font-family: 'Playfair Display', serif; ">¿Eres fan del skincare?</h2>
-          <h3 class="display-3" style="color: white; ">Tu nueva rutina de cuidado aqui</h3>
+          <h2 class="display-1" style="color: white; font-family: 'Playfair Display', serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">
+          ¿Eres fan del skincare?</h2>
+          <h3 class="display-3" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Tu nueva rutina de cuidado aquí</h3>
           <div class="zoom"  style="overflow:hidden">
           <a class="img2" href="blog.php"><img src="img/gotero.png" width="50" height="50"></a>
 

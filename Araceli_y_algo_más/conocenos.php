@@ -427,7 +427,7 @@ require 'php/confi.php'
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgb(0 0 0 / 0.2);
-    max-height: 400px;
+    max-height: 500px;
   }
 
   /* Video full width */
