@@ -64,8 +64,46 @@ $con = $db->conectar();
         --escala: 1.5;
         cursor: pointer;
       }
-     
-  </style>
+
+      .puzzle-img {
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.4s;
+  }
+
+  .puzzle-img:hover {
+    transform: rotate(-2deg) scale(1.05);
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  .popup-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80vh;
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+
 
 <body>
 
@@ -230,6 +268,16 @@ $con = $db->conectar();
     </div>
   </section>
 
+  <!-- Sección de Video Silencioso -->
+<section class="video-section mt-5">
+  <div class="container text-center">
+    <video autoplay muted loop playsinline width="100%" style="max-height: 1500px; object-fit: cover; border-radius: 10px;">
+      <source src="mp4/presentacion.mp4" type="video/mp4">
+      Tu navegador no soporta el video HTML5.
+    </video>
+  </div>
+</section>
+
   <div class="container marketing">
 
     <!--Categoria--->
@@ -290,6 +338,52 @@ $con = $db->conectar();
       <br>
     </div>
     </div>
+
+    <!-- Galería tipo Rompecabezas -->
+<section class="rompecabezas-gallery mt-5">
+  <div class="container text-center">
+    <h2 class="mb-4" style="font-family: 'Playfair Display', serif; color: #0f0f0fff;">Una lectura rápida</h2>
+    <div class="row g-3 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-3">
+        <img src="img/flotar1.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)">
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <img src="img/flotar2.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)">
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <img src="img/flotar3.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)">
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <img src="img/flotar4.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)">
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <img src="img/flotar5.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)">
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <!-- Popup -->
+  <div id="popup" class="popup" onclick="closePopup()">
+    <span class="close">&times;</span>
+    <img class="popup-content" id="popup-img">
+  </div>
+</section>
+
+<script>
+  function openPopup(src) {
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("popup-img").src = src;
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+
+
 
 <!--Creditos -->
 <?php include("creditos.php");?>
