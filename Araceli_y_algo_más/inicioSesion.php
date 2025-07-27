@@ -1,4 +1,4 @@
-<!--Inicio de Sesion Gabcy -->
+<!--Inicio de Sesion -->
 <?php
 session_start();
 //session_destroy();
@@ -12,7 +12,7 @@ require 'confi/database.php';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio de Sesión Gabcy</title>
+  <title>Inicio de Sesión</title>
 
   <!--REFERENCIAR LIBRERIAS-->
   <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
@@ -23,7 +23,7 @@ require 'confi/database.php';
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" type="text/css" href="estilos/estilosSesion.css">
+
 
   <script type="text/javascript" src="js/pass.js"></script>
   <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -33,6 +33,155 @@ require 'confi/database.php';
 
 
   <link rel="shortcut icon" href="img/logotipo_araceli.png">
+
+  <style>
+    <style>
+  body {
+    background: linear-gradient(135deg, #d8f3dc, #b7e4c7);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    padding: 2rem;
+  }
+
+  .form2 {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 128, 0, 0.25);
+    max-width: 400px;
+    width: 100%;
+    animation: slideIn 0.8s ease;
+    transition: transform 0.3s ease;
+  }
+
+  .form2:hover {
+    transform: scale(1.02);
+  }
+
+  .head-form h2 {
+    text-align: center;
+    color: #2d6a4f;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .head-form p {
+    text-align: center;
+    color: #40916c;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .field-set {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+
+  .form-input2 {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid #74c69d;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .form-input2:focus {
+    outline: none;
+    border-color: #2d6a4f;
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+  }
+
+  .input-item i {
+    margin-right: 0.5rem;
+    color: #1b4332;
+  }
+
+  .button2.log-in {
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .button2.log-in:hover {
+    background-color: #1b4332;
+  }
+
+  .other {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .button2.submits2 {
+    background-color: #95d5b2;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #081c15;
+    transition: background-color 0.3s ease;
+  }
+
+  .button2.submits2:hover {
+    background-color: #74c69d;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .form2 {
+      padding: 1.5rem;
+      border-radius: 15px;
+    }
+
+    .head-form h2 {
+      font-size: 1.5rem;
+    }
+
+    .form-input2 {
+      font-size: 0.95rem;
+    }
+
+    .button2.log-in,
+    .button2.submits2 {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+
+  </style>
 
 <body>
 
