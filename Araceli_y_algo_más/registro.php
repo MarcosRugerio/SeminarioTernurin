@@ -16,7 +16,7 @@ $con = $db->conectar();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro Gabcy</title>
+  <title>Registro</title>
 
   <!--REFERENCIAR LIBRERIAS-->
   <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
@@ -27,8 +27,6 @@ $con = $db->conectar();
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" type="text/css" href="estilos/estilosRegistro.css">
-
   <script type="text/javascript" src="js/pass.js"></script>
   <link rel="stylesheet" href="css/font-awesome.min.css">
 
@@ -37,6 +35,164 @@ $con = $db->conectar();
 
   <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
+  <style> 
+
+      body {
+  background: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  animation: none !important;
+  transform: none !important;
+}
+
+.form2 {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 128, 0, 0.25);
+  max-width: 400px;
+  width: 100%;
+  transition: none;
+}
+
+/* Se eliminó la animación hover para evitar transformaciones */
+/* .form2:hover {
+  transform: scale(1.02);
+} */
+
+.head-form h2 {
+  text-align: center;
+  color: #2d6a4f;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.head-form p {
+  text-align: center;
+  color: #40916c;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.field-set {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.form-input2 {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid #74c69d;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-input2:focus {
+  outline: none;
+  border-color: #2d6a4f;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+}
+
+.input-item i {
+  margin-right: 0.5rem;
+  color: #1b4332;
+}
+
+.button2.log-in {
+  background-color: #2d6a4f;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button2.log-in:hover {
+  background-color: #1b4332;
+}
+
+.button2.submits2 {
+  background-color: #95d5b2;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #081c15;
+  transition: background-color 0.3s ease;
+}
+
+.button2.submits2:hover {
+  background-color: #74c69d;
+}
+
+@media (max-width: 576px) {
+  .form2 {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .head-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-input2 {
+    font-size: 0.95rem;
+  }
+
+  .button2.log-in,
+  .button2.submits2 {
+    font-size: 0.9rem;
+  }
+}
+/* Contenedor padre de la card: para centrar horizontal y vertical */
+.col-lg-10.col-xl-9.mx-auto {
+  display: flex;
+  justify-content: center; /* Centra horizontal */
+  align-items: center;     /* Centra vertical (opcional) */
+  min-height: 80vh;        /* Altura para centrar vertical */
+  padding: 1rem;
+}
+
+/* El card (formulario + imagen) ya es flex-row, mantenemos */
+.card.flex-row.my-5 {
+  max-width: 750px;        /* Limita el ancho total para no estirar demasiado */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Imagen izquierda */
+.card-img-left {
+  flex: 0 0 320px;         /* ancho fijo */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 128, 0, 0.25);
+  background-image: url('img/registro.png'); /* tu imagen */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Oculta el div si no tiene fondo ni imagen */
+.card-img-left.d-none.d-md-flex {
+  display: flex !important; /* forzar que siempre se vea en md+ */
+  /* Si usas una etiqueta img dentro, pon aquí estilos para que no distorsione */
+}
+
+/* El cuerpo del formulario */
+.card-body.p-4.p-sm-5 {
+  flex: 1;                 /* ocupa el resto */
+  max-width: 400px;
+}
+
+  </style>
+    
 <body>
 
   <!--Header -->
@@ -238,42 +394,78 @@ $con = $db->conectar();
                 <input class="form-input2" id="txt-input" type="text" placeholder="Dirección Completa" required name="domicilio">
                 <br>
                 <br><br>
+                <!--- INICIO DE TERMINOS Y CONDICIONES -->
                 <div>
-                  <!--Terminos y Condiciones-->
-                  <p><input type="checkbox" name="File" required>"He leído y Acepto" las <a href="#ex1" data-bs-toggle="modal" data-bs-target="#exampleModal">Políticas de privacidad.</a></p>
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Aviso de Privacidad</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          Te invitamos a que leas detenidamente los presentes términos y condiciones antes de utilizar el sitio www.copil.com, ya que al entrar confirmas tu entendimiento con los mismos.
-                          Si no aceptas estos términos y condiciones de uso, no podrás utilizar este sitio.
-                          USO DE WWW.GABCY.COM <br>
-                          Para poder utilizar el sitio www.copil.com debes tener por lo menos 18 años de edad.
-                          El uso comercial o el nombre de terceros están prohibidos, salvo lo expresamente permitido por nosotros con anterioridad, cualquier infracción de estos términos y condiciones dará lugar a la revocación inmediata de la licencia otorgada en este apartado, sin previo aviso.
-                          Ciertos servicios y características relacionadas con los mismos, pueden estar disponibles en el sitio www.copil.com y pueden requerir el registro, si decides registrarte a nuestros servicios o funciones relacionadas, te comprometes a proporcionar información precisa y actualizada acerca de ti mismo.
-                          <br>
-                          LAS COMUNICACIONES DEL USUARIO<br>
-                          Cualquier comunicación que envíes al sitio web www.copil.com, incluyéndose de forma enunciativa más no limitativa, preguntas, críticas, comentarios, sugerencias, se convertirán en nuestra propiedad y no serán devueltos, salvo que medie orden judicial para tal efecto, asimismo cuando remitas comentarios o críticas al sitio, también nos concedes el derecho a utilizar el nombre que envíes, únicamente en el marco de dicha revisión, comentario, o cualquier otro contenido; por último, cabe mencionar que, no debes de usar una dirección de correo electrónico falsa, es decir, pretender ser alguien que no eres.
-                          <br>PROTECCIÓN DE DATOS<br>
-                          Los datos proporcionados por el cliente son protegidos de acuerdo a nuestro aviso de privacidad, publicado en www.copil.com
-                          Copil NO se responsabiliza por la certeza de los datos personales de sus usuarios. Los usuarios garantizan y responden, en cualquier caso, de la veracidad, exactitud, vigencia y autenticidad de sus datos personales.
-                          Copil se reserva el derecho de solicitar algún comprobante y/o dato adicional a efecto de corroborar los Datos Personales.
-                          Como parte del proceso para completar el formulario de inscripción, para poder utilizar su cuenta en este sitio, así como realizar cualquier función en el sitio o hacer uso de los servicios, el usuario autoriza como medios de autentificación aquellos medios electrónicos, tales como número de identificación personal, huella digital, firma electrónica o cualquier otro que determine Copil.
-                          <br><br>CONTACTO:
-                          clientes@gabcy.com.mx
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
+                <!-- Términos y Condiciones -->
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: #333;">
+                  <input type="checkbox" name="File" required style="transform: scale(1.2); margin-right: 8px;">
+                  <strong>"He leído y acepto"</strong> las 
+                  <a href="#ex1" data-bs-toggle="modal" data-bs-target="#exampleModal" 
+                    style="color: #2d6a4f; text-decoration: underline; font-weight: 600;">
+                    Políticas de privacidad.
+                  </a>
+                </p>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content" style="font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #2f2f2f;">
+
+                      <div class="modal-header" style="background-color: #2d6a4f; color: white;">
+                        <h1 class="modal-title fs-4" id="exampleModalLabel" style="font-weight: 700;">
+                          Aviso de Privacidad
+                        </h1>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                       </div>
+
+                      <div class="modal-body" style="padding: 1.5rem 2rem;">
+                        <p>
+                          Te invitamos a leer detenidamente los presentes términos y condiciones antes de utilizar el sitio <strong>www.araceli_y_algo_más.com</strong>, ya que al entrar confirmas tu entendimiento y aceptación de los mismos.
+                        </p>
+                        <p>
+                          Si no aceptas estos términos y condiciones de uso, no podrás utilizar este sitio.
+                        </p>
+
+                        <h5 style="color: #2d6a4f; margin-top: 1.5rem;">Uso de www.araceli_y_algo_más.com</h5>
+                        <p>
+                          Para utilizar el sitio <strong>www.araceli_y_algo_más.com</strong>, debes ser mayor de 18 años. El uso comercial o el nombre de terceros están prohibidos salvo autorización expresa previa. Cualquier infracción podrá resultar en la revocación inmediata de la licencia otorgada, sin previo aviso.
+                        </p>
+
+                        <p>
+                          Algunos servicios o características pueden requerir registro. Al registrarte, te comprometes a proporcionar información precisa y actualizada.
+                        </p>
+
+                        <h5 style="color: #2d6a4f; margin-top: 1.5rem;">Comunicaciones del Usuario</h5>
+                        <p>
+                          Toda comunicación que envíes al sitio, incluyendo preguntas, comentarios o sugerencias, se convertirán en nuestra propiedad y no serán devueltas salvo orden judicial. Nos reservas el derecho a usar el nombre que envíes en revisiones o comentarios. No uses correos falsos ni pretendas ser otra persona.
+                        </p>
+
+                        <h5 style="color: #2d6a4f; margin-top: 1.5rem;">Protección de Datos</h5>
+                        <p>
+                          Los datos proporcionados están protegidos según nuestro aviso de privacidad en <strong>www.araceli_y_algo_más.com</strong>. Copil no se responsabiliza por la veracidad o vigencia de los datos personales proporcionados. Nos reservamos el derecho de solicitar comprobantes adicionales para corroborar información.
+                        </p>
+                        <p>
+                          Al completar el formulario y usar el sitio, autorizas métodos electrónicos de autenticación como identificación personal, huella digital o firma electrónica.
+                        </p>
+
+                        <h5 style="color: #2d6a4f; margin-top: 1.5rem;">Contacto</h5>
+                        <p>
+                          <a href="mailto:clientes@gabcy.com.mx" style="color: #2d6a4f; font-weight: 600;">almarazaraceli777@gmail.com</a>
+                        </p>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-weight: 600;">
+                          Cerrar
+                        </button>
+                      </div>
+
                     </div>
                   </div>
                 </div>
+              </div>
+
+                <!--- FIN DE TERMINOS Y CONDICIONES -->
               </div>
               <center><button class=" button2 log-in" type="submit">REGISTRARME</button></center>
 
