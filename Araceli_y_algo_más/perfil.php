@@ -14,7 +14,7 @@ $con = $db->conectar();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil de Usuario Gabcy</title>
+  <title>Perfil de Usuario</title>
 
   <!--REFERENCIAR LIBRERIAS-->
   <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
@@ -25,7 +25,6 @@ $con = $db->conectar();
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" type="text/css" href="estilos/estilosPerfil.css">
 
   <script type="text/javascript" src="js/pass.js"></script>
   <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -34,6 +33,139 @@ $con = $db->conectar();
   <script type="text/javascript" src="js/main-scripts.js"> </script>
 
   <link rel="shortcut icon" href="img/logotipo_araceli.png">
+
+  <style>
+
+  /* Contenedor general: centrado y fondo */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #ffffff; /* fallback si no carga imagen */
+}
+
+.containerforms {
+  /* Imagen de fondo centrada, sin repetir y que cubre todo */
+  background: url('img/registro.png') no-repeat center center fixed;
+  background-size: cover;
+  
+  min-height: 100vh; /* altura total de pantalla */
+  
+  display: flex;
+  justify-content: center;  /* centra horizontal */
+  align-items: center;      /* centra vertical */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.form2 {
+  background: rgba(255, 255, 255, 1); /* blanco opaco */
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 128, 0, 0.25);
+  max-width: 400px;
+  width: 100%;
+  transition: none;
+}
+
+.form2:hover {
+  transform: scale(1.02);
+}
+
+.head-form h2 {
+  text-align: center;
+  color: #2d6a4f;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.head-form p {
+  text-align: center;
+  color: #40916c;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.field-set {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.form-input2 {
+  background-color: white !important; /* fondo blanco fuerte */
+  color: #000;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid #74c69d;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-input2:focus {
+  outline: none;
+  border-color: #2d6a4f;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+}
+
+.input-item i {
+  margin-right: 0.5rem;
+  color: #1b4332;
+}
+
+.button2.log-in {
+  background-color: #2d6a4f;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button2.log-in:hover {
+  background-color: #1b4332;
+}
+
+.button2.submits2 {
+  background-color: #95d5b2;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #081c15;
+  transition: background-color 0.3s ease;
+}
+
+.button2.submits2:hover {
+  background-color: #74c69d;
+}
+
+@media (max-width: 576px) {
+  .form2 {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .head-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-input2 {
+    font-size: 0.95rem;
+  }
+
+  .button2.log-in,
+  .button2.submits2 {
+    font-size: 0.9rem;
+  }
+}
+
+  </style>
 
 <body>
 
@@ -155,7 +287,7 @@ $con = $db->conectar();
   </nav>
 
   <!-- Perfil de Usuario -->
-  <div class="container">
+  <div class="containerforms">
     <form class="form2" action="php/perfil.php" method="POST">
 
       <?php
