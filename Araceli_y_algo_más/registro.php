@@ -191,6 +191,42 @@ $con = $db->conectar();
   max-width: 400px;
 }
 
+/* En móviles (menor a 768px) apilar verticalmente */
+@media (max-width: 767.98px) {
+  .card.flex-row {
+    flex-direction: column !important;
+    max-width: 100% !important;
+  }
+  
+  /* Ocultar imagen en móviles */
+  .card-img-left {
+    flex: 0 0 auto;
+    height: 200px; /* o el alto que quieras para mostrar la imagen arriba */
+    width: 100% !important;
+    border-radius: 20px 20px 0 0;
+    background-size: cover;
+    background-position: center;
+    display: block !important; /* para mostrar la imagen en móvil si quieres */
+  }
+
+  /* Si prefieres ocultar la imagen en móviles, usa: */
+  /* .card-img-left {
+      display: none !important;
+  } */
+
+  .card-body.p-4.p-sm-5 {
+    max-width: 100% !important;
+    padding: 1.5rem !important;
+  }
+
+  /* Ajustar el form2 para que rellene */
+  .form2 {
+    max-width: 100% !important;
+    border-radius: 15px !important;
+    padding: 1.5rem !important;
+  }
+}
+
   </style>
     
 <body>
