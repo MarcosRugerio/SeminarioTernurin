@@ -34,147 +34,130 @@ $con = $db->conectar();
   <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
   <style>
-  body {
-    background: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
+   body {
+  background: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  animation: none !important;
+  transform: none !important;
+}
 
-  .overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(8px);
-    padding: 2rem;
-  }
+.overlay {
+  display: flex;
+  justify-content: center;  /* Centra horizontal */
+  align-items: center;      /* Centra vertical */
+  min-height: 80vh;         /* Ocupa casi toda la pantalla para centrar bien */
+  padding: 1rem;            /* Opcional, para que no quede pegado a los bordes */
+  box-sizing: border-box;   /* Para evitar problemas con el padding */
+}
 
-  .form2 {
-    background: #ffffff;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 8px 30px rgba(0, 128, 0, 0.25);
-    max-width: 400px;
-    width: 100%;
-    animation: slideIn 0.8s ease;
-    transition: transform 0.3s ease;
-  }
 
-  .form2:hover {
+.form2 {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 128, 0, 0.25);
+  max-width: 400px;
+  width: 100%;
+  transition: none;
+}
+
+.form2:hover {
     transform: scale(1.02);
   }
 
+.head-form h2 {
+  text-align: center;
+  color: #2d6a4f;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.head-form p {
+  text-align: center;
+  color: #40916c;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.field-set {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.form-input2 {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid #74c69d;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-input2:focus {
+  outline: none;
+  border-color: #2d6a4f;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+}
+
+.input-item i {
+  margin-right: 0.5rem;
+  color: #1b4332;
+}
+
+.button2.log-in {
+  background-color: #2d6a4f;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button2.log-in:hover {
+  background-color: #1b4332;
+}
+
+.button2.submits2 {
+  background-color: #95d5b2;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #081c15;
+  transition: background-color 0.3s ease;
+}
+
+.button2.submits2:hover {
+  background-color: #74c69d;
+}
+
+@media (max-width: 576px) {
+  .form2 {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
   .head-form h2 {
-    text-align: center;
-    color: #2d6a4f;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  }
-
-  .head-form p {
-    text-align: center;
-    color: #40916c;
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .field-set {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
   }
 
   .form-input2 {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 1.5px solid #74c69d;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-  }
-
-  .form-input2:focus {
-    outline: none;
-    border-color: #2d6a4f;
-    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
-  }
-
-  .input-item i {
-    margin-right: 0.5rem;
-    color: #1b4332;
-  }
-
-  .button2.log-in {
-    background-color: #2d6a4f;
-    color: white;
-    border: none;
-    padding: 0.75rem;
-    border-radius: 12px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .button2.log-in:hover {
-    background-color: #1b4332;
-  }
-
-  .other {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-  }
-
-  .button2.submits2 {
-    background-color: #95d5b2;
-    border: none;
-    padding: 0.6rem;
-    border-radius: 12px;
     font-size: 0.95rem;
-    color: #081c15;
-    transition: background-color 0.3s ease;
   }
 
-  .button2.submits2:hover {
-    background-color: #74c69d;
+  .button2.log-in,
+  .button2.submits2 {
+    font-size: 0.9rem;
   }
-
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(-40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 576px) {
-    .form2 {
-      padding: 1.5rem;
-      border-radius: 15px;
-    }
-
-    .head-form h2 {
-      font-size: 1.5rem;
-    }
-
-    .form-input2 {
-      font-size: 0.95rem;
-    }
-
-    .button2.log-in,
-    .button2.submits2 {
-      font-size: 0.9rem;
-    }
-  }
+}
 </style>
 
 <body>
