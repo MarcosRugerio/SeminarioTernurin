@@ -78,7 +78,7 @@ if ($productos != null) {
 
         <li>
           <a class="nav-link dropdown-toggle"
-            style=" color:#6E0023; display:inline;  border-right: 2px solid  #f0cea5"  href=" #"
+            style=" color:#6E0023; display:inline;  border-right: 2px solid  #36642fff"  href=" #"
             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             PRODUCTOS
           </a>
@@ -89,7 +89,7 @@ if ($productos != null) {
           </ul>
         </li>
        <li><a href="blog.php" class="nav-link px-3 text"
-            style="color: #6E0023; display:inline; border-right: 2px solid  #f0cea5;">MARCAS</a>
+            style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
         </li>
 
       </ul>
@@ -180,92 +180,74 @@ if ($productos != null) {
 
 
   <!-- Carrito -->
-  <main>
-    <div class="card2">
-      <div class="title">
-        <div class="row text-center" style="color:#6E0023; background-image: linear-gradient(-225deg, #F9ECDC 35%, #FAFFA6 65%); ">
-
-          <div class="col">
-            <br>
-            <h5><b>Tu carrito</b></h5>
-          </div>
-        </div>
+    <main>
+    <div class="cart-wrapper">
+      <div class="cart-header">
+        <h2>🛒 Tu carrito</h2>
       </div>
-      <div class="row border-top border-bottom">
-        <div class="table-responsive">
-          <table class="table">
-            <thead style="color:#6E0023;">
-              <tr>
-                <th scope="col">Producto</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Subtotal</th>
-                <th scope="col"></th>
+      <div class="cart-body">
+        <table class="cart-table">
+         <thead>
+            <tr >
+              <th>Imagen</th>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if ($lista_carrito == null): ?>
+              <tr><td colspan="5" class="empty-cart">Carrito vacío</td></tr>
+            <?php else:
+              $total = 0;
+              foreach ($lista_carrito as $producto):
+                $_id = $producto['id'];
+                $nombre = $producto['nombre'];
+                $precio1 = $producto['precio1'];
+                $cantidad = $producto['cantidad'];
+                $subtotal = $cantidad * $precio1;
+                $total += $subtotal;
+            ?>
+               <tr data-id="<?= $_id ?>">
+                  <td><?= $nombre ?></td>
+                  <td><?= $precio1 ?></td>
+                <td>
+                  <input type="number" min="1" max="20" value="<?= $cantidad ?>" onchange="actualizaCantidad(this.value, <?= $_id ?>)">
+                </td>
+                <td><div id="subtotal_<?= $_id ?>"><?= MONEDA . number_format($subtotal, 2, '.', ',') ?></div></td>
+                <td>
+                  <button class="btn-remove" data-bs-id="<?= $_id ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                      <path d="M2.5 1a1 1 0 0 0-1 1v1H0v1h1v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h1V3h-1V2a1 1 0 0 0-1-1h-3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1H2.5zm3 3a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm3 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm3 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
+                    Eliminar
+                  </button>
+                </td>
               </tr>
-            </thead>
-            <tbody class="table-group-divider">
-              <?php if ($lista_carrito == null) {
-                echo '<tr><td colspan ="5" class = "text-center" ><b>Carrito vacio</b></td></tr>';
-              } else {
-                $total = 0;
-
-                foreach ($lista_carrito as $producto) {
-                  $_id = $producto['id'];
-                  $nombre = $producto['nombre'];
-                  $precio1 = $producto['precio1'];
-                  $precio2 = $producto['precio2'];
-                  $precio3 = $producto['precio3'];
-                  $cantidad = $producto['cantidad'];
-                  $subtotal =  $cantidad * $precio1;
-                  $total += $subtotal;
-              ?>
-
-                  <tr>
-                    <td><?php echo $nombre; ?></td>
-                    <td>
-                      <!---   <input style="border: 0.05em solid #6E0023; border-radius: 1em; " class="form-select-sm " type="text" readonly> --->
-                      <?php echo $precio1; ?>
-                    </td>
-                    <td>
-                      <input type="number" min="1" max="20" step="1" value="<?php echo $cantidad; ?>" size="4" id="cantidad_<?php echo $_id; ?>" onchange="actualizaCantidad(this.value, <?php echo $_id; ?>)" style="background: white;">
-                    </td>
-                    <td>
-                      <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"><?php echo MONEDA . number_format($subtotal, 2, '.', ','); ?></div>
-                    </td>
-                    <td>
-                      <a href="#" id="eliminar" class="btn btn-warning btn-sm" data-bs-id="<?php echo $_id; ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">Eliminar</a>
-                    </td>
-                  </tr>
-                <?php } ?>
-                <tr>
-                  <td colspan="4"></td>
-                  <td colspan="2">
-                    <p class="h3" id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
-                  </td>
-                </tr>
-
-            </tbody>
-          <?php } ?>
-          </table>
-        </div>
-        <div class="row summary" style=" background-image: linear-gradient(-225deg, #F9ECDC 35%, #FAFFA6 65%); ">
-          <div>
-          </div>
-          <br>
-          <?php if ($lista_carrito != null) {  ?>
-          <div class="d-grid gap-2 col-6 mx-auto">
-
-              <!---Validar sesion---->
-            <a href="pagoPaypal.php" class="btn btn-dark">Terminar pedido</a>
-           
-             
-              
-          </div>
-          <?php } ?>
-          <div class="back-to-shop" onclick="regresar()"><a class="a2" href="index.php">&leftarrow; </a><span class="text-muted">Seguir comprando</span></div>
-        </div>
+            <?php endforeach; ?>
+            <tr class="total-row">
+              <td colspan="3"></td>
+              <td colspan="2" class="total-value"><?= MONEDA . number_format($total, 2, '.', ',') ?></td>
+            </tr>
+          <?php endif; ?>
+          </tbody>
+        </table>
       </div>
-    </div>
+      <?php if ($lista_carrito != null): ?>
+      <div class="cart-actions">
+        <a href="pagoPaypal.php" class="btn-finish">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 5.99A.5.5 0 0 0 4 10h9.5a.5.5 0 0 0 .485-.379l1.5-6A.5.5 0 0 0 15 3H4.221l-.405-1.621A.5.5 0 0 0 3.333 1H.5zm5.354 11.354a.5.5 0 1 1 .707.707L5.207 14.414l1.647 1.647a.5.5 0 0 1-.708.707l-1.646-1.647-1.646 1.647a.5.5 0 0 1-.708-.707l1.647-1.647-1.647-1.646a.5.5 0 1 1 .707-.708l1.647 1.647 1.647-1.647z"/>
+          </svg>
+          Finalizar compra
+        </a>
+        <a class="btn-back" href="index.php">
+          <span class="arrow">←</span> Seguir comprando
+        </a>
+      </div>
+      <?php endif; ?>
     </div>
   </main>
   <!-- Modal -->
