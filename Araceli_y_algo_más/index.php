@@ -102,6 +102,27 @@ $con = $db->conectar();
     font-weight: bold;
     cursor: pointer;
   }
+
+.content.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url('img/banner_skincare.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.zoom img:hover {
+  transform: scale(1.1);
+}
+
+.img2 img {
+  max-width: 100%;
+  height: auto;
+}
+
 </style>
 
 
@@ -296,21 +317,24 @@ $con = $db->conectar();
       <!--Fin de Categoria--->
       <!--IMAGEN  -->
 
-      <section class="content price">
+     <section class="content price">
+  <article class="contain" style="max-width: 800px; margin: 0 auto; background-color: rgba(0, 0, 0, 0.4); padding: 2rem; border-radius: 1rem;">
+    <h2 class="display-1" style="color: white; font-family: 'Playfair Display', serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">
+      ¿Eres fan del skincare?
+    </h2>
+    <h3 class="display-3" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">
+      <center>Tu nueva rutina de cuidado aquí</center>
+    </h3>
+    <center>
+    <div class="zoom" style="margin-top: 2rem;">
+      <a class="img2" href="blog.php">
+        <img src="img/gotero.png" width="70" height="70" style="transition: transform 0.3s ease;">
+      </a>
+    </div>
+    </center>
+  </article>
+</section>
 
-        <article class="contain">
-          <br><br>
-          <h2 class="display-1" style="color: white; font-family: 'Playfair Display', serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">
-          ¿Eres fan del skincare?</h2>
-          <h3 class="display-3" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Tu nueva rutina de cuidado aquí</h3>
-          <div class="zoom"  style="overflow:hidden">
-          <a class="img2" href="blog.php"><img src="img/gotero.png" width="50" height="50"></a>
-
-          </div>
-       
-        </article>
-
-      </section>
       <br>
 <br>
       <!--INICIO conteiner marketing---->
