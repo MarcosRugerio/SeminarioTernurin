@@ -245,9 +245,9 @@ if ($productos != null) {
           </svg>
           Finalizar compra
         </a>
-        <a class="btn-back" href="index.php">
-          <span class="arrow">←</span> Seguir comprando
-        </a>
+        <a class="btn-back mt-3" href="index.php">
+        <span class="arrow">&leftarrow;</span> Seguir comprando
+      </a>
       </div>
       <?php endif; ?>
     </div>

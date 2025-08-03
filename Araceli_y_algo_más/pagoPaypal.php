@@ -32,7 +32,7 @@ if ($productos != null) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pago GABCY</title>
+  <title>Pago</title>
 
   <!--REFERENCIAR LIBRERIAS-->
 
@@ -183,139 +183,130 @@ if ($productos != null) {
 
   <!-- Carrito -->
   <main>
-    <div class="card2">
-      <div class="title">
-        <div class="row text-center" style="color:#6E0023; background-image: linear-gradient(-225deg, #F9ECDC 35%, #FAFFA6 65%); ">
+  <div class="cart-wrapper">
 
-          <div class="col">
-            <br>
-            <h5><b>Tu pedido</b></h5>
-          </div>
-        </div>
-      </div>
-      <div class="row border-top border-bottom">
-        <div class="table-responsive">
-          <table class="table">
-            <thead style="color:#6E0023;">
-              <tr>
+    <div class="cart-header">
+      <h2>🛒 Tu pedido</h2>
+    </div>
 
-                <th scope="col">Producto</th>
+    <div class="cart-body">
+      <div class="table-responsive">
+        <table class="table cart-table">
+          <thead>
+            <tr>
+              <th scope="col">Imagen</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <?php if ($lista_carrito == null) {
+              echo '<tr><td colspan="4" class="empty-cart">🛒 <b>Carrito vacío</b></td></tr>';
+            } else {
+              $total = 0;
 
-                <th scope="col">Cantidad</th>
-                <th scope="col">Subtotal</th>
-
-              </tr>
-            </thead>
-            <tbody class="table-group-divider">
-              <?php if ($lista_carrito == null) {
-                echo '<tr><td colspan ="5" class = "text-center" ><b>Carrito vacio</b></td></tr>';
-              } else {
-                $total = 0;
-
-                foreach ($lista_carrito as $producto) {
-                  $_id = $producto['id'];
-                  $nombre = $producto['nombre'];
-                  $ruta_img = $producto['ruta_img'];
-                  $precio1 = $producto['precio1'];
-                  $precio2 = $producto['precio2'];
-                  $precio3 = $producto['precio3'];
-                  $cantidad = $producto['cantidad'];
-                  $subtotal =  $cantidad * $precio1;
-                  $total += $subtotal;
-              ?>
-
-                  <tr>
-
-                    <td><?php echo $nombre; ?></td>
-
-                    <td>
-                      <?php echo $cantidad; ?>
-                    </td>
-                    <td>
-                      <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"><?php echo MONEDA . number_format($subtotal, 2, '.', ','); ?></div>
-                    </td>
-
-                  </tr>
-                <?php } ?>
+              foreach ($lista_carrito as $producto) {
+                $_id = $producto['id'];
+                $nombre = $producto['nombre'];
+                $ruta_img = $producto['ruta_img'];
+                $precio1 = $producto['precio1'];
+                $cantidad = $producto['cantidad'];
+                $subtotal = $cantidad * $precio1;
+                $total += $subtotal;
+            ?>
                 <tr>
-                  <td colspan="2"></td>
-                  <td colspan="2">
-                    <h5><b>TOTAL</b></h5>
-                    <p class="h3" id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?></p>
+                  <td>
+                    <img src="img/<?php echo $ruta_img; ?>" width="60" alt="<?php echo $nombre; ?>">
+                  </td>
+                  <td><?php echo $nombre; ?></td>
+                  <td><?php echo $cantidad; ?></td>
+                  <td>
+                    <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"><?php echo MONEDA . number_format($subtotal, 2, '.', ','); ?></div>
                   </td>
                 </tr>
+              <?php } ?>
+              <tr class="total-row">
+                <td colspan="2"></td>
+                <td><b>TOTAL</b></td>
+                <td class="total-value">
+                  <?php echo MONEDA . number_format($total, 2, '.', ','); ?>
+                </td>
+              </tr>
+          </tbody>
+        <?php } ?>
+        </table>
+      </div>
 
-            </tbody>
-          <?php } ?>
-          </table>
-        </div>
-        <div class="row summary text-center" style=" background-image: linear-gradient(-225deg, #F9ECDC 35%, #FAFFA6 65%); ">
-          <h5 style="text-align: center;"><b>Domicilio de entrega</b></h5>
+     <div class="cart-actions" style="flex-direction: column; align-items: stretch; gap: 2rem; padding: 2rem; background: #e6faef;">
 
-          <form action="php/actualizarUsu.php" method="POST">
+  <div style="background: white; padding: 1.5rem; border-radius: 1rem; box-shadow: 0 0 12px rgba(0,0,0,0.05);">
+    <h5 style="color:#135836; font-weight: bold; margin-bottom: 1rem; text-align:center;">🏠 Domicilio de entrega</h5>
 
-            <?php
-            require_once "php/conexion.php";
-            $conexion = conexion();
-            $usuario_id = $_SESSION['id'];
-            $query = ("Select * from usuarios where id='$usuario_id'");
-            $result = mysqli_query($conexion, $query);
-            if (!$result) {
-              die(mysqli_error($conexion));
-            }
+    <form action="php/actualizarUsu.php" method="POST">
+      <?php
+      require_once "php/conexion.php";
+      $conexion = conexion();
+      $usuario_id = $_SESSION['id'];
+      $query = ("SELECT * FROM usuarios WHERE id='$usuario_id'");
+      $result = mysqli_query($conexion, $query);
+      if (!$result) {
+        die(mysqli_error($conexion));
+      }
 
-            if (mysqli_num_rows($result) > 0) {
-              while ($rowData = mysqli_fetch_array($result)) {
-                $nom = $rowData["nombre"];
-                $ap = $rowData["apellido"];
-                $dom = $rowData["domicilio"];
-
-            ?>
-
-                <div class="form-floating mb-6">
-                  <input type="text" class="form-control" id="floatingInputUsername" name="nombre" required value="<?php echo $nom ?>">
-                  <label for="floatingInputUsername">Nombre(s):</label>
-                </div>
-
-                <div class="form-floating mb-6">
-                  <input type="text" class="form-control" id="floatingInputUsername" name="apellido" required value="<?php echo $ap ?>">
-                  <label for="floatingInputUsername">Apellido(s):</label>
-                </div>
-
-
-                <div class="form-floating mb-6">
-                  <input type="text" class="form-control" id="floatingInputEmail" name="domicilio" required value="<?php echo $dom ?>">
-                  <label for="floatingInputEmail">Domicilio de entrega:</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <p class="text fw-lighter fs-6 " style="  font-family: 'Playfair Display', serif;">
-                    Modificar domicilio de entrega
-                  </p>
-                  <a href="perfil.php" class="btn" style="font-family:'Monserrat', sans-serif;">
-                    Modificar <span style="background:#6E0023; color:white;" class="badge text-bg-secondary"></span>
-                  </a>
-                </div>
-                <hr style="color: #FFB28C;">
-
-          </form>
-      <?php }
-            }
-
+      if (mysqli_num_rows($result) > 0) {
+        while ($rowData = mysqli_fetch_array($result)) {
+          $nom = $rowData["nombre"];
+          $ap = $rowData["apellido"];
+          $dom = $rowData["domicilio"];
       ?>
 
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="nombre" required value="<?php echo $nom ?>">
+            <label>Nombre(s):</label>
+          </div>
 
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="apellido" required value="<?php echo $ap ?>">
+            <label>Apellido(s):</label>
+          </div>
 
-      <h5><b>Métodos de pago</b></h5>
-      <br>
-      <!---METODO DE PAGO PAYPAL--->
-      <div id="paypal-button-conteiner"></div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="domicilio" required value="<?php echo $dom ?>">
+            <label>Domicilio de entrega:</label>
+          </div>
 
-      <div class="back-to-shop" onclick="regresar()"><a class="a2" href="index.php">&leftarrow; </a><span class="text-muted">Seguir comprando</span></div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </main>
+          <div class="text-center">
+            <p class="text-muted small" style="font-family: 'Playfair Display', serif;">
+              ¿Deseas modificar tu domicilio de entrega?
+            </p>
+            <a href="perfil.php" class="btn btn-sm" style="background: #178A5B; color:white; border-radius: 0.5rem;">
+              Modificar dirección
+            </a>
+          </div>
+      <?php }
+      } ?>
+    </form>
+  </div>
+
+  <!-- PayPal -->
+  <div class="text-center" style="margin-top: 2rem;">
+  <h5 style="color:#135836; font-weight: bold;">💳 Método de pago</h5>
+  <div style="display: flex; justify-content: center; margin-top: 1rem;">
+    <div id="paypal-button-conteiner"></div>
+  </div>
+</div>
+  <!-- Botón de regreso -->
+  <div class="text-center">
+    <a class="btn-back mt-3" href="index.php">
+  <span class="arrow">&leftarrow;</span> Seguir comprando
+</a>
+  </div>
+
+</div>
+
+  </div> <!-- .cart-wrapper -->
+</main>
 
 
   <br><br>
