@@ -68,31 +68,34 @@ if ($productos != null) {
           <img src="img/logotipo_araceli.png" width="150" height="200" alt="" title="Página Principal">
         </a>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-        >
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-        <li><a href="index.php" class="nav-link px-3 text"
-            style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff">INICIO</a>
-        </li>
+          <li><a href="index.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff">INICIO</a>
+          </li>
 
 
-        <li>
-          <a class="nav-link dropdown-toggle"
-            style=" color:#6E0023; display:inline;  border-right: 2px solid  #36642fff"  href=" #"
-            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            PRODUCTOS
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-            <li><a class="dropdown-item" style="color: #6E0023;" href="menuC2.php">Hogar y limpieza</a></li>
-            <li><a class="dropdown-item" style="color: #6E0023;" href="menuF2.php">Belleza y cuidados</a></li>
-            <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Ropa y algo más</a></li>
-          </ul>
-        </li>
-       <li><a href="blog.php" class="nav-link px-3 text"
-            style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
-        </li>
+          <li>
+            <a class="nav-link dropdown-toggle" style=" color:#6E0023; display:inline;  border-right: 2px solid  #36642fff" href=" #" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              MENÚ
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" style="color: #6E0023;" href="menuC2.php">Herbales</a></li>
+              <li><a class="dropdown-item" style="color: #6E0023;" href="menuF2.php">Nutricionales</a></li>
+              <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Nutricosmenticos</a></li>
+              <li>
+                <hr class="dropdown-divider" style="color: #f0cea5">
+              </li>
+              <li><a class="dropdown-item" style="color: #6E0023;" href="#">Extras</a></li>
+            </ul>
+          </li>
+         <li><a href="blog.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
+          </li>
 
-      </ul>
+          <li><a href="conocenos.php" class="nav-link px-3 text" style=" color: #6E0023; display:inline; ">ACERCA
+              DE</a></li>
+
+        </ul>
+
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input type="search" class="form-control form-control-dark" placeholder="Buscar..." aria-label="Search" id="idbusqueda">
@@ -105,8 +108,7 @@ if ($productos != null) {
         <a href="carrito.php" class="btn" style="font-family:'Monserrat', sans-serif;">
           Mi Carrito <span style="background:#6E0023; color:white;" id="num_cart" class="badge text-bg-secondary"><?php echo $num_cart; ?></span>
         </a>
-
-
+        
         <div class="dropdown text-end">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
