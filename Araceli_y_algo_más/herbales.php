@@ -32,13 +32,14 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
     <script type="text/javascript" src="librerias/jquery.js"></script>
     <script type="text/javascript" src="js/main-scripts.js"> </script>
+    <script src="librerias/alertifyjs/alertify.js"></script>
+
 
     <link rel="stylesheet" href="estilos/estilosHeader.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 
 <style>
-
 /* Tipografía general de la sección */
 .herbales-section {
   font-family: 'Poppins', sans-serif;
@@ -58,23 +59,21 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 /* Capa translúcida para mejorar la legibilidad */
 .herbales-card {
-  position: relative;
-  z-index: 2;
-  background: rgba(0, 0, 0, 0.4); /* semitransparente */
+  background: rgba(0, 0, 0, 0.4);
   padding: 30px 50px;
   border-radius: 12px;
   text-align: center;
   color: #fff;
   max-width: 600px;
   width: 90%;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Título destacado */
 .herbales-card h2 {
   font-size: 2.2rem;
   margin-bottom: 15px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* Descripción */
@@ -92,25 +91,12 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   transition: all 0.3s ease;
 }
 
-/* Hover en enlace */
 .herbales-card a:hover {
   color: #ffffff;
   border-color: #ffffff;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .herbales-card {
-    padding: 20px;
-  }
-  .herbales-card h2 {
-    font-size: 1.8rem;
-  }
-  .herbales-card p {
-    font-size: 1rem;
-  }
-}
-
+/* Sidebar filtro */
 .sidebar {
   background: #ffffff;
   border-radius: 12px;
@@ -128,7 +114,27 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   margin-bottom: 20px;
 }
 
-/* Tabla moderna */
+#filterPanel {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+#filterPanel form div {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #3b5d23;
+}
+
+#toggleFilterBtn {
+  transition: background-color 0.3s ease;
+}
+#toggleFilterBtn:hover {
+  background-color: #54812b;
+  color: white;
+}
+
+/* Tabla */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -151,69 +157,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   cursor: pointer;
 }
 
-/* Animación de entrada */
-.table tr {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInRow 0.4s forwards;
-}
-
-@keyframes fadeInRow {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsivo */
-@media (max-width: 768px) {  
-  .table td {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    position: relative; /* ya no sticky */
-    max-height: 400px;  /* o el tamaño que desees */
-    overflow-y: auto;   /* habilita scroll vertical */
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  }
-}
-
-.sidebar button#toggleFilterBtn {
-  transition: background-color 0.3s ease;
-}
-.sidebar button#toggleFilterBtn:hover {
-  background-color: #54812b;
-}
-
-#filterPanel {
-  max-height: 400px;
-  overflow-y: auto;
-  padding-right: 10px;
-}
-
-#filterPanel form div {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  color: #3b5d23;
-}
-
-/* Estilos botón toggle filtro */
-  #toggleFilterBtn {
-    transition: background-color 0.3s ease;
-  }
-  #toggleFilterBtn:hover {
-    background-color: #54812b !important;
-    color: white !important;
-  }
-
-
-/* Card estilo vidrio */
+/* Estilo de cards */
 .card {
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
@@ -231,7 +175,6 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   box-shadow: 0 12px 30px rgba(0, 128, 0, 0.2);
 }
 
-/* Imagen redondeada y cuadrada */
 .card-img-top {
   border-radius: 15px;
   height: 200px;
@@ -245,7 +188,6 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   transform: scale(1.05);
 }
 
-/* Título */
 .card-tittle {
   font-family: 'Playfair Display', serif;
   color: #1a4d2e;
@@ -254,8 +196,8 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   text-align: center;
 }
 
-/* Precio */
-h4 {
+/* Precio (solo usado en herbales.php) */
+.card h4 {
   color: #388e3c;
   font-weight: 600;
   font-size: 1rem;
@@ -263,46 +205,148 @@ h4 {
   text-align: center;
 }
 
-/* Botones uniformes */
-.card .btn,
-.card button.btn {
-  background-color: #2e7d32;
-  color: white;
-  border: none;
-  border-radius: 25px;
+/* Botones uniformes y verdes suaves */
+.card .btn {
+  background-color: #a5d6a7; /* verde claro y suave */
+  color: #1b5e20;
+  border: 2px solid #81c784;
+  border-radius: 20px;
   padding: 0.6rem 1.2rem;
   width: 100%;
-  margin: 0.3rem 0;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
-.card .btn:hover,
-.card button.btn:hover {
-  background-color: #1b5e20;
-  transform: translateY(-2px);
+.card .btn:hover {
+  background-color: #81c784;
+  transform: scale(1.05);
+}
+
+
+/* Animación para el nombre del producto */
+.card-tittle {
+  font-family: 'Playfair Display', serif;
+  color: #0a0a0aff;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  position: relative;
+  animation: slideIn 0.6s ease forwards;
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Precio con nuevo estilo y tipografía */
+.card h4 {
+  color: #0f0f0fff; /* verde fuerte */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background-color: #e8f5e9;
+  border-radius: 10px;
+  padding: 0.3rem 0.6rem;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 3px 6px rgba(0, 100, 0, 0.1);
 }
 
 /* Responsivo */
 @media (max-width: 768px) {
+  .herbales-card {
+    padding: 20px;
+  }
+  .herbales-card h2 {
+    font-size: 1.8rem;
+  }
+  .herbales-card p {
+    font-size: 1rem;
+  }
+  .sidebar {
+    position: relative;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
   .card {
     padding: 1rem;
   }
-
   .card-img-top {
     height: 160px;
   }
-
-  .card .btn,
-  .card button.btn {
+  .card .btn {
     font-size: 0.85rem;
     padding: 0.5rem 1rem;
   }
+  .table td {
+    font-size: 0.9rem;
+  }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap');
 
+/* Botón "Aplicar filtro" estilo verde suave y animado */
+.sidebar form button.btn-success {
+  background-color: #a5d6a7 !important; /* verde suave */
+  color: #1b5e20 !important;
+  border: 2px solid #81c784 !important;
+  border-radius: 20px !important;
+  padding: 0.6rem 1.2rem !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  width: 100% !important;
+  transition: all 0.3s ease !important;
+}
+
+.sidebar form button.btn-success:hover {
+  background-color: #81c784 !important;
+  color: #ffffff !important;
+  transform: scale(1.05);
+}
+
+/* Botón "Quitar filtros" estilo outline suave y animado */
+.sidebar form button.btn-outline-secondary {
+  background-color: transparent !important;
+  color: #1b5e20 !important;
+  border: 2px solid #81c784 !important;
+  border-radius: 20px !important;
+  padding: 0.6rem 1.2rem !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  width: 100% !important;
+  transition: all 0.3s ease !important;
+  margin-top: 0.5rem;
+}
+
+.sidebar form button.btn-outline-secondary:hover {
+  background-color: #81c784 !important;
+  color: #ffffff !important;
+  transform: scale(1.05);
+}
+
+/* Color de fondo gris personalizado */
+.alertify .ajs-message.ajs-success {
+  background-color: #cececeff !important;
+  color: white !important;
+  border: none;
+}
+
+/* También puedes personalizar los errores si quieres */
+.alertify .ajs-message.ajs-error {
+  background-color: #444 !important;
+  color: #fff !important;
+}
 
 </style>
   
@@ -496,53 +540,57 @@ $sql = $con->prepare($query);
 $sql->execute($params);
 $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
-
 <!-- Termina el filtro de busqueda -->
 
-    <!-- Menu / contenido derecho -->
-    <div class="col-md-9">
-      <div class="album py-5">
-        <div class="container border-0 shadow rounded-3 overflow-hidden" style="background-color: white;">
-          <section class="main row">
-            <main>
-              <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5">
-                  <?php foreach ($resultado as $row) { ?>
-                    <div class="col">
-                      <div class="card shadow-sm">
-                        <img class="card-img-top" src="img/productos/BebidasF/<?php echo $row['ruta_img']; ?>">
-                        <div class="card-body">
-                          <h3 class="card-tittle text-center"><?php echo $row['nombre']; ?></h3>
-                          <h4 style="color:#6E0023; font-family: 'Playfair Display';">Precio</h4>
-                          <table class="table">
-                            <tbody class="table-group-divider">
-                              <tr>
-                                <td><?php echo $row['precio1']; ?> MXN</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                              <a href="detailsF.php?id=<?php echo $row['id'];?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN);?>" class="btn btn">Detalles</a>
-                            </div>
-                            <button class="btn btn" type="button" onclick="addProducto(<?php echo  $row['id']; ?>,'<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>')">Agregar a carrito</button>
-                          </div>
-                        </div>
+
+
+<!-- Menu / contenido derecho -->
+<div class="col-md-9">
+  <div class="album py-5">
+    <div class="container border-0 shadow rounded-3 overflow-hidden" style="background-color: white;">
+      <section class="main row">
+        <main>
+          <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5">
+              <?php foreach ($resultado as $row) { ?>
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <img class="card-img-top" src="img/productos/BebidasF/<?php echo $row['ruta_img']; ?>" alt="<?php echo $row['nombre']; ?>">
+                    <div class="card-body">
+                      <h3 class="card-tittle"><?php echo $row['nombre']; ?></h3>
+
+                      <h4>Precio</h4>
+                      <table class="table">
+                        <tbody class="table-group-divider">
+                          <tr>
+                            <td><?php echo $row['precio1']; ?> MXN</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <div class="d-flex flex-column gap-2">
+                        <a href="detailsF.php?id=<?php echo $row['id']; ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>" class="btn btn">
+                          Detalles
+                        </a>
+                        <button class="btn btn" type="button" onclick="addProducto(<?php echo  $row['id']; ?>,'<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>')">
+                          Agregar a carrito
+                        </button>
                       </div>
                     </div>
-                  <?php } ?>
+                  </div>
                 </div>
-              </div>
-            </main>
-          </section>
-          <br>
-        </div>
-      </div>
+              <?php } ?>
+            </div>
+          </div>
+        </main>
+      </section>
+      <br>
     </div>
   </div>
 </div>
 <!-- Fin del menu / contenido derecho -->
+
+
 
 <!--Creditos-->
 <?php include("creditos.php");?>
@@ -579,42 +627,30 @@ integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+
  crossorigin="anonymous"></script>
  <script>
         function addProducto(id, token) {
-            let url = 'php/carrito.php'
-            let formData = new FormData()
-            formData.append('id', id)
-            formData.append('token', token)
+    let url = 'php/carrito.php';
+    let formData = new FormData();
+    formData.append('id', id);
+    formData.append('token', token);
 
-            var responseClone; // 1
-            fetch('php/carrito.php')
-                .then(function(response) {
-                    responseClone = response.clone(); // 2
-                    return response.json();
-                })
-                .then(function(data) {
-                    // Do something with data
-                }, function(rejectionReason) { // 3
-                    console.log('Error parsing JSON from response:', rejectionReason, responseClone); // 4
-                    responseClone.text() // 5
-                        .then(function(bodyText) {
-                            console.log('Received the following instead of valid JSON:', bodyText); // 6
-                        });
-                });
-
-            fetch(url, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'cors'
-
-                }).then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        let elemento = document.getElementById("num_cart")
-                        elemento.innerHTML = data.numero
-
-                    }
-
-                })
+    fetch(url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            let elemento = document.getElementById("num_cart");
+            elemento.innerHTML = data.numero;
+            alertify.success('Producto agregado al carrito 👍');
+        } else {
+            alertify.error('Error al agregar el producto');
         }
+    })
+    .catch(() => {
+        alertify.error('Error en la conexión');
+    });
+}
     </script>
     <script type="text/javascript">
         function open_login() {
