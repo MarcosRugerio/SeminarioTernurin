@@ -154,7 +154,7 @@
 	<div class="ch-item">	
 		<div class="ch-info">
 			<h3>Herbales</h3>
-			<p>Visita<a href="menuC2.php">Ir</a></p>
+			<p>Visita<a href="herbales.php">Ir</a></p>
 		</div>
 		<div class="ch-thumb ch-img-1"></div>
 	</div>

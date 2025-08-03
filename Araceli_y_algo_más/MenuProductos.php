@@ -301,7 +301,7 @@ $con = $db->conectar();
             PRODUCTOS
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-            <li><a class="dropdown-item" style="color: #6E0023;" href="menuC2.php">Hogar y limpieza</a></li>
+            <li><a class="dropdown-item" style="color: #6E0023;" href="herbales.php">Hogar y limpieza</a></li>
             <li><a class="dropdown-item" style="color: #6E0023;" href="menuF2.php">Belleza y cuidados</a></li>
             <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Ropa y algo más</a></li>
           </ul>

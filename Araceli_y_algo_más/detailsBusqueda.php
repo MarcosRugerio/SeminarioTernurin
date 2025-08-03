@@ -102,7 +102,7 @@ if ($id == '' || $token == '') {
                             MENÚ
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" style="color: #6E0023;" href="menuC2.php">Herbales</a></li>
+                            <li><a class="dropdown-item" style="color: #6E0023;" href="herbales.php">Herbales</a></li>
                             <li><a class="dropdown-item" style="color: #6E0023;" href="menuF2.php">Nutricionales</a></li>
                             <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Nutricosmenticos</a></li>
                         </ul>

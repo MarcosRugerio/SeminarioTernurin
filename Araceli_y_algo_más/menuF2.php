@@ -64,7 +64,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
             MENÚ
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-            <li><a class="dropdown-item" style="color: #6E0023;" href="menuC2.php">Herbales</a></li>
+            <li><a class="dropdown-item" style="color: #6E0023;" href="herbales.php">Herbales</a></li>
             <li><a class="dropdown-item" style="color: #6E0023;" href="menuF2.php">Nutricionales</a></li>
             <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Nutricosmenticos</a></li>
           </ul>
@@ -212,7 +212,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                                     </table>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a href="detailsF.php?id=<?php echo $row['id'];?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN);?>" class="btn btn">Detalles</a>
+                                            <a href="detallesHerbales.php?id=<?php echo $row['id'];?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN);?>" class="btn btn">Detalles</a>
                                         </div>
                                         <button class="btn btn" type="button" onclick="addProducto(<?php echo  $row['id']; ?>,'<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>')">Agregar a carrito</button>
 
