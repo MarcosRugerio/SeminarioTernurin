@@ -588,6 +588,10 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 </div>
+</div> <!-- Cierra .row -->
+
+</div><!-- Cierra .container -->
+
 <!-- Fin del menu / contenido derecho -->
 
 
