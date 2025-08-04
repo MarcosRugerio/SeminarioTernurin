@@ -331,9 +331,9 @@ if ($id == '' || $token == '') {
                             MENÚ
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" style="color: #6E0023;" href="herbales.php">Herbales</a></li>
-                            <li><a class="dropdown-item" style="color: #6E0023;" href="menuF2.php">Nutricionales</a></li>
-                            <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Nutricosmenticos</a></li>
+                            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_herbales.php">Herbales</a></li>
+                            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricionales.php">Nutricionales</a></li>
+                            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricosmeticos.php">Nutricosmenticos</a></li>
                         </ul>
                     </li>
                    <li><a href="blog.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
@@ -444,7 +444,7 @@ if ($id == '' || $token == '') {
                                 <button class="btn btn-verde-outline" type="button"
                                     onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Agregar a
                                     carrito</button>
-                                <a href="herbales.php" class="btn btn-verde-secundario">⬅ Regresar</a>
+                                <a href="productos_herbales.php" class="btn btn-verde-secundario">⬅ Regresar</a>
                             </div>
                         </div>
                     </div>

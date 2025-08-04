@@ -17,7 +17,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Productos Herbales</title>
+  <title>Herbales</title>
 
   <!--REFERENCIAR LIBRERIAS-->
   <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
@@ -196,7 +196,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   text-align: center;
 }
 
-/* Precio (solo usado en herbales.php) */
+/* Precio (solo usado en productos_herbales.php) */
 .card h4 {
   color: #388e3c;
   font-weight: 600;
@@ -379,9 +379,9 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
             MENÚ
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-            <li><a class="dropdown-item" style="color: #6E0023;" href="herbales.php">Herbales</a></li>
-            <li><a class="dropdown-item" style="color: #6E0023;" href="menuF2.php">Nutricionales</a></li>
-            <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Nutricosmenticos</a></li>
+            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_herbales.php">Herbales</a></li>
+            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricionales.php">Nutricionales</a></li>
+            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricosmeticos.php">Nutricosmenticos</a></li>
           </ul>
         </li>
        <li><a href="blog.php" class="nav-link px-3 text"
@@ -480,7 +480,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     <div class="herbales-content">
       <h2>Herbales Naturales</h2>
       <p>Remedios frescos, orgánicos y ancestrales</p>
-      <a href="#">Explora nuestros productos 🌿</a>
+      <a href="productos_herbales.php">Explora nuestros productos 🌿</a>
     </div>
   </div>
 </section>
@@ -492,7 +492,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     <aside class="col-md-3 mb-4">
       <div class="sidebar p-3">
         <h4>Filtrar productos</h4>
-        <form method="GET" action="herbales.php" id="formFiltro">
+        <form method="GET" action="productos_herbales.php" id="formFiltro">
           <div class="mb-3">
             <label for="buscar" class="form-label">Nombre</label>
             <input type="text" name="buscar" id="buscar" class="form-control" placeholder="Nombre del producto" value="<?php echo isset($_GET['buscar']) ? htmlspecialchars($_GET['buscar']) : ''; ?>">
@@ -601,29 +601,6 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-<script type="text/javascript"> 
-   $(document).ready(function(){
-      $.ajax({
-        type:'POST',
-        url:'php/bebidasF.php',
-        data:{},
-        success:function(data){
-          console.log(data);
-          let html='';
-          for(var i=0; i< data.datos.length; i++) {
-            html+=
-            '<tr>'+
-            '<td><img src="img/coffee.png" width="20px" height="20px" >'+data.datos[i].nombre+'</td>'+
-            '</tr>';          
-          }
-          document.getElementById("list").innerHTML=html;
-        },
-        error:function(err){
-          console.error(err);
-        }
-      });
-    });
-  </script>
 
    <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
@@ -672,7 +649,7 @@ integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+
     document.getElementById('precio_max').value = '';
     
     // Recargar la página sin parámetros GET
-    window.location.href = 'herbales.php';
+    window.location.href = 'productos_herbales.php';
   });
 </script>
 <!-- Fin Script del borrado del filtro -->

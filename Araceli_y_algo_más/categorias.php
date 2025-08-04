@@ -154,7 +154,7 @@
 	<div class="ch-item">	
 		<div class="ch-info">
 			<h3>Herbales</h3>
-			<p>Visita<a href="herbales.php">Ir</a></p>
+			<p>Visita<a href="productos_herbales.php">Ir</a></p>
 		</div>
 		<div class="ch-thumb ch-img-1"></div>
 	</div>
@@ -163,7 +163,7 @@
 	<div class="ch-item">	
 		<div class="ch-info">
 			<h3>Nutrición</h3>
-			<p>Visita<a href="menuF2.php">Ir</a></p>
+			<p>Visita<a href="productos_nutricionales.php">Ir</a></p>
 		</div>
 		<div class="ch-thumb ch-img-2"></div>
 	</div>
@@ -172,7 +172,7 @@
 	<div class="ch-item">	
 		<div class="ch-info">
 			<h3>Cuidado y belleza</h3>
-			<p>Visita<a href="menuA2.php">Ir</a></p>
+			<p>Visita<a href="productos_nutricosmeticos.php">Ir</a></p>
 		</div>
 		<div class="ch-thumb ch-img-3"></div>
 	</div>
