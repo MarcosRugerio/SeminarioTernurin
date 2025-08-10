@@ -23,7 +23,7 @@ if ($id == '' || $token == '') {
 
 
         if ($sql->fetchColumn() > 0) {
-             $sql = $con->prepare("SELECT nombre, ruta_img, precio1, precio2, precio3 FROM productos WHERE id=?  AND categoria_id=1 LIMIT 1");
+             $sql = $con->prepare("SELECT nombre, ruta_img, descripcion, precio1, precio2, precio3 FROM productos WHERE id=?  AND categoria_id=1 LIMIT 1");
             $sql->execute([$id]);
             $row = $sql->fetch(PDO::FETCH_ASSOC);
             $nombre = $row['nombre'];

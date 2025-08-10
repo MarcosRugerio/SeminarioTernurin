@@ -23,11 +23,12 @@ if ($id == '' || $token == '') {
 
 
         if ($sql->fetchColumn() > 0) {
-            $sql = $con->prepare("SELECT nombre, ruta_img, precio1, precio2, precio3 FROM productos WHERE id=? LIMIT 1");
+            $sql = $con->prepare("SELECT nombre, ruta_img, descripcion, precio1, precio2, precio3 FROM productos WHERE id=? LIMIT 1");
             $sql->execute([$id]);
             $row = $sql->fetch(PDO::FETCH_ASSOC);
             $nombre = $row['nombre'];
             $ruta_img = $row['ruta_img'];
+            $descripcion = $row['descripcion'];
             $precio1 = $row['precio1'];
             $precio2 = $row['precio2'];
             $precio3 = $row['precio3'];
@@ -45,11 +46,13 @@ if ($id == '' || $token == '') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles Bebidas Frias Gabcy</title>
+    <title>Detalles Productos</title>
 
     <!--REFERENCIAR LIBRERIAS-->
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/themes/default.css">
 
     <link rel="stylesheet" type="text/css" href="estilos/estilosMenu2.css">
 
@@ -57,9 +60,10 @@ if ($id == '' || $token == '') {
 
     <script type="text/javascript" src="librerias/jquery.js"></script>
     <script type="text/javascript" src="js/main-scripts.js"> </script>
+    <script src="librerias/alertifyjs/alertify.js"></script>
 
     <style>
-        .btn2 {
+         .btn2 {
             font-family: 'Monserrat', sans-serif;
             border-color: #6E0023;
             background-color: #6E0023;
@@ -74,6 +78,230 @@ if ($id == '' || $token == '') {
             background-color: white;
             color: #6E0023;
         }
+
+        /* Color de fondo gris personalizado */
+.alertify .ajs-message.ajs-success {
+  background-color: #cececeff !important;
+  color: white !important;
+  border: none;
+}
+
+/* También puedes personalizar los errores si quieres */
+.alertify .ajs-message.ajs-error {
+  background-color: #444 !important;
+  color: #fff !important;
+}
+
+  /* Botones */
+        .btn2 {
+            font-family: 'Monserrat', sans-serif;
+            border-color: #6E0023;
+            background-color: #6E0023;
+            color: white;
+            height: 38px;
+            transition-duration: 0.4s;
+        }
+
+        .btn2:hover {
+            background-color: white;
+            color: #6E0023;
+        }
+
+        /* Alertify personalizados */
+        .alertify .ajs-message.ajs-success {
+            background-color: #cececeff !important;
+            color: white !important;
+            border: none;
+        }
+
+        .alertify .ajs-message.ajs-error {
+            background-color: #444 !important;
+            color: #fff !important;
+        }
+
+        /* Estilos detalles */
+        .detalle-main {
+            font-family: 'Poppins', sans-serif;
+            padding: 40px 20px;
+            background: #f5f9f6;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .detalle-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 100, 0, 0.1);
+            overflow: hidden;
+            background: white;
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .card-tittle {
+            font-family: 'Playfair Display', serif;
+            color: #1a4d2e;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .detalle-precio-label {
+            color: #6E0023;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+        }
+
+        .detalle-precio {
+            font-family: 'Montserrat', sans-serif;
+            color: #1b5e20;
+            font-size: 1.3rem;
+            background-color: #e8f5e9;
+            padding: 8px 16px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .btn-verde {
+            background-color: #81c784;
+            color: #ffffff;
+            border: none;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-verde:hover {
+            background-color: #66bb6a;
+            transform: scale(1.05);
+        }
+
+        .btn-verde-outline {
+            background-color: transparent;
+            color: #388e3c;
+            border: 2px solid #81c784;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-verde-outline:hover {
+            background-color: #a5d6a7;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        /* Imagen */
+        .detalle-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 0 20px;
+            height: 100%;
+            max-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background-color: #f0f8f0;
+        }
+
+        .detalle-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0 0 0 20px;
+            animation: fadeIn 1s ease;
+            transition: transform 0.3s ease;
+        }
+
+        /* Animación imagen con zoom + oscilación */
+        .anim-img {
+            animation: zoomOscila 8s ease-in-out infinite;
+        }
+
+        @keyframes zoomOscila {
+            0%, 100% {
+                transform: scale(1) translateX(0);
+            }
+            50% {
+                transform: scale(1.05) translateX(10px);
+            }
+        }
+
+        .anim-img:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Animaciones generales */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .detalle-card {
+                flex-direction: column;
+            }
+
+            .detalle-img-wrapper {
+                border-radius: 0 0 20px 20px;
+                height: 250px;
+                max-height: none;
+            }
+
+            .card-tittle {
+                font-size: 1.5rem;
+            }
+
+            .card-descripcion {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #444;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+            .detalle-precio {
+                font-size: 1.1rem;
+            }
+        }
+
+.btn-verde-secundario {
+  background-color: transparent;
+  color: #0f0f0eff; /* Verde fuerte */
+  font-size: 0.9rem;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-verde-secundario:hover {
+  color: #1B5E20;
+  text-shadow: 0 0 5px #A5D6A7;
+}
     </style>
 
 <body>
@@ -198,77 +426,85 @@ if ($id == '' || $token == '') {
         <hr class="featurette-divider" style="color:  #CC6645; " size="2">
     </nav>
 
-
-    <!--Menu   -->
-    <main>
-        <div class="container">
-
-            <div class="card mb-3 text-center" style="border-color: white;">
+<!-- Menu de detalles -->
+<main class="detalle-main">
+        <div class="container detalle-container">
+            <div class="detalle-card card mb-3">
                 <div class="row g-0">
-                    <div class="col-md-7">
-                        <h3 class="card-tittle"> <?php echo $nombre; ?></h3>
-                    
-                            <h5 style="color:#6E0023;  font-family: 'Playfair Display';  ">Precio:</p>
-                               <h6> <?php echo $precio1; ?>MXN</h6>
-                                <br>
-                                <br>
-                                    <div class="d-grid gap-3 col-8 mx-auto">
-                                        <button type="button" class="btn2 btn2">Comprar ahora</button>
-                                        <button class="btn btn" type="button" onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Agregar a carrito</button>
-                                    </div>
-                                    <br>
+                    <!-- Columna de Información -->
+                    <div class="col-md-7 d-flex align-items-center justify-content-center text-center p-4">
+                        <div class="detalle-info w-100">
+                            <h3 class="card-tittle"><?php echo $nombre; ?></h3>
+                            <p class="card-descripcion"><?php echo $descripcion; ?></p>
+                            <h6 class="detalle-precio"><?php echo $precio1; ?> MXN</h6>
+                            <br /><br />
+                            <div class="d-grid gap-3 col-8 mx-auto">
+                                <a href="pagoPaypal.php" class="btn btn-verde">Comprar ahora</a>
+                                <button class="btn btn-verde-outline" type="button"
+                                    onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Agregar a
+                                    carrito</button>
+                                <a href="index.php" class="btn btn-verde-secundario">⬅ Regresar</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-5">
-                        <img class="card-img" src="img/productos/Busqueda/<?php echo $ruta_img; ?>">
+
+                    <!-- Columna de Imagen -->
+                    <div class="col-md-5 d-flex align-items-center justify-content-center p-3">
+                        <div class="detalle-img-wrapper">
+                            <img class="card-img detalle-img anim-img"
+                                src="img/productos/Busqueda/<?php echo $ruta_img; ?>"
+                                alt="<?php echo htmlspecialchars($nombre); ?>" />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+<!-- Fin del menu de detalles -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
 
 
+   <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+ crossorigin="anonymous"></script>
+ <script>
         function addProducto(id, token) {
-            let url = 'php/carrito.php'
-            let formData = new FormData()
-            formData.append('id', id)
-            formData.append('token', token)
+    let url = 'php/carrito.php';
+    let formData = new FormData();
+    formData.append('id', id);
+    formData.append('token', token);
 
-
-            var responseClone; // 1
-            fetch('php/carrito.php')
-                .then(function(response) {
-                    responseClone = response.clone(); // 2
-                    return response.json();
-                })
-                .then(function(data) {
-                    // Do something with data
-                }, function(rejectionReason) { // 3
-                    console.log('Error parsing JSON from response:', rejectionReason, responseClone); // 4
-                    responseClone.text() // 5
-                        .then(function(bodyText) {
-                            console.log('Received the following instead of valid JSON:', bodyText); // 6
-                        });
-                });
-
-            fetch(url, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'cors'
-
-                }).then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        let elemento = document.getElementById("num_cart")
-                        elemento.innerHTML = data.numero
-
-                    }
-
-                })
+    fetch(url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            let elemento = document.getElementById("num_cart");
+            elemento.innerHTML = data.numero;
+            alertify.success('Producto agregado al carrito 👍');
+        } else {
+            alertify.error('Error al agregar el producto');
+        }
+    })
+    .catch(() => {
+        alertify.error('Error en la conexión');
+    });
+}
+    </script>
+    <script type="text/javascript">
+        function open_login() {
+            window.location.href = "inicioSesion.php";
         }
     </script>
+
+
     <br>
     <!--Creditos-->
     <?php include("creditos.php"); ?>

@@ -405,12 +405,12 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 }
 
 .search-results-container {
-  background-color: #2c3e50; /* gris oscuro azulado */
+  background-color: #73b68dff; /* gris oscuro azulado */
   padding: 20px 25px;
   border-radius: 16px;
   max-width: 620px;
   margin: 40px auto;
-  box-shadow: 0 10px 30px rgba(44, 62, 80, 0.8);
+  box-shadow: 0 10px 30px rgba(96, 116, 136, 0.8);
   text-align: center;
   font-family: 'Poppins', sans-serif;
   user-select: none;
@@ -641,52 +641,44 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
- <!-- JavaScript Bundle with Popper -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script>
-    function addProducto(id, token) {
-      let url = 'php/carrito.php'
-      let formData = new FormData()
-      formData.append('id', id)
-      formData.append('token', token)
+   <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+ crossorigin="anonymous"></script>
+ <script>
+        function addProducto(id, token) {
+    let url = 'php/carrito.php';
+    let formData = new FormData();
+    formData.append('id', id);
+    formData.append('token', token);
 
-      var responseClone; // 1
-      fetch('php/carrito.php')
-        .then(function(response) {
-          responseClone = response.clone(); // 2
-          return response.json();
-        })
-        .then(function(data) {
-          // Do something with data
-        }, function(rejectionReason) { // 3
-          console.log('Error parsing JSON from response:', rejectionReason, responseClone); // 4
-          responseClone.text() // 5
-            .then(function(bodyText) {
-              console.log('Received the following instead of valid JSON:', bodyText); // 6
-            });
-        });
+    fetch(url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            let elemento = document.getElementById("num_cart");
+            elemento.innerHTML = data.numero;
+            alertify.success('Producto agregado al carrito 👍');
+        } else {
+            alertify.error('Error al agregar el producto');
+        }
+    })
+    .catch(() => {
+        alertify.error('Error en la conexión');
+    });
+}
+    </script>
+    <script type="text/javascript">
+        function open_login() {
+            window.location.href = "inicioSesion.php";
+        }
+    </script>
 
-      fetch(url, {
-          method: 'POST',
-          body: formData,
-          mode: 'cors'
 
-        }).then(response => response.json())
-        .then(data => {
-          if (data.ok) {
-            let elemento = document.getElementById("num_cart")
-            elemento.innerHTML = data.numero
-
-          }
-
-        })
-    }
-  </script>
-  <script type="text/javascript">
-    function open_login() {
-      window.location.href = "inicioSesion.php";
-    }
-  </script>
 
 </body>
 
