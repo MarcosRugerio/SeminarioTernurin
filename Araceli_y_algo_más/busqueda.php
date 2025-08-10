@@ -11,6 +11,7 @@ $sql->execute();
 $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,22 +19,418 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bebidas/Alimentos Gabcy</title>
+  <title>Productos</title>
 
   <!--REFERENCIAR LIBRERIAS-->
   <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
   <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/themes/default.css">
   <link rel="stylesheet" type="text/css" href="librerias/bootstrap/css/bootstrap.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  
+    
 
-  <script type="text/javascript" src="librerias/jquery.js"></script>
+    <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
-  <link rel="stylesheet" type="text/css" href="estilos/estilosMenuB.css">
+    <script type="text/javascript" src="librerias/jquery.js"></script>
+    <script type="text/javascript" src="js/main-scripts.js"> </script>
+    <script src="librerias/alertifyjs/alertify.js"></script>
 
-  <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
-  <script type="text/javascript" src="js/main-scripts.js"> </script>
+    <link rel="stylesheet" href="estilos/estilosHeader.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    
+<style>
+/* Tipografía general de la sección */
+.herbales-section {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  min-height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('img/BANNER_ARA.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 80px 20px;
+}
+
+/* Capa translúcida para mejorar la legibilidad */
+.herbales-card {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px 50px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Título destacado */
+.herbales-card h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Descripción */
+.herbales-card p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+/* Enlace llamativo */
+.herbales-card a {
+  color: #ffe600;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid #ffe600;
+  transition: all 0.3s ease;
+}
+
+.herbales-card a:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* Sidebar filtro */
+.sidebar {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  position: sticky;
+  top: 2rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar h4 {
+  font-family: 'Poppins', sans-serif;
+  color: #3b5d23;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+#filterPanel {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+#filterPanel form div {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #3b5d23;
+}
+
+#toggleFilterBtn {
+  transition: background-color 0.3s ease;
+}
+#toggleFilterBtn:hover {
+  background-color: #54812b;
+  color: white;
+}
+
+/* Tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Poppins', sans-serif;
+}
+
+.table tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.table tr:hover {
+  background: #f0f8f5;
+  transform: scale(1.02);
+}
+
+.table td {
+  padding: 10px;
+  color: #555;
+  cursor: pointer;
+}
+
+/* Estilo de cards */
+.card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 128, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 128, 0, 0.2);
+}
+
+.card-img-top {
+  border-radius: 15px;
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-tittle {
+  font-family: 'Playfair Display', serif;
+  color: #1a4d2e;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Precio (solo usado en productos_herbales.php) */
+.card h4 {
+  color: #388e3c;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Botones uniformes y verdes suaves */
+.card .btn {
+  background-color: #a5d6a7; /* verde claro y suave */
+  color: #1b5e20;
+  border: 2px solid #81c784;
+ padding: 0.3rem 0.6rem;   /* menos espacio vertical y horizontal */
+  font-weight: 600;
+  font-size: 0.8rem;        /* letra más pequeña */
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.card .btn:hover {
+  background-color: #81c784;
+  transform: scale(1.05);
+}
+
+
+/* Animación para el nombre del producto */
+.card-tittle {
+  font-family: 'Playfair Display', serif;
+  color: #0a0a0aff;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  position: relative;
+  animation: slideIn 0.6s ease forwards;
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Precio con nuevo estilo y tipografía */
+.card h4 {
+  color: #0f0f0fff; /* verde fuerte */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background-color: #e8f5e9;
+  border-radius: 10px;
+  padding: 0.3rem 0.6rem;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 3px 6px rgba(0, 100, 0, 0.1);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .herbales-card {
+    padding: 20px;
+  }
+  .herbales-card h2 {
+    font-size: 1.8rem;
+  }
+  .herbales-card p {
+    font-size: 1rem;
+  }
+  .sidebar {
+    position: relative;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+  .card {
+    padding: 1rem;
+  }
+  .card-img-top {
+    height: 160px;
+  }
+  .card .btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+  .table td {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Botón "Aplicar filtro" estilo verde suave y animado */
+.sidebar form button.btn-success {
+  background-color: #a5d6a7 !important; /* verde suave */
+  color: #1b5e20 !important;
+  border: 2px solid #81c784 !important;
+  border-radius: 20px !important;
+  padding: 0.6rem 1.2rem !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  width: 100% !important;
+  transition: all 0.3s ease !important;
+}
+
+.sidebar form button.btn-success:hover {
+  background-color: #81c784 !important;
+  color: #ffffff !important;
+  transform: scale(1.05);
+}
+
+/* Botón "Quitar filtros" estilo outline suave y animado */
+.sidebar form button.btn-outline-secondary {
+  background-color: transparent !important;
+  color: #1b5e20 !important;
+  border: 2px solid #81c784 !important;
+  border-radius: 20px !important;
+  padding: 0.6rem 1.2rem !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  width: 100% !important;
+  transition: all 0.3s ease !important;
+  margin-top: 0.5rem;
+}
+
+.sidebar form button.btn-outline-secondary:hover {
+  background-color: #81c784 !important;
+  color: #ffffff !important;
+  transform: scale(1.05);
+}
+
+/* Color de fondo gris personalizado */
+.alertify .ajs-message.ajs-success {
+  background-color: #cececeff !important;
+  color: white !important;
+  border: none;
+}
+
+/* También puedes personalizar los errores si quieres */
+.alertify .ajs-message.ajs-error {
+  background-color: #444 !important;
+  color: #fff !important;
+}
+
+.col-md-9 .card-body,
+.col-md-9 .card-title,
+.col-md-9 h4,
+.col-md-9 table th,
+.col-md-9 table td {
+  color: #1a4d2e !important; /* Verde oscuro */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal; /* permite que el texto haga salto de línea */
+}
+
+.col-md-9 .card-title {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  max-width: 100%;
+}
+
+.col-md-9 table {
+  table-layout: fixed; /* para que las tablas no se salgan */
+  width: 100%;
+}
+
+.col-md-9 table th,
+.col-md-9 table td {
+  white-space: nowrap;      /* Evita que el texto se rompa en varias líneas */
+  overflow: hidden;         /* Oculta lo que sobrepasa */
+  text-overflow: ellipsis;  /* Agrega puntos suspensivos si el texto es muy largo */
+  max-width: 100px;         /* Controla el ancho máximo para no expandir demasiado */
+  text-align: center;       /* Centrar texto */
+}
+
+@media (max-width: 576px) {
+  .col-md-9 table th,
+  .col-md-9 table td {
+    white-space: normal;  /* Permite que el texto haga salto de línea en pantallas pequeñas */
+    max-width: none;
+  }
+}
+
+.container.border-0.shadow.rounded-3.overflow-hidden.bg-white {
+  color: #333333; /* color gris oscuro para buen contraste */
+  overflow-wrap: break-word; /* para que el texto largo se rompa en varias líneas */
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal; /* para que el texto no se quede en una sola línea */
+  padding: 15px; /* algo de espacio interno para que no quede tan pegado */
+  max-width: 100%; /* para que no se salga horizontalmente */
+  box-sizing: border-box; /* para que padding no agrande el ancho */
+}
+
+.card-body h4, .card-body table th, .card-body table td {
+  color: #000 !important;
+}
+
+.search-results-container {
+  background-color: #2c3e50; /* gris oscuro azulado */
+  padding: 20px 25px;
+  border-radius: 16px;
+  max-width: 620px;
+  margin: 40px auto;
+  box-shadow: 0 10px 30px rgba(44, 62, 80, 0.8);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  user-select: none;
+  border: 1.5px solid #27ae60; /* verde esmeralda */
+}
+
+.search-results-text {
+  color: #ecf0f1; /* gris claro */
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.search-query {
+  color: #f39c12; /* dorado suave */
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+</style>
 
 <body>
 
@@ -155,43 +552,37 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   </nav>
 
   <!--Imagen  -->
-  <div class="container">
-    <ul class="ch-grid">
-      <li>
-        <div class="ch-item ch-img-1">
-          <div class="ch-info">
-            <h1>Bebidas y Alimentos</h1>
-            <p>Busquedas Gabcy<a href="">MENU GABCY</a></p>
-          </div>
-        </div>
-      </li>
-    </ul>
+<section class="herbales-section">
+  <div class="herbales-card">
+    <div class="herbales-content">
+      <h2>Productos encontrados</h2>
+      <p>Estos son los resultados para tu búsqueda. Explora y elige los productos que mejor se adaptan a tus necesidades.</p>
+       <a href="productos_nutricionales.php">Explora nuestra variedad 🛍️</a>
+    </div>
   </div>
+</section>
+
 
   <!--Barra de Navegación Lateral   -->
-  <div class="container">
-    <br>
-    <center>
-      Resultados para
-      <strong>
-        "<?php echo $_GET['text'] ?>"
-      </strong>
-    </center>
-    <div class="row g-5">
-      <div class="col-md-2">
-        <div class="position-sticky" style="top: 2rem;">
-          <br><br>
-          <h4 style="color: #6E0023; font-family: 'Playfair Display', serif;"> Bebidas / Alimentos </h4>
-          <table class="table" id="list">
-
-          </table>
-        </div>
-      </div>
+  <center>
+ <div class="search-results-container">
+  <?php if (!empty($resultado)) { ?>
+    <p class="search-results-text">
+      Resultados para <strong class="search-query">"<?php echo htmlspecialchars($_GET['text'], ENT_QUOTES); ?>"</strong>
+    </p>
+  <?php } else { ?>
+    <p class="search-results-text no-results">
+      No se encontraron resultados para <strong class="search-query">"<?php echo htmlspecialchars($_GET['text'], ENT_QUOTES); ?>"</strong>
+    </p>
+  <?php } ?>
+</div>
+    
+  
       <!-- MENU    -->
       <div class="col-md-10">
         <div class="album py-5">
           <!-- Section-->
-          <div class="container border-0 shadow rounded-3 overflow-hidden" style="background-color: white;">
+          <div class="container border-0.shadow.rounded-3.overflow-hidden.bg-white" style="background-color: white;">
             <section class="main row">
               <main>
                 <div class="container">
@@ -203,29 +594,30 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                           <img class="card-img-top" src="img/productos/Busqueda/<?php echo $row['ruta_img']; ?>">
                           <div class="card-body">
                             <h3 class="card-tittle text-center"> <?php echo $row['nombre']; ?></h3>
-                            <h4 style="color:#6E0023;  font-family: 'Playfair Display'; ">Precio</p>
-                              <table class="table">
-                                <thead style="color:#6E0023;">
+                            <h4 style="color:#000000; font-family: 'Playfair Display'; ">Precio</h4>
+                              <div class="table-responsive">
+                              <table class="table text-center">
+                                <thead style="color:#000000;">
                                   <tr>
                                     <th scope="col">Chico</th>
                                     <th scope="col">Mediano</th>
                                     <th scope="col">Grande</th>
                                   </tr>
                                 </thead>
-                                <tbody class="table-group-divider">
+                                <tbody>
                                   <tr>
                                     <td><?php echo $row['precio1']; ?> MXN</td>
                                     <td><?php echo $row['precio2']; ?> MXN</td>
                                     <td><?php echo $row['precio3']; ?> MXN</td>
                                   </tr>
-
                                 </tbody>
                               </table>
+                            </div>
                               <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                  <a href="detailsBusqueda.php?id=<?php echo $row['id']; ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>" class="btn btn">Detalles</a>
-                                </div>
-                                <button class="btn btn" type="button" onclick="addProducto(<?php echo  $row['id']; ?>,'<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>')">Agregar a carrito</button>
+                                <div class="d-flex gap-2">
+                              <a href="detailsBusqueda.php?id=<?php echo $row['id']; ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>" class="btn btn-success flex-fill">Detalles</a>
+                              <button class="btn btn-success flex-fill" type="button" onclick="addProducto(<?php echo  $row['id']; ?>,'<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>')">Agregar a carrito</button>
+                            </div>
 
                               </div>
                           </div>
@@ -242,39 +634,13 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
     </div>
-  </div>
+    </center>
 
   <!--Creditos-->
   <?php include("creditos.php"); ?>
 
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script type="text/javascript">
-    var text = "<?php echo $_GET['text'] ?>";
-    $(document).ready(function() {
-      $.ajax({
-        type: 'POST',
-        url: 'php/results.php',
-        data: {
-          text: text
-        },
-        success: function(data) {
-          console.log(data);
-          let html = '';
-          for (var i = 0; i < data.datos.length; i++) {
-            html +=
-              '<tr>' +
-              '<td><img src="img/coffee.png" width="20px" height="20px" >' + data.datos[i].nombre + '</td>' +
-              '</tr>';
-          }
-          document.getElementById("list").innerHTML = html;
-        },
-        error: function(err) {
-          console.error(err);
-        }
-      });
-    });
-  </script>
  <!-- JavaScript Bundle with Popper -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script>
