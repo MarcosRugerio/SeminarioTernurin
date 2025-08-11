@@ -10,17 +10,15 @@ $con = $db->conectar();
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
 //session_destroy();
-
 $lista_carrito = array();
 if ($productos != null) {
-
   foreach ($productos as $clave => $cantidad) {
-
     $sql = $con->prepare("SELECT id, nombre, ruta_img, precio1, precio2, precio3,  $cantidad AS cantidad FROM productos WHERE id=?  LIMIT 1");
     $sql->execute([$clave]);
     $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
   }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -182,94 +180,98 @@ if ($productos != null) {
 
 
   <!-- Carrito -->
-    <main>
-    <div class="cart-wrapper">
-      <div class="cart-header">
-        <h2>🛒 Tu carrito</h2>
-      </div>
-      <div class="cart-body">
-        <table class="cart-table">
-         <thead>
-            <tr >
-              <th>Imagen</th>
-              <th>Producto</th>
-              <th>Precio</th>
-              <th>Cantidad</th>
-              <th>Subtotal</th>
-              <th></th>
+<main>
+  <div class="cart-wrapper">
+    <div class="cart-header">
+      <h2>🛒 Tu carrito</h2>
+    </div>
+    <div class="cart-body">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if ($lista_carrito == null): ?>
+            <tr><td colspan="6" class="empty-cart">Carrito vacío</td></tr>
+          <?php else:
+            $total = 0;
+            foreach ($lista_carrito as $producto):
+              $_id = $producto['id'];
+              $nombre = $producto['nombre'];
+              $precio1 = $producto['precio1'];
+              $cantidad = $producto['cantidad'];
+              $ruta_img = $producto['ruta_img'];
+
+              $carpeta = isset($carpetas[$_id]) ? $carpetas[$_id] : '';
+              $rutaImagen = 'img/productos/' . $carpeta . '/' . $ruta_img;
+
+              $subtotal = $cantidad * $precio1;
+              $total += $subtotal;
+          ?>
+            <tr data-id="<?= $_id ?>">
+              <td>
+              <img src="img/productos/<?= htmlspecialchars($producto['ruta_img']) ?>" 
+              alt="<?= htmlspecialchars($producto['nombre']) ?>" width="80">
+              </td>
+              <td><?= htmlspecialchars($nombre) ?></td>
+              <td><?= MONEDA . number_format($precio1, 2, '.', ',') ?></td>
+              <td>
+                <input type="number" min="1" max="20" value="<?= $cantidad ?>" onchange="actualizaCantidad(this.value, <?= $_id ?>)" />
+              </td>
+              <td>
+                <div id="subtotal_<?= $_id ?>"><?= MONEDA . number_format($subtotal, 2, '.', ',') ?></div>
+              </td>
+              <td>
+                <button class="btn-remove" data-bs-id="<?= $_id ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">
+                  <!-- Aquí va el ícono SVG o texto eliminar -->
+                  Eliminar
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            <?php if ($lista_carrito == null): ?>
-              <tr><td colspan="5" class="empty-cart">Carrito vacío</td></tr>
-            <?php else:
-              $total = 0;
-              foreach ($lista_carrito as $producto):
-                $_id = $producto['id'];
-                $nombre = $producto['nombre'];
-                $precio1 = $producto['precio1'];
-                $cantidad = $producto['cantidad'];
-                $subtotal = $cantidad * $precio1;
-                $total += $subtotal;
-            ?>
-               <tr data-id="<?= $_id ?>">
-                  <td><?= $nombre ?></td>
-                  <td><?= $precio1 ?></td>
-                <td>
-                  <input type="number" min="1" max="20" value="<?= $cantidad ?>" onchange="actualizaCantidad(this.value, <?= $_id ?>)">
-                </td>
-                <td><div id="subtotal_<?= $_id ?>"><?= MONEDA . number_format($subtotal, 2, '.', ',') ?></div></td>
-                <td>
-                  <button class="btn-remove" data-bs-id="<?= $_id ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                      <path d="M2.5 1a1 1 0 0 0-1 1v1H0v1h1v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h1V3h-1V2a1 1 0 0 0-1-1h-3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1H2.5zm3 3a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm3 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm3 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5z"/>
-                    </svg>
-                    Eliminar
-                  </button>
-                </td>
-              </tr>
-            <?php endforeach; ?>
+          <?php endforeach; ?>
             <tr class="total-row">
-              <td colspan="3"></td>
+              <td colspan="4" class="text-end"><strong>Total:</strong></td>
               <td colspan="2" class="total-value"><?= MONEDA . number_format($total, 2, '.', ',') ?></td>
             </tr>
           <?php endif; ?>
-          </tbody>
-        </table>
-      </div>
-      <?php if ($lista_carrito != null): ?>
-      <div class="cart-actions">
-        <a href="pagoPaypal.php" class="btn-finish">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
-            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 5.99A.5.5 0 0 0 4 10h9.5a.5.5 0 0 0 .485-.379l1.5-6A.5.5 0 0 0 15 3H4.221l-.405-1.621A.5.5 0 0 0 3.333 1H.5zm5.354 11.354a.5.5 0 1 1 .707.707L5.207 14.414l1.647 1.647a.5.5 0 0 1-.708.707l-1.646-1.647-1.646 1.647a.5.5 0 0 1-.708-.707l1.647-1.647-1.647-1.646a.5.5 0 1 1 .707-.708l1.647 1.647 1.647-1.647z"/>
-          </svg>
-          Finalizar compra
-        </a>
-        <a class="btn-back mt-3" href="index.php">
-        <span class="arrow">&leftarrow;</span> Seguir comprando
-      </a>
-      </div>
-      <?php endif; ?>
+        </tbody>
+      </table>
     </div>
-  </main>
-  <!-- Modal -->
-  <div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="eliminaModalLabel">Eliminar producto</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ¿Está seguro de que desea eliminar el producto?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button id="btn-elimina" type="button" class="btn btn-dark" onclick="elimina()">Eliminar</button>
-        </div>
+
+    <?php if ($lista_carrito != null): ?>
+      <div class="cart-actions">
+        <a href="pagoPaypal.php" class="btn-finish">Finalizar compra</a>
+        <a class="btn-back mt-3" href="index.php">&leftarrow; Seguir comprando</a>
+      </div>
+    <?php endif; ?>
+  </div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eliminaModalLabel">Eliminar producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Está seguro de que desea eliminar el producto?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button id="btn-elimina" type="button" class="btn btn-dark" onclick="elimina()">Eliminar</button>
       </div>
     </div>
   </div>
+</div>
+
 
   <br><br>
   <!--Creditos  -->
@@ -286,36 +288,39 @@ if ($productos != null) {
     })
 
     function actualizaCantidad(cantidad, id) {
-      let url = 'php/actualizaCarrito.php'
-      let formData = new FormData()
-      formData.append('action', 'agregar')
-      formData.append('cantidad', cantidad)
-      formData.append('id', id)
+  let url = 'php/actualizaCarrito.php';
+  let formData = new FormData();
+  formData.append('action', 'agregar');
+  formData.append('cantidad', cantidad);
+  formData.append('id', id);
 
-      fetch(url, {
-          method: 'POST',
-          body: formData,
-          mode: 'cors'
-        }).then(response => response.json())
-        .then(data => {
-          if (data.ok) {
-            var divsubtotal = document.getElementById('subtotal_' + id)
-            divsubtotal.innerHTML = data.subtotal
+  fetch(url, {
+    method: 'POST',
+    body: formData,
+    mode: 'cors'
+  }).then(response => response.json())
+    .then(data => {
+      if (data.ok) {
+        // Actualiza el subtotal del producto cambiado
+        let divsubtotal = document.getElementById('subtotal_' + id);
+        divsubtotal.innerHTML = data.subtotal;
 
-            let total = 0.00
-            let list = document.getElementsByName('subtotal[]')
+        // Recalcular el total sumando todos los subtotales
+        let subtotales = document.querySelectorAll('[id^="subtotal_"]');
+        let total = 0;
+        subtotales.forEach(function(div) {
+          // Remover símbolo de moneda y comas antes de convertir
+          let val = div.textContent.replace(/[^0-9.-]+/g,"");
+          total += parseFloat(val);
+        });
 
-            for (let i = 0; i < list.length; i++) {
-              total += parseFloat(list[i].innerHTML.replace(/[$,]/g, ''))
-            }
-            total = new Intl.NumberFormat('en-US', {
-              minimumFractionDigits: 2
-            }).format(total)
-            document.getElementById('total').innerHTML = '<?php echo MONEDA; ?>' + total
-          }
-
-        })
-    }
+        // Formatear total con 2 decimales y moneda
+        total = total.toFixed(2);
+        document.querySelector('.total-value').textContent = '<?php echo MONEDA; ?>' + total;
+      }
+    })
+    .catch(error => console.error('Error:', error));
+}
 
 
     function elimina() {
