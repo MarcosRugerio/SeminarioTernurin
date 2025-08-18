@@ -198,7 +198,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                 <?php foreach ($resultado as $row) { ?>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img class="card-img-top" src="img/productos/BebidasF/<?php echo $row['ruta_img']; ?>">
+                            <img class="card-img-top" src="img/Productos_Ara/<?php echo $row['ruta_img']; ?>">
                             <div class="card-body">
                                 <h3 class="card-tittle text-center"> <?php echo $row['nombre']; ?></h3>
                                 <h4 style="color:#6E0023;  font-family: 'Playfair Display'; ">Precio</p>

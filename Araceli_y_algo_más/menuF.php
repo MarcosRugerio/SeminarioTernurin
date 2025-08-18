@@ -96,7 +96,7 @@ session_start();
             html +=
               '<article class="col-xs-12 col-sm-8 col-md-9 col-lg-4">' +
               '<br><br>' +
-              '<img src="img/productos/BebidasF/' + data.datos[i].ruta_img + '"" class="img-thumbnail"  width="1500" height="6300">' +
+              '<img src="img/Productos_Ara/' + data.datos[i].ruta_img + '"" class="img-thumbnail"  width="1500" height="6300">' +
               '</article>' +
               '<aside class="col-xs-12 col-sm-4 col-md-3 col-lg-8">' +
               '<br> <br>' +

@@ -555,7 +555,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
               <?php foreach ($resultado as $row) { ?>
                 <div class="col">
                   <div class="card shadow-sm">
-                    <img class="card-img-top" src="img/productos/Alimentos/<?php echo $row['ruta_img']; ?>" alt="<?php echo $row['nombre']; ?>">
+                    <img class="card-img-top" src="img/Productos_Ara/<?php echo $row['ruta_img']; ?>" alt="<?php echo $row['nombre']; ?>">
                     <div class="card-body">
                       <h3 class="card-tittle"><?php echo $row['nombre']; ?></h3>
 
