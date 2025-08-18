@@ -350,7 +350,7 @@ $con = $db->conectar();
 
                   <?php
                   $buscar = $_POST['buscar'];
-                  $conexion = mysqli_connect("localhost", "root", "", "gabcy");
+                  $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
                   $sql = "SELECT id,nombre,cantidad FROM detalle_pedido where id like '$buscar' '%' ";
                   $rta = mysqli_query($conexion, $sql);
                   while ($mostrar = mysqli_fetch_row($rta)) {

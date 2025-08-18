@@ -337,7 +337,7 @@ $con = $db->conectar();
               </tr>
               <?php
               $buscar = $_POST['buscar'];
-              $conexion = mysqli_connect("localhost", "root", "", "gabcy");
+              $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
               $sql = "SELECT id,nombre,apellido,correo,domicilio,telefono FROM usuarios where correo like '$buscar' '%' ";
               $rta = mysqli_query($conexion, $sql);
               while ($mostrar = mysqli_fetch_row($rta)) {

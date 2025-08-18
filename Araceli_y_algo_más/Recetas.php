@@ -10,7 +10,7 @@ $con = $db->conectar();
 ////////////////// CONEXION A LA BASE DE DATOS //////////////////
 
 $host = 'localhost';
-$basededatos = 'gabcy';
+$basededatos = 'araceli_tienda';
 $usuario = 'root';
 $contraseña = '';
 
@@ -291,7 +291,7 @@ $queryRecetas = $conexion->query($recetas);
 
                 <select class="form-control me-2" name="id_producto" required>
                   <?php
-                  $conexion = mysqli_connect("localhost", "root", "", "gabcy");
+                  $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
                   $query1 = ("Select id, nombre from productos");
                   $consulta = mysqli_query($conexion, $query1); ?>
 
@@ -311,7 +311,7 @@ $queryRecetas = $conexion->query($recetas);
                 <td>
                   <select class="form-control me-2" name="id_ingrediente[]" required>
                     <?php
-                    $conexion = mysqli_connect("localhost", "root", "", "gabcy");
+                    $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
                     $query1 = ("Select id, nombre from inventario");
                     $consulta = mysqli_query($conexion, $query1); ?>
 

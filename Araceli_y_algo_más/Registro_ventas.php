@@ -302,7 +302,7 @@ $granTotal = 0;
                    <!-- <input autocomplete="off" autofocus class="form-control" name="codigo" required type="text" id="codigo" placeholder="Escribe el código"> -->
              <select autocomplete="off" autofocus class="form-control" name="codigo"  id="codigo" type="text" >
                   <?php
-                  $conexion = mysqli_connect("localhost", "root", "", "gabcy");
+                  $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
                   $query1 = ("Select codigo from productos where categoria_id = 1");
                   $consulta = mysqli_query($conexion, $query1); ?>
 

@@ -338,7 +338,7 @@ $con = $db->conectar();
               </tr>
               <?php
               $buscar = $_POST['buscar'];
-              $conexion = mysqli_connect("localhost", "root", "", "gabcy");
+              $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
               $sql = "SELECT id,codigo,nombre,existencia,ruta_img,precio1 FROM productos where categoria_id=2 AND nombre like '$buscar' '%' ";
               $rta = mysqli_query($conexion, $sql);
               while ($mostrar = mysqli_fetch_row($rta)) {

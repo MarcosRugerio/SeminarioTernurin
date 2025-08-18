@@ -291,7 +291,7 @@ $con = $db->conectar();
                 <h3 class="display-7 fw-normal me-2">Nombre del Alimento/Bebida:</h3>
                 <select class="form-control me-2" name="buscar" type="search">
                   <?php
-                  $conexion = mysqli_connect("localhost", "root", "", "gabcy");
+                  $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
                   $query1 = ("Select id, nombre from productos");
                   $consulta = mysqli_query($conexion, $query1); ?>
 
@@ -340,7 +340,7 @@ $con = $db->conectar();
               </tr>
               <?php
               $buscar = $_POST['buscar'];
-              $conexion = mysqli_connect("localhost", "root", "", "gabcy");
+              $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
               $sql = "SELECT productos_id, inventario_id,cantidad_inventario FROM receta where productos_id like '$buscar' '%' ";
               $rta = mysqli_query($conexion, $sql);
               while ($mostrar = mysqli_fetch_row($rta)) {

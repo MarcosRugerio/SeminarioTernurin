@@ -486,7 +486,7 @@ $con = $db->conectar();
 
                         <h5 style="color: #2d6a4f; margin-top: 1.5rem;">Contacto</h5>
                         <p>
-                          <a href="mailto:clientes@gabcy.com.mx" style="color: #2d6a4f; font-weight: 600;">almarazaraceli777@gmail.com</a>
+                          <a href="mailto:clientes@araceli_tienda.com.mx" style="color: #2d6a4f; font-weight: 600;">almarazaraceli777@gmail.com</a>
                         </p>
                       </div>
 

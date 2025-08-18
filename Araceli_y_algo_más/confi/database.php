@@ -4,7 +4,7 @@ class Database
 {
 
 private $hostname="localhost";
-private $database="gabcy";
+private $database="araceli_tienda";
 private $usuario="root";
 private $password="";
 private $charset="utf8";

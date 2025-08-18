@@ -174,8 +174,8 @@ require 'php/confi.php'
 
     </p>
     <p class="text fw-lighter ">
-      Para poder utilizar el sitio www.gabcy.com debes tener por lo menos 18 años de edad. El uso comercial o el nombre de terceros están
-      prohibidos, salvo lo expresamente permitido por nosotros con anterioridad, cualquier infracción de estos términos y condiciones dará lugar a la revocación inmediata de la licencia otorgada en este apartado, sin previo aviso. Ciertos servicios y características relacionadas con los mismos, pueden estar disponibles en el sitio www.gabcy.com y pueden requerir el registro, si decides registrarte a nuestros servicios o <mark>LAS COMUNICACIONES DEL USUARIO</mark>
+      Para poder utilizar el sitio www.araceli_tienda.com debes tener por lo menos 18 años de edad. El uso comercial o el nombre de terceros están
+      prohibidos, salvo lo expresamente permitido por nosotros con anterioridad, cualquier infracción de estos términos y condiciones dará lugar a la revocación inmediata de la licencia otorgada en este apartado, sin previo aviso. Ciertos servicios y características relacionadas con los mismos, pueden estar disponibles en el sitio www.araceli_tienda.com y pueden requerir el registro, si decides registrarte a nuestros servicios o <mark>LAS COMUNICACIONES DEL USUARIO</mark>
       Cualquier comunicación que envíes al sitio web www.copil.com, incluyéndose de forma enunciativa más no limitativa, preguntas, críticas, comentarios, sugerencias, se convertirán en nuestra propiedad y no serán devueltos, salvo que medie orden judicial para tal efecto, asimismo cuando remitas comentarios o críticas al sitio, también nos concedes el derecho a utilizar el nombre que envíes, únicamente en el marco de dicha revisión, comentario, o cualquier otro contenido; por último, cabe mencionar que, no debes de usar una dirección de correo electrónico falsa, es decir, pretender ser alguien que no eres.
 
     </p>
@@ -210,16 +210,16 @@ require 'php/confi.php'
       RESPONSABILIDAD
     </p>
     <p class="text  fw-lighter">
-      Hay casos en los cuales una orden de compra pudiera no ser procesada por circunstancias ajenas a nosotros y las cuales no pueden ser previstas, circunstancias en las cuales interviene la fuerza mayor o el caso fortuito, en ese sentido www.gabcy.com informará al cliente de inmediato el motivo por el cual no fue posible procesar una orden, restituyendo cualquier cantidad cobrada al suscriptor, dejando claro que en este proceso se puede pedir información adicional para completar el proceso de reembolso. Asimismo se refere que todos los productos ofertados en el sitio www.gabcy.com, están sujetos a disponibilidad y se ofrecen a nuestros suscriptores hasta agotar existencias, por lo que puede darse el caso que un mismo producto pueda ser adquirido por varios clientes a la vez y al fnal del proceso de venta resulte que el producto ya no se encuentre disponible por haberse agotado aún y cuando aparezca en el sitio www.copil.com, en cuyo caso se le informará al suscriptor de tal situación, procediendo al reembolso de cualquier cantidad pagada por el producto adquirido si es el caso, o bien se le notificará de la imposibilidad de procesar la orden de compra.
+      Hay casos en los cuales una orden de compra pudiera no ser procesada por circunstancias ajenas a nosotros y las cuales no pueden ser previstas, circunstancias en las cuales interviene la fuerza mayor o el caso fortuito, en ese sentido www.araceli_tienda.com informará al cliente de inmediato el motivo por el cual no fue posible procesar una orden, restituyendo cualquier cantidad cobrada al suscriptor, dejando claro que en este proceso se puede pedir información adicional para completar el proceso de reembolso. Asimismo se refere que todos los productos ofertados en el sitio www.araceli_tienda.com, están sujetos a disponibilidad y se ofrecen a nuestros suscriptores hasta agotar existencias, por lo que puede darse el caso que un mismo producto pueda ser adquirido por varios clientes a la vez y al fnal del proceso de venta resulte que el producto ya no se encuentre disponible por haberse agotado aún y cuando aparezca en el sitio www.copil.com, en cuyo caso se le informará al suscriptor de tal situación, procediendo al reembolso de cualquier cantidad pagada por el producto adquirido si es el caso, o bien se le notificará de la imposibilidad de procesar la orden de compra.
     </p>
     <p class="text  fw-lighter">
       En caso de cumplirse el supuesto expuesto en el párrafo anterior para efectuar el reembolso de una orden de compra, deberá escogerse un único medio de reembolso mediante el cual realizar la devolución del dinero, el cual podrá ser a elección del cliente a través de: transferencia bancaria o reversión de pago a la tarjeta de crédito.
-      Asimismo, una vez se haya realizado el reembolso, los suscriptores deberán enviar a “GABCY” el comprobante del reembolso entregado por el respectivo banco o cualquier documentación que acredite que se hizo efectivo dicho reembolso. Esta documentación deberá enviarse al correo electrónico ventasenlinea@gabcy.com.mx o en nuestra sucursale.
+      Asimismo, una vez se haya realizado el reembolso, los suscriptores deberán enviar a “GABCY” el comprobante del reembolso entregado por el respectivo banco o cualquier documentación que acredite que se hizo efectivo dicho reembolso. Esta documentación deberá enviarse al correo electrónico ventasenlinea@araceli_tienda.com.mx o en nuestra sucursale.
     <p class="text fw-lighter ">
       El suscriptor, antes de la compra del producto, debe aceptar las condiciones particulares de venta, siendo el caso que los presentes términos y condiciones generales podrán verse adicionados, limitados o modificados en función de las correspondientes condiciones particulares de venta del producto de que se trate. En caso de conflicto o contradicción en los presentes términos y condiciones y las condiciones particulares de venta, estas últimas prevalecerán sobre las primeras, en consecuencia el suscriptor debe leer con atención además de los presentes términos y condiciones, las condiciones particulares de venta, las cuales se entenderán aceptadas en el momento que el suscriptor proceda a la compra del producto.
     </p>
     <p class="text  fw-lighter">
-      Todas las ofertas de venta, comunicaciones, solicitudes de información, entre otros, se realizan a través de la página de E-Commerce http://www.gabcy.com y/o del correo clientes@gabcy.com.mx, mi representada no será responsable de comunicaciones que se envíen fuera de este sitio, asimismo tampoco será responsable por depósitos en efectivo, transferencias o pagos mediante tarjetas de crédito que hagan los suscriptores a cuentas diversas a las autorizadas en la compra de productos, refiriéndose que jamás se hacen solicitudes de depósito a cuentas de particulares
+      Todas las ofertas de venta, comunicaciones, solicitudes de información, entre otros, se realizan a través de la página de E-Commerce http://www.araceli_tienda.com y/o del correo clientes@araceli_tienda.com.mx, mi representada no será responsable de comunicaciones que se envíen fuera de este sitio, asimismo tampoco será responsable por depósitos en efectivo, transferencias o pagos mediante tarjetas de crédito que hagan los suscriptores a cuentas diversas a las autorizadas en la compra de productos, refiriéndose que jamás se hacen solicitudes de depósito a cuentas de particulares
     </p>
 
     <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
@@ -227,7 +227,7 @@ require 'php/confi.php'
 
     </p>
     <p class="text  fw-lighter">
-      Los datos proporcionados por el cliente son protegidos de acuerdo a nuestro aviso de privacidad, publicado en www.gabcy.com GABCY NO se responsabiliza por la certeza de los datos personales de sus usuarios. Los usuarios garantizan y responden, en cualquier caso,
+      Los datos proporcionados por el cliente son protegidos de acuerdo a nuestro aviso de privacidad, publicado en www.araceli_tienda.com GABCY NO se responsabiliza por la certeza de los datos personales de sus usuarios. Los usuarios garantizan y responden, en cualquier caso,
       de la veracidad, exactitud, vigencia y autenticidad de sus datos personales.
     </p>
 
@@ -242,7 +242,7 @@ require 'php/confi.php'
       POLÍTICA DE COMPRA
     </p>
     <p class="text  fw-lighter">
-      Los precios de los productos, servicios, promociones, disponibilidad y fecha de venta efectiva en este sitio, pueden diferir de los dados a conocer en sucursales. Los precios de compra son en pesos mexicanos. Los precios exhibidos son válidos únicamente para compras realizadas en la página web www.gabcy.com
+      Los precios de los productos, servicios, promociones, disponibilidad y fecha de venta efectiva en este sitio, pueden diferir de los dados a conocer en sucursales. Los precios de compra son en pesos mexicanos. Los precios exhibidos son válidos únicamente para compras realizadas en la página web www.araceli_tienda.com
     </p>
 
     <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
@@ -251,7 +251,7 @@ require 'php/confi.php'
 
     <p class="text  fw-lighter">
       Los suscriptores que adquieran productos podrán solicitar la factura de los mismos al momento de realizar la compra directamente en la
-      página www.gabcy.com
+      página www.araceli_tienda.com
 
     </p>
 

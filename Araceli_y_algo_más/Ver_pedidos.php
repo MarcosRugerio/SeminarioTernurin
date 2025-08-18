@@ -348,7 +348,7 @@ $con = $db->conectar();
                   </tr>
                   <?php
                   $buscar = $_POST['buscar'];
-                  $conexion = mysqli_connect("localhost", "root", "", "gabcy");
+                  $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
                   $sql = "SELECT id,idtransaccion,fecha,statusPaypal,correo,usuario_id, total FROM pedido where id like '$buscar' '%' ";
                   $rta = mysqli_query($conexion, $sql);
                   while ($mostrar = mysqli_fetch_row($rta)) {
