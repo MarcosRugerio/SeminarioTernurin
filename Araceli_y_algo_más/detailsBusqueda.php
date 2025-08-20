@@ -452,7 +452,7 @@ if ($id == '' || $token == '') {
                     <div class="col-md-5 d-flex align-items-center justify-content-center p-3">
                         <div class="detalle-img-wrapper">
                             <img class="card-img detalle-img anim-img"
-                                src="img/productos/Busqueda/<?php echo $ruta_img; ?>"
+                                src="img/Productos_Ara/<?php echo $ruta_img; ?>"
                                 alt="<?php echo htmlspecialchars($nombre); ?>" />
                         </div>
                     </div>

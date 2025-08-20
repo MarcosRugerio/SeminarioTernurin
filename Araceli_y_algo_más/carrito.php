@@ -81,9 +81,7 @@ if ($productos != null) {
               <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricionales.php">Nutricionales</a></li>
               <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricosmeticos.php">Nutricosmenticos</a></li>
               <li>
-                <hr class="dropdown-divider" style="color: #f0cea5">
               </li>
-              <li><a class="dropdown-item" style="color: #6E0023;" href="#">Extras</a></li>
             </ul>
           </li>
          <li><a href="blog.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
@@ -210,14 +208,14 @@ if ($productos != null) {
               $ruta_img = $producto['ruta_img'];
 
               $carpeta = isset($carpetas[$_id]) ? $carpetas[$_id] : '';
-              $rutaImagen = 'img/productos/' . $carpeta . '/' . $ruta_img;
+              $rutaImagen = 'img/Productos_Ara/' . $carpeta . '/' . $ruta_img;
 
               $subtotal = $cantidad * $precio1;
               $total += $subtotal;
           ?>
             <tr data-id="<?= $_id ?>">
               <td>
-              <img src="img/productos/<?= htmlspecialchars($producto['ruta_img']) ?>" 
+              <img src="img/Productos_Ara/<?= htmlspecialchars($producto['ruta_img']) ?>" 
               alt="<?= htmlspecialchars($producto['nombre']) ?>" width="80">
               </td>
               <td><?= htmlspecialchars($nombre) ?></td>

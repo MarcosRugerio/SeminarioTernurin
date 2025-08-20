@@ -323,7 +323,7 @@ if ($productos != null) {
   ?>
     <tr data-id="<?= $_id ?>">
       <td>
-        <img src="img/productos/<?= htmlspecialchars($ruta_img) ?>" alt="<?= htmlspecialchars($nombre) ?>" width="80" />
+        <img src="img/Productos_Ara/<?= htmlspecialchars($ruta_img) ?>" alt="<?= htmlspecialchars($nombre) ?>" width="80" />
       </td>
       <td><?= htmlspecialchars($nombre) ?></td>
       <td><?= $cantidad ?></td>  <!-- Aquí sólo el texto sin input -->
