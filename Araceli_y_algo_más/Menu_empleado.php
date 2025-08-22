@@ -246,7 +246,7 @@ body {
   <h1 class="titulo">Menú</h1>
 
   <div class="menu-items">
-    <a href="menu_registrosventa.php" class="menu-card">
+    <a href="registro_ventas_ara.php" class="menu-card">
       <img src="img/registrar_ventas.png" alt="Registrar Ventas">
       <span>Registrar Ventas</span>
     </a>
