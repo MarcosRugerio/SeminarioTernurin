@@ -80,22 +80,22 @@ body {
   transition: transform 0.3s, color 0.3s;
 }
 
-/* Imágenes circulares más grandes */
+/* Imágenes circulares responsivas */
 .menu-card img {
-  width: 150px;          /* más grande */
-  height: 150px;
+  width: clamp(120px, 18vw, 220px);   /* mínimo 120px, se ajusta al ancho de pantalla y máximo 220px */
+  height: clamp(120px, 18vw, 220px);
   object-fit: cover;
   border-radius: 50%;
   background: #f0f0f0;
-  padding: 15px;
+  padding: 12px;
   margin-bottom: 18px;
   transition: transform 0.3s;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0px 6px 14px rgba(0,0,0,0.25);
 }
 
-/* Texto más grande */
+/* Texto responsivo */
 .menu-card span {
-  font-size: 1.4rem; /* más grande */
+  font-size: clamp(1rem, 2vw, 1.6rem); /* mínimo 1rem, ajusta según ancho y máximo 1.6rem */
   font-weight: 600;
   color: #333;
   letter-spacing: 0.5px;
@@ -247,21 +247,24 @@ body {
 
   <div class="menu-items">
     <a href="menu_registrosventa.php" class="menu-card">
-      <img src="img/icons/ventas.png" alt="Registrar Ventas">
+      <img src="img/registrar_ventas.png" alt="Registrar Ventas">
       <span>Registrar Ventas</span>
     </a>
 
     <a href="Ver_ventas.php" class="menu-card">
-      <img src="img/icons/verventas.png" alt="Ver Ventas">
+      <img src="img/ver_ventas.png" alt="Ver Ventas">
       <span>Ver Ventas</span>
     </a>
 
     <a href="Ver_pedidos.php" class="menu-card">
-      <img src="img/icons/pedidos.png" alt="Ver Pedidos">
+      <img src="img/ver_pedidos.png" alt="Ver Pedidos">
       <span>Ver Pedidos</span>
     </a>
   </div>
 </div>
+
+<br>
+<br>
 
   
                 <!--Footer -->
