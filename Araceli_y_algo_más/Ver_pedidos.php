@@ -40,83 +40,210 @@ $con = $db->conectar();
   <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
   <style>
+ /* Tipografía general */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #111;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Título */
     .titulo {
-      font-size: 45px;
+      font-size: 48px;
       text-align: center;
-      font-family: 'Playfair Display', serif;
-      color: #CC6645;
-      text-decoration: underline;
+      font-family: 'Merriweather', serif;
+      color: #111;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
     }
 
-    .price {
-      background: url(img/local.jpg) no-repeat center;
-      background-attachment: fixed;
-      background-size: cover;
+    /* Numeración de pasos */
+    .paso {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-right: 10px;
+      color: #111;
+    }
+
+    /* Inputs y selects */
+    form .form-control {
+      border-radius: 10px;
+      border: 2px solid #111;
+      font-size: 1rem;
+      padding: 8px;
+      transition: all 0.3s ease;
+    }
+
+    form .form-control:focus {
+      border-color: #cfcdbeff;
+      box-shadow: 0 0 8px rgba(224, 221, 200, 0.8);
+    }
+
+    /* Botones */
+    button, .btn {
+      font-family: 'Merriweather', serif;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover, .btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Tabla en dorado con efecto 3D */
+    .tablaventas {
+      width: 90%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .tablaventas thead {
+      background: linear-gradient(45deg, #FFD700, #C9A400);
+      color: #111;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .tablaventas th, 
+    .tablaventas td {
+      border: none;
+      padding: 14px 18px;
       text-align: center;
-      height: 400px;
+      font-size: 1rem;
+      font-weight: 500;
     }
 
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
+    .tablaventas tbody tr:nth-child(even) {
+      background-color: #f6f6f6;
     }
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
+    .tablaventas tbody tr:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: scale(1.01);
+      transition: 0.3s;
     }
 
-    .containerCredi {
-      background-color: #333333;
+    /* Total con diseño */
+    .total-box {
+      background: #111;
+      color: #FFD700;
+      padding: 15px 30px;
+      border-radius: 15px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
 
+/* Contenedor del botón */
+.back-to-shop {
+  display: inline-block;
+  margin: 20px 0;
+}
 
-    .b-example-divider {
-      height: 3rem;
-      background-color: rgba(0, 0, 0, .1);
-      border: solid rgba(0, 0, 0, .15);
-      border-width: 1px 0;
-      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-    }
+/* Estilo del enlace */
+.back-to-shop .a2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #e0e0e0;         /* gris */
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;         /* esquinas redondeadas tipo pill */
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.6s ease, background 0.3s, color 0.3s;
+  transform-style: preserve-3d; /* necesario para el efecto espejo */
+}
 
-    .b-example-vr {
-      flex-shrink: 0;
-      width: 1.5rem;
-      height: 100vh;
-    }
+/* Texto dentro */
+.back-to-shop .a2 span {
+  font-size: 1rem;
+}
 
-    .bi {
-      vertical-align: -.125em;
-      fill: currentColor;
-    }
+/* Hover con animación espejo */
+.back-to-shop .a2:hover {
+  background: #ccc;
+  color: #000;
+  transform: scaleX(-1);  /* efecto espejo horizontal */
+}
 
-    .nav-scroller {
-      position: relative;
-      z-index: 2;
-      height: 2.75rem;
-      overflow-y: hidden;
-    }
+/* Como el flip invierte todo, re-invertimos el texto para que sea legible */
+.back-to-shop .a2:hover span {
+  transform: scaleX(-1);
+  display: inline-block;
+}
 
-    .nav-scroller .nav {
-      display: flex;
-      flex-wrap: nowrap;
-      padding-bottom: 1rem;
-      margin-top: -1px;
-      overflow-x: auto;
-      text-align: center;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-    }
+/* Tabla de PEDIDOS estilo dorado */
+.tablapedidos {
+  width: 90%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
 
-    .feature-icon {
-      width: 4rem;
-      height: 4rem;
-      border-radius: .75rem;
-    }
+.tablapedidos thead {
+  background: linear-gradient(45deg, #FFD700, #C9A400); /* dorado degradado */
+  color: #111;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.tablapedidos th,
+.tablapedidos td {
+  border: none;
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.tablapedidos tbody tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
+
+.tablapedidos tbody tr:hover {
+  background: rgba(255, 215, 0, 0.2);
+  transform: scale(1.01);
+  transition: 0.3s;
+}
+
+/* Sub-tablas dentro de PEDIDOS más discretas */
+.tablapedidos-simple {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 10px 0;
+}
+
+.tablapedidos-simple th,
+.tablapedidos-simple td {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.tablapedidos-simple th {
+  background-color: #f5f5f5;
+  font-weight: 500;
+}
+
+.tablapedidos-simple td {
+  background-color: #fff;
+}
   </style>
 
   <!--ESTILOS TABLA-->
@@ -277,149 +404,77 @@ $con = $db->conectar();
       <hr class="featurette-divider" style="color:  #CC6645; " size="2">
     </nav>
     <!--Ver pedidos / empleados  -->
+<!----- PEDIDOS REGISTRADAS --->
+<div class="px-4 py-3 my-3 text-center">
+  <h1 class="titulo">PEDIDOS</h1>
+  <img class="d-block mx-auto mb-4" src="img/pedidos.png" alt="" width="110" height="110">
 
-    <!----- PEDIDOS REGISTRADAS --->
-
-
-    <div class="px-4 py-3 my-3 text-center">
-      <h1 class="titulo">PEDIDOS</h1>
-      <img class="d-block mx-auto mb-4" src="img/pedidos.png" alt="" width="110" height="110">
-
-      <!-- BUSCAR -->
-
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-          <ul class=" mx-auto mb-2 mb-lg-0">
-
-            <div>
-              <form ction="buscar.php" method="POST" class="d-flex" role="search">
-                <h3 class="display-7 fw-normal me-2">Código:</h3>
-                <input class="form-control me-2" name="buscar" id="" type="search" placeholder="Ingrese un codigo" aria-label="Search">
-                <input class="btn btn-outline-dark" type="submit" value="Buscar">
-              </form>
-            </div>
-
-
-
-          </ul>
-
-
+  <!-- BUSCAR -->
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="mx-auto mb-2 mb-lg-0">
+        <div>
+          <form action="buscar.php" method="POST" class="d-flex" role="search">
+            <h3 class="display-7 fw-normal me-2">Código:</h3>
+            <input class="form-control me-2" name="buscar" type="search" placeholder="Ingrese un código" aria-label="Search">
+            <input class="btn btn-outline-dark" type="submit" value="Buscar">
+          </form>
         </div>
-      </div> <!-- BUSCAR -->
+      </ul>
+    </div>
+  </div> <!-- BUSCAR -->
 
-
-
-
-      <!----- TABLA--->
-
-      <div class="datosP">
-        <div class="D1">
-
-          <div class="table-responsive">
-
-            <table class="table table-bordered border border-secondary">
-              <center>
-
-                <table class="tablapedidos">
-
-                  <tr>
-                    <th class="tablapedidos2">
-                      <center>Código</center>
-                    </th>
-                    <th class="tablapedidos2">
-                      <center>Código de transacción</center>
-                    </th>
-                    <th class="tablapedidos2">
-                      <center>Fecha</center>
-                    </th>
-                    <th class="tablapedidos2">
-                      <center>Estatus de Paypal</center>
-                    </th>
-                    <th class="tablapedidos2">
-                      <center>Correo</center>
-                    </th>
-                    <th class="tablapedidos2">
-                      <center>Usuario</center>
-                    </th>
-                    <th class="tablapedidos2">
-                      <center>Total</center>
-                    </th>
-                  </tr>
-                  <?php
-                  $buscar = $_POST['buscar'];
-                  $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
-                  $sql = "SELECT id,idtransaccion,fecha,statusPaypal,correo,usuario_id, total FROM pedido where id like '$buscar' '%' ";
-                  $rta = mysqli_query($conexion, $sql);
-                  while ($mostrar = mysqli_fetch_row($rta)) {
-                  ?>
-
-                    <tr>
-                      <td class="tablapedidos2">
-                        <center>
-                          <p> <?php echo $mostrar['0'] ?></p>
-                        </center>
-                      </td>
-
-                      <td class="tablapedidos2">
-                        <center>
-                          <p> <?php echo $mostrar['1'] ?></p>
-                        </center>
-                      </td>
-
-                      <td class="tablapedidos2">
-                        <center>
-                          <p><?php echo $mostrar['2'] ?></p>
-                        </center>
-                      </td>
-
-                      <td class="tablapedidos2">
-                        <center>
-                          <p><?php echo $mostrar['3'] ?></p>
-                        </center>
-                      </td>
-
-                      <td class="tablapedidos2">
-                        <center>
-                          <p><?php echo $mostrar['4'] ?></p>
-                        </center>
-                      </td>
-                      <td class="tablapedidos2">
-                        <center>
-                          <p><?php echo $mostrar['5'] ?></p>
-                        </center>
-                      </td>
-                      <td class="tablapedidos2">
-                        <center>
-                          <p><?php echo $mostrar['6'] ?></p>
-                        </center>
-                      </td>
-
-                    </tr>
-                  <?php
-                  }
-                  ?>
-
-
-
-                </table>
-
-
-              </center>
-            </table>
-          </div>
-          <center>
-            <br>
-            <div class="back-to-shop" onclick="regresar()"><a class="a2" href="Menu_empleado.php">&leftarrow; </a><span class="text-muted">Regresar</span></div>
-          </center>
-        </div>
+  <!----- TABLA --->
+  <div class="datosP">
+    <div class="D1">
+      <div class="table-responsive">
+        <table class="tablapedidos">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Código de transacción</th>
+              <th>Fecha</th>
+              <th>Estatus de Paypal</th>
+              <th>Correo</th>
+              <th>Usuario</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            $buscar = $_POST['buscar'];
+            $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
+            $sql = "SELECT id,idtransaccion,fecha,statusPaypal,correo,usuario_id,total FROM pedido WHERE id LIKE '$buscar%'";
+            $rta = mysqli_query($conexion, $sql);
+            while ($mostrar = mysqli_fetch_row($rta)) {
+            ?>
+            <tr>
+              <td><?php echo $mostrar[0] ?></td>
+              <td><?php echo $mostrar[1] ?></td>
+              <td><?php echo $mostrar[2] ?></td>
+              <td><?php echo $mostrar[3] ?></td>
+              <td><?php echo $mostrar[4] ?></td>
+              <td><?php echo $mostrar[5] ?></td>
+              <td><?php echo $mostrar[6] ?></td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
       </div>
 
-      <!----- TABLA--->
-
-
-
+      <center>
+        <br>
+        <div class="back-to-shop" onclick="regresar()">
+          <a class="a2" href="Menu_empleado.php">&leftarrow; <span>Regresar</span></a>
+        </div>
+      </center>
     </div>
+  </div>
+</div>
+
+    <!-- Fin ver pedidos / empleados  -->
+
+  
 
   </main>
 

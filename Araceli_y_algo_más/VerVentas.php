@@ -41,118 +41,149 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
 </head>
 <style>
-  .titulo {
-    font-size: 45px;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    color: #CC6645;
-    text-decoration: underline;
-  }
-
-  .price {
-    background: url(img/local.jpg) no-repeat center;
-    background-attachment: fixed;
-    background-size: cover;
-    text-align: center;
-    height: 400px;
-  }
-
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
+   /* Tipografía general */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #111;
+      margin: 0;
+      padding: 0;
     }
-  }
 
-  .containerCredi {
-    background-color: #333333;
-  }
+    /* Título */
+    .titulo {
+      font-size: 48px;
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      color: #111;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
 
+    /* Numeración de pasos */
+    .paso {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-right: 10px;
+      color: #111;
+    }
 
-  .b-example-divider {
-    height: 3rem;
-    background-color: rgba(0, 0, 0, .1);
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1px 0;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-  }
+    /* Inputs y selects */
+    form .form-control {
+      border-radius: 10px;
+      border: 2px solid #111;
+      font-size: 1rem;
+      padding: 8px;
+      transition: all 0.3s ease;
+    }
 
-  .b-example-vr {
-    flex-shrink: 0;
-    width: 1.5rem;
-    height: 100vh;
-  }
+    form .form-control:focus {
+      border-color: #cfcdbeff;
+      box-shadow: 0 0 8px rgba(224, 221, 200, 0.8);
+    }
 
-  .bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-  }
+    /* Botones */
+    button, .btn {
+      font-family: 'Merriweather', serif;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
 
-  .nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-  }
+    button:hover, .btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
 
-  .nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
+    /* Tabla en dorado con efecto 3D */
+    .tablaventas {
+      width: 90%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border-radius: 15px;
+      overflow: hidden;
+    }
 
-  .feature-icon {
-    width: 4rem;
-    height: 4rem;
-    border-radius: .75rem;
-  }
-</style>
+    .tablaventas thead {
+      background: linear-gradient(45deg, #FFD700, #C9A400);
+      color: #111;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
 
-<!--ESTILOS TABLA-->
-<style>
-  button {
-    background: #2B307C;
-    color: #FFF;
-    font-size: 10px;
-    margin-bottom: 1px;
-    position: relative;
-    top: 10%;
-  }
+    .tablaventas th, 
+    .tablaventas td {
+      border: none;
+      padding: 14px 18px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 500;
+    }
 
+    .tablaventas tbody tr:nth-child(even) {
+      background-color: #f6f6f6;
+    }
 
-  .tablaventas2 {
-    border: 0.15em solid #DF5E47;
-    width: 500px;
-    border-radius: 3em;
-  }
+    .tablaventas tbody tr:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: scale(1.01);
+      transition: 0.3s;
+    }
 
-  .D1 {
-    margin-bottom: 6%;
-    margin-top: 3%;
-    text-align: left;
-  }
+    /* Total con diseño */
+    .total-box {
+      background: #111;
+      color: #FFD700;
+      padding: 15px 30px;
+      border-radius: 15px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
 
-  .table-responsive {
+/* Contenedor del botón */
+.back-to-shop {
+  display: inline-block;
+  margin: 20px 0;
+}
 
-    margin: 1em;
-    height: 60%;
+/* Estilo del enlace */
+.back-to-shop .a2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #e0e0e0;         /* gris */
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;         /* esquinas redondeadas tipo pill */
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.6s ease, background 0.3s, color 0.3s;
+  transform-style: preserve-3d; /* necesario para el efecto espejo */
+}
 
-    border-radius: 0em;
+/* Texto dentro */
+.back-to-shop .a2 span {
+  font-size: 1rem;
+}
 
-    width: auto;
-  }
+/* Hover con animación espejo */
+.back-to-shop .a2:hover {
+  background: #ccc;
+  color: #000;
+  transform: scaleX(-1);  /* efecto espejo horizontal */
+}
+
+/* Como el flip invierte todo, re-invertimos el texto para que sea legible */
+.back-to-shop .a2:hover span {
+  transform: scaleX(-1);
+  display: inline-block;
+}
 </style> <!--ESTILOS TABLA-->
 
 <body>
@@ -278,87 +309,76 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
       </div>
       <hr class="featurette-divider" style="color:  #CC6645; " size="2">
     </nav>
-    <!----- CUENTAS REGISTRADAS --->
+    <!----- Ver ventas REGISTRADAS --->
+<div class="px-4 py-3 my-3 text-center">
+  <h1 class="titulo">Ver ventas</h1>
+  <br>
 
+  <div class="datosP">
+    <div class="D1">
+      <div class="table-responsive">
+        <table class="tablaventas">
+          <thead>
+            <tr>
+              <th>Número</th>
+              <th>Fecha</th>
+              <th>Productos vendidos</th>
+              <th>Total</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach($ventas as $venta){ ?>
+            <tr>
+              <td><?php echo $venta->id ?></td>
+              <td><?php echo $venta->fecha ?></td>
+              <td>
+                <div class="table-responsive">
+                  <table class="tablaventas">
+                    <thead>
+                      <tr>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach(explode("__", $venta->productos) as $productosConcatenados){ 
+                      $producto = explode("..", $productosConcatenados) ?>
+                      <tr>
+                        <td><?php echo $producto[0] ?></td>
+                        <td><?php echo $producto[1] ?></td>
+                        <td><?php echo $producto[2] ?></td>
+                      </tr>
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+              <td><?php echo $venta->total ?></td>
+              <td>
+                <a class="btn btn-danger" href="<?php echo "eliminarVenta.php?id=" . $venta->id?>">
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
 
-
-    <div class="px-4 py-3 my-3 text-center">
-      <h1 class="titulo">Ventas</h1><br>
-      <img class="d-block mx-auto mb-4" src="img/terminal.png" alt="" width="110" height="110">
-
-<div class="col-xs-12">
-  
-    <br>
-
-     <div class="datosP">
-        <div class="D1">
-
-          <div class="table-responsive">
-
-            <table class="table table-bordered border border-secondary">
-              <center>
-    <table class="tablaventas">
-      <thead>
-        <tr>
-          <th class="tablaventas2">Número</th>
-          <th class="tablaventas2">Fecha</th>
-          <th class="tablaventas2">Productos vendidos</th>
-          <th class="tablaventas2">Total</th>
-          <th class="tablaventas2">Eliminar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach($ventas as $venta){ ?>
-        <tr>
-          <td class="tablaventas2"><?php echo $venta->id ?></td>
-          <td class="tablaventas2"><?php echo $venta->fecha ?></td>
-          <td class="tablaventas2">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Descripción</th>
-                  <th>Cantidad</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach(explode("__", $venta->productos) as $productosConcatenados){ 
-                $producto = explode("..", $productosConcatenados)
-                ?>
-                <tr>
-                  <td><?php echo $producto[0] ?></td>
-                  <td><?php echo $producto[1] ?></td>
-                  <td><?php echo $producto[2] ?></td>
-                </tr>
-                <?php } ?>
-              </tbody>
-            </table>
-          </td>
-          <td class="tablaventas2"><?php echo $venta->total ?></td>
-          <td class="tablaventas2"><a class="btn btn-danger" href="<?php echo "eliminarVenta.php?id=" . $venta->id?>"><i class="fa fa-trash"></i></a></td>
-        </tr>
-        <?php } ?>
-      </tbody>
-
-    </table>
-        </center>
-            </table>
-          </div>
-          <center>
-            <br>
-            <div class="back-to-shop" onclick="regresar()"><a class="a2" href="VerVentasClientes.php">&leftarrow; </a><span class="text-muted">Regresar</span></div>
-          </center>
+      <center>
+        <br>
+        <div class="back-to-shop" onclick="regresar()">
+          <a class="a2" href="VerVentasClientes.php">&leftarrow; <span>Regresar</span></a>
         </div>
-      </div> <!----- TABLA--->
+      </center>
+    </div>
   </div>
-      
-
-    </div>
+</div>
 
 
-
-    </div>
-    </div>
+    <!----- Fin de ver ventas REGISTRADAS --->
     <!--Footer -->
     <?php include("creditos.php"); ?>
 
