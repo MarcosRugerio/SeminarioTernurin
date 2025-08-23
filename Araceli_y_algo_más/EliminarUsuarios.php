@@ -28,87 +28,184 @@ $con = $db->conectar();
 </head>
 
 <style>
-  .titulo {
-    font-size: 45px;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    color: #CC6645;
-    text-decoration: underline;
-  }
+ /* Tipografía general */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9f9;
+  color: #111;
+  margin: 0;
+  padding: 0;
+}
 
-  .price {
-    background: url(img/local.jpg) no-repeat center;
-    background-attachment: fixed;
-    background-size: cover;
-    text-align: center;
-    height: 400px;
-  }
+/* Título */
+.titulo {
+  font-size: 48px;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  color: #111;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
 
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
+/* Numeración de pasos */
+.paso {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-right: 10px;
+  color: #111;
+}
 
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
+/* Inputs y selects */
+form .form-control {
+  border-radius: 10px;
+  border: 2px solid #111;
+  font-size: 1rem;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
 
-  .containerCredi {
-    background-color: #333333;
-  }
+form .form-control:focus {
+  border-color: #cfcdbeff;
+  box-shadow: 0 0 8px rgba(224, 221, 200, 0.8);
+}
 
+/* Botones */
+button, .btn {
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
 
-  .b-example-divider {
-    height: 3rem;
-    background-color: rgba(0, 0, 0, .1);
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1px 0;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-  }
+button:hover, .btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
 
-  .b-example-vr {
-    flex-shrink: 0;
-    width: 1.5rem;
-    height: 100vh;
-  }
+/* Tabla de USUARIOS estilo dorado con efecto 3D */
+.tablausuarios {
+  width: 90%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
 
-  .bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-  }
+.tablausuarios thead {
+  background: linear-gradient(45deg, #FFD700, #C9A400); /* dorado degradado */
+  color: #111;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
 
-  .nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-  }
+.tablausuarios th,
+.tablausuarios td {
+  border: none;
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
 
-  .nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
+.tablausuarios tbody tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
 
-  .feature-icon {
-    width: 4rem;
-    height: 4rem;
-    border-radius: .75rem;
-  }
+.tablausuarios tbody tr:hover {
+  background: rgba(255, 215, 0, 0.2);
+  transform: scale(1.01);
+  transition: 0.3s;
+}
 
-  .container {
-    text-align: left;
-  }
+/* Celdas específicas si quieres un estilo distinto */
+.tablausuarios2 {
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Total con diseño */
+.total-box {
+  background: #111;
+  color: #FFD700;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* Contenedor del botón */
+.back-to-shop {
+  display: inline-block;
+  margin: 20px 0;
+}
+
+/* Estilo del enlace */
+.back-to-shop .a2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #e0e0e0;
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.6s ease, background 0.3s, color 0.3s;
+  transform-style: preserve-3d;
+}
+
+/* Texto dentro */
+.back-to-shop .a2 span {
+  font-size: 1rem;
+}
+
+/* Hover con animación espejo */
+.back-to-shop .a2:hover {
+  background: #ccc;
+  color: #000;
+  transform: scaleX(-1);
+}
+
+/* Re-invertimos el texto para que sea legible */
+.back-to-shop .a2:hover span {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+.form-container {
+  max-width: 500px; /* ancho máximo */
+  margin: 0 auto;   /* centrado horizontal */
+  padding: 20px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Botón rojo para eliminar */
+.btn-eliminar {
+  background: #e74c3c; /* rojo */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-weight: bold;
+  border-radius: 50px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-eliminar:hover {
+  background: #c0392b; /* rojo más oscuro */
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
 </style>
 
 
@@ -229,81 +326,66 @@ $con = $db->conectar();
     </div>
     <hr class="featurette-divider" style="color:  #CC6645; " size="2">
   </nav>
-  <!----- INVENTARIO --->
+  
+ 
+  <!----- INICIO ELIMINAR USUARIO --->
 
+<!-- Título e imagen -->
+<div class="px-4 py-3 my-3 text-center">
+  <h1 class="titulo">Eliminar usuario</h1><br>
+  <img class="d-block mx-auto mb-4" src="img/borrar.png" alt="" width="110" height="110">
+</div>
 
-  <div class="px-4 py-3 my-3 text-center">
-    <h1 class="titulo">Eliminar usuario</h1><br>
-    <img class="d-block mx-auto mb-4" src="img/borrar.png" alt="" width="110" height="110">
+   <div class="form-container">
+  <form action="php/lista_usuarios.php" method="POST">
+    <?php
+    require_once "php/conexion.php";
+    $conexion = conexion();
+    $idregistromodificar = $_GET['id'];
+    $query1 = "SELECT * FROM usuarios WHERE id='$idregistromodificar'";
+    $result1 = mysqli_query($conexion, $query1);
 
+    if (mysqli_num_rows($result1) > 0) {
+        while ($rowData = mysqli_fetch_array($result1)) {
+    ?>
+      <input class="form-control me-2" type="hidden" value="<?php echo $rowData["id"] ?>" name="id">
 
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-        <ul class=" mx-auto mb-2 mb-lg-0">
-
-          <form action="php/lista_usuarios.php" method="POST">
-
-            <?php
-            require_once "php/conexion.php";
-            $conexion = conexion();
-            //id que jalamos de la otra página 
-            $idregistromodificar = $_GET['id'];
-
-            //información de la tabla 
-            $query1 = ("Select * from usuarios where id='$idregistromodificar'");
-            $result1 = mysqli_query($conexion, $query1);
-
-            //analiza fila x fila
-            if (mysqli_num_rows($result1) > 0) {
-              while ($rowData = mysqli_fetch_array($result1)) {
-
-            ?>
-
-                <input class="form-control me-2" type="hidden" value="<?php echo $rowData["id"] ?>" name="id">
-
-
-                <h5 class="display-7 fw-normal me-2">Nombre(s):</h5>
-                <input class="form-control me-2" type="text" value="<?php echo $rowData["nombre"] ?>" name="nombre" readonly>
-                <br>
-                <h5 class="display-7 fw-normal me-2">Apellido(s):</h5>
-                <input class="form-control me-2" type="text" value="<?php echo $rowData["apellido"] ?>" name="apellido" readonly>
-                <br>
-
-                <h5 class="display-7 fw-normal me-2">Correo:</h5>
-                <input class="form-control me-2" type="text" value="<?php echo $rowData["correo"] ?>" name="correo" readonly>
-                <br>
-
-                <h5 class="display-7 fw-normal me-2">Domicilio:</h5>
-                <input class="form-control me-2" type="text" value="<?php echo $rowData["domicilio"] ?>" name="domicilio" readonly>
-                <br>
-
-                <h5 class="display-7 fw-normal me-2">Teléfono:</h5>
-                <input class="form-control me-2" type="text" value="<?php echo $rowData["telefono"] ?>" name="telefono" readonly>
-                <br>
-
-            <?php
-              }
-            }
-            ?>
-            <center> <button type="submit" class="btn btn-outline-dark" value="Eliminar" name="uploadBtn">Eliminar</button></center><br>
-          </form>
-
-        </ul>
-
+      <h5 class="display-7 fw-normal me-2">Nombre(s):</h5>
+      <input class="form-control me-2" type="text" value="<?php echo $rowData["nombre"] ?>" name="nombre" readonly>
+      <br>
+      <h5 class="display-7 fw-normal me-2">Apellido(s):</h5>
+      <input class="form-control me-2" type="text" value="<?php echo $rowData["apellido"] ?>" name="apellido" readonly>
+      <br>
+      <h5 class="display-7 fw-normal me-2">Correo:</h5>
+      <input class="form-control me-2" type="text" value="<?php echo $rowData["correo"] ?>" name="correo" readonly>
+      <br>
+      <h5 class="display-7 fw-normal me-2">Domicilio:</h5>
+      <input class="form-control me-2" type="text" value="<?php echo $rowData["domicilio"] ?>" name="domicilio" readonly>
+      <br>
+      <h5 class="display-7 fw-normal me-2">Teléfono:</h5>
+      <input class="form-control me-2" type="text" value="<?php echo $rowData["telefono"] ?>" name="telefono" readonly>
+      <br>
+    <?php
+        }
+    }
+    ?>
+    <center class="mt-3">
+      <button type="submit" class="btn a2 btn-eliminar" value="Eliminar" name="uploadBtn">Eliminar</button>
+    </center>
+    
+    <center class="mt-3">
+      <div class="back-to-shop">
+        <a class="a2" href="listaUsuarios.php">&leftarrow; <span>Regresar</span></a>
       </div>
-      <center>
-        <br>
-        <div class="back-to-shop" onclick="regresar()"><a class="a2" href="#">&leftarrow; </a><span class="text-muted">Regresar</span></div>
-      </center>
-    </div>
+    </center>
+  </form>
+</div>
+   <!----- FIN ELIMINAR USUARIO --->
 
-    <div>
-    </div>
+<br>
+<br>
 
-  </div>
-  </div>
-  <!--Footer -->
+  <!--Footer --> 
   <?php include("creditos.php"); ?>
 
 </body>

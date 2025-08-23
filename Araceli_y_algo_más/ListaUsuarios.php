@@ -319,21 +319,15 @@ button:hover, .btn:hover {
   <img class="d-block mx-auto mb-4" src="img/personas.png" alt="" width="110" height="110">
 
   <!-- BUSCAR -->
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <ul class="mx-auto mb-2 mb-lg-0">
-        <div>
-          <form id="form-buscar" class="d-flex" role="search">
-            <h3 class="display-7 fw-normal me-2">Buscar usuario:</h3>
-            <input id="input-buscar" class="form-control me-2" name="buscar" type="search" placeholder="Ingrese nombre, apellido o correo">
-          </form>
+  <div class="d-flex justify-content-center mb-4">
+    <form id="form-buscar" class="d-flex flex-column flex-md-row align-items-center gap-2" role="search">
+      <label for="input-buscar" class="fw-bold mb-1 mb-md-0">Buscar usuario:</label>
+      <input id="input-buscar" class="form-control" name="buscar" type="search" placeholder="Ingrese nombre, apellido o correo">
+    </form>
+  </div>
 
-          <div id="resultados-usuarios">
-            <!-- Aquí se cargarán los resultados de la búsqueda vía AJAX -->
-          </div>
-        </div>
-      </ul>
-    </div>
+  <div id="resultados-usuarios" class="d-flex justify-content-center">
+    <!-- Aquí se cargarán los resultados de la búsqueda vía AJAX -->
   </div>
 
   <!-- TABLA PRINCIPAL -->
@@ -438,5 +432,8 @@ $(document).ready(function() {
 </script>
 
 
+ <!--Creditos  -->
+  <?php include("creditos.php"); ?>
 
+</body>
 </html>

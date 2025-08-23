@@ -7,8 +7,8 @@ $sql = "SELECT id, nombre, apellido, correo, domicilio, telefono, permiso
         WHERE nombre LIKE '%$buscar%' OR apellido LIKE '%$buscar%' OR correo LIKE '%$buscar%'";
 $rta = mysqli_query($conexion, $sql);
 
-echo '<div class="table-responsive">';
-echo '<table class="tablausuarios">';
+echo '<div class="table-responsive d-flex justify-content-center">'; // centrado y responsivo
+echo '<table class="tablausuarios" style="min-width: 300px; max-width: 100%;">';
 echo '<thead>
         <tr>
           <th>Código</th>
@@ -38,9 +38,9 @@ while($mostrar = mysqli_fetch_assoc($rta)) {
             <td>'.$mostrar['telefono'].'</td>
             <td>'.$tipo_permiso.'</td>
             <td>
-              <div class="d-flex justify-content-center gap-2">
-                <a href="EliminarUsuarios.php?id='.$mostrar['id'].'"><button class="btn btn-outline-dark">Eliminar</button></a>
-                <a href="AgregarPermisos.php?id='.$mostrar['id'].'"><button class="btn btn-outline-dark">Permiso</button></a>
+              <div class="d-flex flex-column flex-md-row justify-content-center gap-2">
+                <a href="EliminarUsuarios.php?id='.$mostrar['id'].'"><button class="btn btn-danger">Eliminar</button></a>
+                <a href="AgregarPermisos.php?id='.$mostrar['id'].'"><button class="btn btn-outline-dark">Editar Permiso</button></a>
               </div>
             </td>
           </tr>';
