@@ -246,41 +246,7 @@ $con = $db->conectar();
 }
   </style>
 
-  <!--ESTILOS TABLA-->
-  <style>
-    button {
-      background: #2B307C;
-      color: #FFF;
-      font-size: 10px;
-      margin-bottom: 1px;
-      position: relative;
-      top: 10%;
-    }
-
-
-    .tablapedidos2 {
-      border: 0.15em solid #DF5E47;
-      width: 500px;
-      border-radius: 3em;
-    }
-
-    .D1 {
-      margin-bottom: 6%;
-      margin-top: 3%;
-      text-align: left;
-    }
-
-    .table-responsive {
-
-      margin: 1em;
-      height: 60%;
-
-      border-radius: 0em;
-
-      width: auto;
-    }
-  </style>
-
+  
 <body>
   <main>
     <!--Header -->
