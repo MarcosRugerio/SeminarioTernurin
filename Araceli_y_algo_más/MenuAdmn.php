@@ -29,249 +29,80 @@ $con = $db->conectar();
 </head>
 
 <style>
-  .titulo {
-    font-size: 45px;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    color: #CC6645;
-    text-decoration: underline;
-  }
+/* Tipografía */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
 
-  .price {
-    background: url(img/local.jpg) no-repeat center;
-    background-attachment: fixed;
-    background-size: cover;
-    text-align: center;
-    height: 400px;
-  }
+/* Contenedor principal */
+.menu-container {
+  text-align: center;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
 
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
+/* Título */
+.menu-container .titulo {
+  font-size: 2.5rem; /* más grande */
+  margin-bottom: 50px;
+  color: #222;
+  font-weight: 700;
+}
 
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
+/* Contenedor de items */
+.menu-items {
+  display: flex;
+  justify-content: center;
+  gap: 70px; /* más espacio entre opciones */
+  flex-wrap: wrap;
+}
 
-  .containerCredi {
-    background-color: #333333;
-  }
+/* Tarjetas de menú */
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s, color 0.3s;
+}
 
+/* Imágenes circulares responsivas */
+.menu-card img {
+  width: clamp(120px, 18vw, 220px);   /* mínimo 120px, se ajusta al ancho de pantalla y máximo 220px */
+  height: clamp(120px, 18vw, 220px);
+  object-fit: cover;
+  border-radius: 50%;
+  background: #f0f0f0;
+  padding: 12px;
+  margin-bottom: 18px;
+  transition: transform 0.3s;
+  box-shadow: 0px 6px 14px rgba(0,0,0,0.25);
+}
 
-  .b-example-divider {
-    height: 3rem;
-    background-color: rgba(0, 0, 0, .1);
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1px 0;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-  }
+/* Texto responsivo */
+.menu-card span {
+  font-size: clamp(1rem, 2vw, 1.6rem); /* mínimo 1rem, ajusta según ancho y máximo 1.6rem */
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 0.5px;
+}
 
-  .b-example-vr {
-    flex-shrink: 0;
-    width: 1.5rem;
-    height: 100vh;
-  }
+/* Hover */
+.menu-card:hover {
+  transform: translateY(-8px);
+}
 
-  .bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-  }
+.menu-card:hover img {
+  transform: scale(1.1);
+}
 
-  .nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-  }
-
-  .nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .feature-icon {
-    width: 4rem;
-    height: 4rem;
-    border-radius: .75rem;
-  }
-</style>
-
-<!--ESTILOS TABLA-->
-<style>
-  button {
-    background: #2B307C;
-    color: #FFF;
-    font-size: 10px;
-    margin-bottom: 1px;
-    position: relative;
-    top: 10%;
-  }
-
-
-  .tablausuarios2 {
-    border: 0.15em solid #DF5E47;
-    width: 500px;
-    border-radius: 3em;
-  }
-
-  .D1 {
-    margin-bottom: 6%;
-    margin-top: 3%;
-    text-align: left;
-  }
-
-  .table-responsive {
-
-    margin: 1em;
-    height: 60%;
-
-    border-radius: 0em;
-
-    width: auto;
-  }
-</style> <!--ESTILOS TABLA-->
-
-<!--ESTILOS BOTONES MENU-->
-<style>
-  .contenedorregistroI {
-    border-radius: 3em;
-    border: 0.3em solid #DF5E47;
-    margin: 2em;
-    flex-direction: row;
-  }
-
-  .botonU {
-    background: transparent;
-    background-image: url("img/ventas.png");
-    border-color: transparent;
-    background-size: cover;
-    background-position: center;
-    display: inline-block;
-    border: none;
-    padding: 20px;
-    width: 180px;
-    height: 180px;
-    transition: all 0.5s;
-    cursor: pointer;
-    position: relative;
-    margin: 1em;
-  }
-
-  .botonU:hover {
-    width: 200px;
-    height: 200px;
-    /* filter: invert(80%) sepia(50%) saturate(100%) hue-rotate(100deg) brightness(150%) contrast(97%);*/
-  }
-
-  .botonH {
-    background: transparent;
-    background-image: url("img/usuariosmenu.png");
-    border-color: transparent;
-    background-size: cover;
-    background-position: center;
-    display: inline-block;
-    border: none;
-    padding: 20px;
-    width: 180px;
-    border-radius: 0px;
-    height: 180px;
-    transition: all 0.5s;
-    cursor: pointer;
-    position: relative;
-    margin: 1em;
-  }
-
-  .botonH:hover {
-    width: 200px;
-    height: 200px;
-    /* filter: invert(80%) sepia(50%) saturate(100%) hue-rotate(100deg) brightness(150%) contrast(97%);*/
-  }
-
-  .botonP {
-    background: transparent;
-    background-image: url("img/inventariomenu.png");
-    border-color: transparent;
-    background-size: cover;
-    background-position: center;
-    display: inline-block;
-    border: none;
-    padding: 20px;
-    width: 180px;
-    border-radius: 0px;
-    height: 180px;
-    transition: all 0.5s;
-    cursor: pointer;
-    position: relative;
-    margin: 1em;
-  }
-
-  .botonP:hover {
-    width: 200px;
-    height: 200px;
-    /* filter: invert(80%) sepia(50%) saturate(100%) hue-rotate(100deg) brightness(150%) contrast(97%);*/
-  }
-
-  .botonR {
-
-    background: transparent;
-    background-image: url("img/evento.png");
-    border-color: transparent;
-    background-size: cover;
-    background-position: center;
-    display: inline-block;
-    border: none;
-    padding: 20px;
-    width: 180px;
-    border-radius: 0px;
-    height: 180px;
-    transition: all 0.5s;
-    cursor: pointer;
-    position: relative;
-    margin: 1em;
-  }
-
-  .botonR:hover {
-    width: 200px;
-    height: 200px;
-    /* filter: invert(80%) sepia(50%) saturate(100%) hue-rotate(100deg) brightness(150%) contrast(97%);*/
-  }
-
-  .botonZ {
-
-    background: transparent;
-    background-image: url("img/panqueques.png");
-    border-color: transparent;
-    background-size: cover;
-    background-position: center;
-    display: inline-block;
-    border: none;
-    padding: 20px;
-    width: 180px;
-    border-radius: 0px;
-    height: 180px;
-    transition: all 0.5s;
-    cursor: pointer;
-    position: relative;
-    margin: 1em;
-  }
-
-  .botonZ:hover {
-    width: 200px;
-    height: 200px;
-    /* filter: invert(80%) sepia(50%) saturate(100%) hue-rotate(100deg) brightness(150%) contrast(97%);*/
-  }
+.menu-card:hover span {
+  color: #555;
+}
 </style>
 
 <body>
@@ -392,29 +223,31 @@ $con = $db->conectar();
     <hr class="featurette-divider" style="color:  #CC6645; " size="2">
   </nav>
 
-  <div class="px-4 py-3 my-3 text-center">
-    <h1 class="titulo">Menú Administrador</h1><br>
-  </div>
+  <!-- Inicio del menu administrador -->
+<div class="menu-container">
+  <h1 class="titulo">Menú administrador</h1>
 
-  <div class="contenedorregistroI" id='User'>
-    <div class="px-4 pt-5 my-5 text-center border-bottom">
-      <a href="VerVentasClientes.php" title="VENTAS">
-        <div class="botonU"> </div>
-      </a>
-      <a href="ListaUsuarios.php" title="CUENTAS REGISTRADAS">
-        <div class="botonH"> </div>
-      </a>
-      <a href="inventario.php" title="INVENTARIO">
-        <div class="botonP"> </div>
-      </a>
-      <a href="ModificarFotosEventos.php" title="FOTOS DE EVENTOS">
-        <div class="botonR"> </div>
-      </a>
-      <a href="MenuProductos.php" title="PRODUCTOS">
-        <div class="botonZ"> </div>
-      </a>
-    </div>
+  <div class="menu-items">
+    <a href="VerVentasClientes.php" class="menu-card">
+      <img src="img/ver_ventas_admin.png" alt="Registrar Ventas">
+      <span>Ver ventas</span>
+    </a>
+
+    <a href="ListaUsuarios.php" class="menu-card">
+      <img src="img/ver_usuarios.png" alt="Ver Ventas">
+      <span>Cuentas registradas</span>
+    </a>
+
+    <a href="MenuProductos.php" class="menu-card">
+      <img src="img/ver_productos.png" alt="Ver Pedidos">
+      <span>Productos</span>
+    </a>
   </div>
+</div>
+
+<br>
+<br>
+  <!-- Fin del menu administrador -->
   <!--Footer -->
   <?php include("creditos.php"); ?>
 

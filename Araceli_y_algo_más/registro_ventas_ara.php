@@ -151,7 +151,6 @@ $granTotal = 0;
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
 
-    <style>
 /* Contenedor del botón */
 .back-to-shop {
   display: inline-block;
