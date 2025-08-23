@@ -407,7 +407,7 @@ $con = $db->conectar();
 <!----- PEDIDOS REGISTRADAS --->
 <div class="px-4 py-3 my-3 text-center">
   <h1 class="titulo">PEDIDOS</h1>
-  <img class="d-block mx-auto mb-4" src="img/pedidos.png" alt="" width="110" height="110">
+  <img class="d-block mx-auto mb-4" src="img/ver_pedidos_naranja.png" alt="" width="110" height="110">
 
   <!-- BUSCAR -->
   <div class="container">

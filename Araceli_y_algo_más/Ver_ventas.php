@@ -216,41 +216,6 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 }
   </style>
 
-  <!--ESTILOS TABLA-->
-  <style>
-    button {
-      background: #2B307C;
-      color: #FFF;
-      font-size: 10px;
-      margin-bottom: 1px;
-      position: relative;
-      top: 10%;
-    }
-
-
-    .tablaventas2 {
-      border: 0.15em solid #DF5E47;
-      width: 500px;
-      border-radius: 3em;
-    }
-
-    .D1 {
-      margin-bottom: 6%;
-      margin-top: 3%;
-      text-align: left;
-    }
-
-    .table-responsive {
-
-      margin: 1em;
-      height: 60%;
-
-      border-radius: 0em;
-
-      width: auto;
-    }
-  </style>
-
 <body>
 
   <!--Header -->
@@ -380,7 +345,7 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
   <div class="px-4 py-3 my-3 text-center">
   <h1 class="titulo">Ventas</h1>
   <br>
-  <img class="d-block mx-auto mb-4" src="img/terminal.png" alt="" width="110" height="110">
+  <img class="d-block mx-auto mb-4" src="img/icono_ventas.png" alt="" width="110" height="110">
 
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
