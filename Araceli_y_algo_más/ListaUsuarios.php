@@ -313,8 +313,7 @@ button:hover, .btn:hover {
     </nav>
 
   <!-- Inicio de la seccion de usuarios registrados -->
-
-<!----- CUENTAS REGISTRADAS --->
+<!-- CUENTAS REGISTRADAS -->
 <div class="px-4 py-3 my-3 text-center">
   <h1 class="titulo">Cuentas registradas</h1>
   <img class="d-block mx-auto mb-4" src="img/personas.png" alt="" width="110" height="110">
@@ -324,96 +323,120 @@ button:hover, .btn:hover {
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <ul class="mx-auto mb-2 mb-lg-0">
         <div>
-          <form action="buscar.php" method="POST" class="d-flex" role="search">
-            <h3 class="display-7 fw-normal me-2">Correo del usuario:</h3>
-            <input class="form-control me-2" name="buscar" type="search" placeholder="Ingrese correo del usuario" aria-label="Search">
-            <input class="btn btn-outline-dark" type="submit" value="Buscar">
+          <form id="form-buscar" class="d-flex" role="search">
+            <h3 class="display-7 fw-normal me-2">Buscar usuario:</h3>
+            <input id="input-buscar" class="form-control me-2" name="buscar" type="search" placeholder="Ingrese nombre, apellido o correo">
           </form>
+
+          <div id="resultados-usuarios">
+            <!-- Aquí se cargarán los resultados de la búsqueda vía AJAX -->
+          </div>
         </div>
       </ul>
     </div>
-  </div> <!-- BUSCAR -->
+  </div>
 
-  <!----- TABLA --->
-  <div class="datosP">
-    <div class="D1">
-      <div class="table-responsive">
-        <table class="tablausuarios">
-          <thead>
-            <tr>
-              <th class="tablausuarios2">Código</th>
-              <th class="tablausuarios2">Nombre(s)</th>
-              <th class="tablausuarios2">Apellido(s)</th>
-              <th class="tablausuarios2">Correo</th>
-              <th class="tablausuarios2">Domicilio</th>
-              <th class="tablausuarios2">Teléfono</th>
-              <th class="tablausuarios2">Opciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            $buscar = $_POST['buscar'];
-            $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
-            $sql = "SELECT id,nombre,apellido,correo,domicilio,telefono FROM usuarios WHERE correo LIKE '$buscar%'";
-            $rta = mysqli_query($conexion, $sql);
-            while ($mostrar = mysqli_fetch_row($rta)) {
-            ?>
-            <tr>
-              <td class="tablausuarios2"><?php echo $mostrar[0]; ?></td>
-              <td class="tablausuarios2"><?php echo $mostrar[1]; ?></td>
-              <td class="tablausuarios2"><?php echo $mostrar[2]; ?></td>
-              <td class="tablausuarios2"><?php echo $mostrar[3]; ?></td>
-              <td class="tablausuarios2"><?php echo $mostrar[4]; ?></td>
-              <td class="tablausuarios2"><?php echo $mostrar[5]; ?></td>
-              <td class="tablausuarios2">
-                <div class="d-flex justify-content-center gap-2">
-                  <a href="EliminarUsuarios.php?id=<?php echo $mostrar[0]; ?>">
-                    <button class="btn btn-outline-dark">Eliminar</button>
-                  </a>
-                  <a href="AgregarPermisos.php?id=<?php echo $mostrar[0]; ?>">
-                    <button class="btn btn-outline-dark">Permiso</button>
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <?php } ?>
-          </tbody>
-        </table>
-
-        <center>
-        <br>
-        <div class="back-to-shop" onclick="regresar()">
-          <a class="a2" href="MenuAdmn.php">&leftarrow; <span>Regresar</span></a>
-        </div>
-      </center>
-    </div>
-      </div>
+  <!-- TABLA PRINCIPAL -->
+ <?php
+/*
+<div class="datosP">
+  <div class="D1">
+    <div class="table-responsive">
+      <table class="tablausuarios">
+        <thead>
+          <tr>
+            <th class="tablausuarios2">Código</th>
+            <th class="tablausuarios2">Nombre(s)</th>
+            <th class="tablausuarios2">Apellido(s)</th>
+            <th class="tablausuarios2">Correo</th>
+            <th class="tablausuarios2">Domicilio</th>
+            <th class="tablausuarios2">Teléfono</th>
+            <th class="tablausuarios2">Permiso</th>
+            <th class="tablausuarios2">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          $buscar = $_POST['buscar'];
+          $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
+          $sql = "SELECT id, nombre, apellido, correo, domicilio, telefono, permiso FROM usuarios WHERE correo LIKE '$buscar%'";
+          $rta = mysqli_query($conexion, $sql);
+          while ($mostrar = mysqli_fetch_assoc($rta)) {
+              $permisoTexto = '';
+              switch($mostrar['permiso']){
+                  case 1: $permisoTexto = 'Cliente'; break;
+                  case 2: $permisoTexto = 'Empleado'; break;
+                  case 3: $permisoTexto = 'Administrador'; break;
+                  default: $permisoTexto = 'Desconocido'; break;
+              }
+          ?>
+          <tr>
+            <td class="tablausuarios2"><?php echo $mostrar['id']; ?></td>
+            <td class="tablausuarios2"><?php echo $mostrar['nombre']; ?></td>
+            <td class="tablausuarios2"><?php echo $mostrar['apellido']; ?></td>
+            <td class="tablausuarios2"><?php echo $mostrar['correo']; ?></td>
+            <td class="tablausuarios2"><?php echo $mostrar['domicilio']; ?></td>
+            <td class="tablausuarios2"><?php echo $mostrar['telefono']; ?></td>
+            <td class="tablausuarios2"><?php echo $permisoTexto; ?></td>
+            <td class="tablausuarios2">
+              <div class="d-flex justify-content-center gap-2">
+                <a href="EliminarUsuarios.php?id=<?php echo $mostrar['id']; ?>">
+                  <button class="btn btn-outline-dark">Eliminar</button>
+                </a>
+                <a href="AgregarPermisos.php?id=<?php echo $mostrar['id']; ?>">
+                  <button class="btn btn-outline-dark">Editar permiso</button>
+                </a>
+              </div>
+            </td>
+          </tr>
+          <?php } ?>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
+*/
+?>
 
-
-  <!-- Fin de la seccion de usuarios registrados -->
-
-
-
+  <center>
+    <br>
+    <div class="back-to-shop" onclick="regresar()">
+      <a class="a2" href="MenuAdmn.php">&leftarrow; <span>Regresar</span></a>
     </div>
-
-  </main>
-
-
-
-
-  <br>
-  <!--Creditos  -->
-  <?php include("creditos.php"); ?>
-
-</body>
+  </center>
+</div>
 
 <script type="text/javascript">
-  function regresar(regresar) {
+  function regresar() {
     window.history.back();
   }
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Evitar recarga
+    $("#form-buscar").submit(function(e) {
+        e.preventDefault();
+        let buscar = $("#input-buscar").val();
+        $.ajax({
+            url: 'buscar_usuarios.php',
+            type: 'POST',
+            data: { buscar: buscar },
+            success: function(data) {
+                $("#resultados-usuarios").html(data);
+            }
+        });
+    });
+
+    $("#input-buscar").on("input", function() {
+        $("#form-buscar").submit();
+    });
+
+    $("#form-buscar").submit();
+});
+</script>
+
+
 
 </html>

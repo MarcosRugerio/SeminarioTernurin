@@ -4,6 +4,7 @@ require 'php/confi.php';
 require 'confi/database.php';
 $db = new Database();
 $con = $db->conectar();
+
 ?>
 
 <!DOCTYPE html>

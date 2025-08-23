@@ -32,86 +32,156 @@ $con = $db->conectar();
 </head>
 
 <style>
-  .titulo{ 
-      font-size: 45px;
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      color: #CC6645;
-      text-decoration: underline;
-  }
-    .price {
-        background: url(img/local.jpg) no-repeat center;
-        background-attachment: fixed;
-        background-size: cover;
-        text-align: center;
-        height: 400px;
-    }
+ /* Tipografía general */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9f9;
+  color: #111;
+  margin: 0;
+  padding: 0;
+}
 
-    .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-    }
+/* Título */
+.titulo {
+  font-size: 48px;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  color: #111;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
 
-    @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-        }
-    }
+/* Numeración de pasos */
+.paso {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-right: 10px;
+  color: #111;
+}
 
-    .containerCredi {
-        background-color: #333333;
-    }
+/* Inputs y selects */
+form .form-control {
+  border-radius: 10px;
+  border: 2px solid #111;
+  font-size: 1rem;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
 
+form .form-control:focus {
+  border-color: #cfcdbeff;
+  box-shadow: 0 0 8px rgba(224, 221, 200, 0.8);
+}
 
-    .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-    }
+/* Botones */
+button, .btn {
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
 
-    .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-    }
+button:hover, .btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
 
-    .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-    }
+/* Tabla de USUARIOS estilo dorado con efecto 3D */
+.tablausuarios {
+  width: 90%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
 
-    .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-    }
+.tablausuarios thead {
+  background: linear-gradient(45deg, #FFD700, #C9A400); /* dorado degradado */
+  color: #111;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
 
-    .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
+.tablausuarios th,
+.tablausuarios td {
+  border: none;
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
 
-    .feature-icon {
-        width: 4rem;
-        height: 4rem;
-        border-radius: .75rem;
-    }
+.tablausuarios tbody tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
 
-    .container{
-        text-align: left;
-    }
+.tablausuarios tbody tr:hover {
+  background: rgba(255, 215, 0, 0.2);
+  transform: scale(1.01);
+  transition: 0.3s;
+}
+
+/* Celdas específicas si quieres un estilo distinto */
+.tablausuarios2 {
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Total con diseño */
+.total-box {
+  background: #111;
+  color: #FFD700;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* Contenedor del botón */
+.back-to-shop {
+  display: inline-block;
+  margin: 20px 0;
+}
+
+/* Estilo del enlace */
+.back-to-shop .a2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #e0e0e0;
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.6s ease, background 0.3s, color 0.3s;
+  transform-style: preserve-3d;
+}
+
+/* Texto dentro */
+.back-to-shop .a2 span {
+  font-size: 1rem;
+}
+
+/* Hover con animación espejo */
+.back-to-shop .a2:hover {
+  background: #ccc;
+  color: #000;
+  transform: scaleX(-1);
+}
+
+/* Re-invertimos el texto para que sea legible */
+.back-to-shop .a2:hover span {
+  transform: scaleX(-1);
+  display: inline-block;
+}
 </style>
 
 
@@ -235,109 +305,95 @@ $con = $db->conectar();
   <hr class="featurette-divider" style="color:  #CC6645; " size="2">
 </nav>
 
-  <div class="px-4 py-3 my-3 text-center">
-    <h1 class="titulo">Permiso de Usuario</h1><br>
-    <img class="d-block mx-auto mb-4" src="img/agregar.png" alt="" width="110" height="110">
+<!-- Inicio de la seccion de permisos -->
 
+<!----- PERMISO DE USUARIO --->
+<div class="px-4 py-3 my-3 text-center">
+  <h1 class="titulo">Permiso de Usuario</h1>
+  <img class="d-block mx-auto mb-4" src="img/permisos.png" alt="" width="110" height="110">
 
-<div class="container" >
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-             
-             <ul class=" mx-auto mb-2 mb-lg-0">      
-             
-             <form action="php/permiso.php" method="POST">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="mx-auto mb-2 mb-lg-0">
+        <form action="php/permiso.php" method="POST">
+          <?php 
+            require_once "php/conexion.php";
+            $conexion = conexion();
+            $idpermisouser = $_GET['id'];
+            $query = "SELECT * FROM usuarios WHERE id='$idpermisouser'";
+            $result = mysqli_query($conexion, $query);
+            if (!$result) { die(mysqli_error($conexion)); }
+            if (mysqli_num_rows($result) > 0) {
+              while ($rowData = mysqli_fetch_array($result)) {
+                $nom = $rowData["nombre"];
+                $permiso = $rowData["permiso"];
+          ?>
 
-                          <?php 
-                            require_once "php/conexion.php";
-                            $conexion=conexion();
+          <input class="form-control me-2" type="hidden" value="0" name="idpermiso1"> 
+          <input class="form-control me-2" type="hidden" value="" name="nombrep" readonly> 
+          <br>
+          <h5 class="display-7 fw-normal me-2">Código del usuario:</h5> 
+          <input class="form-control me-2" type="text" value="<?php echo $idpermisouser ?>" name="usuarioid" readonly> 
+          <br>
+          <h5 class="display-7 fw-normal me-2">Nombre:</h5> 
+          <input class="form-control me-2" type="text" value="<?php echo $nom?>" name="nombre" readonly> 
+          <br>
 
-                            $idpermisouser = $_GET['id'];
-                            
-                            $query = ("Select * from usuarios where id='$idpermisouser '");
-                            $result = mysqli_query($conexion, $query);
-                            if (!$result) {
-                              die(mysqli_error($conexion));
-                            }
-          
-                            if (mysqli_num_rows($result) > 0) {
-                                 while ($rowData = mysqli_fetch_array($result)) {
-                                  $nom = $rowData["nombre"];
-                                  $permiso = $rowData["permiso"];
+          <center><h6 class="display-7 fw-normal me-2">Referencias de Permisos</h6></center>
+          <div class="table-responsive">
+            <table class="tablausuarios">
+              <thead>
+                <tr>
+                  <th class="tablausuarios2">Código</th>
+                  <th class="tablausuarios2">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tablausuarios2">1</td>
+                  <td class="tablausuarios2">Cliente</td>
+                </tr>
+                <tr>
+                  <td class="tablausuarios2">2</td>
+                  <td class="tablausuarios2">Empleado</td>
+                </tr>
+                <tr>
+                  <td class="tablausuarios2">3</td>
+                  <td class="tablausuarios2">Administrador</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
 
-                              ?>
+          <h5 class="display-7 fw-normal me-2">Permiso del usuario:</h5> 
+          <select class="form-control me-2" name="permiso" style="text-transform:uppercase;" required>
+            <option><?php echo $permiso?></option>
+            <option>Selecciona el permiso correspondiente</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          <br>
 
-                  <input class="form-control me-2" type="hidden" value="0" name="idpermiso1"> 
-                   <input class="form-control me-2" type="hidden" value="" name="nombrep" readonly> 
-              <br>
-                   
-              <h5 class="display-7 fw-normal me-2">Código del usuario:</h5> 
-                   <input class="form-control me-2" type="text" value="<?php echo $idpermisouser ?>" name="usuarioid" readonly> 
-              <br>
-              <h5 class="display-7 fw-normal me-2">Nombre</h5> 
-                   <input class="form-control me-2" type="text" value="<?php echo $nom?>" name="nombre" readonly> 
-              <br>
-              <center><h6 class="display-7 fw-normal me-2">Referencias de Permisos</h6> </center>
-              <table class="table">
-                   <thead>
-    <tr>
-      <th scope="col">Código</th>
-      <th scope="col">Descripción</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Cliente</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Empleado</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Administrador</td>
-    </tr>
-  </tbody>
-</table>
-                <br>
-                   <h5 class="display-7 fw-normal me-2">Permiso del usuario:</h5> 
-                   <select border-radius: 9px; input class="form-control me-2" type="text" placeholder="Ingrese su presentación" name="permiso" style="text-transform:uppercase;" required value>
-                                            <option > <?php echo $permiso?></option>
-                                            <option>Selecciona el permiso correspondiente</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                  </select>
-              <!-- <br>
+          <center><button type="submit" class="btn btn-outline-dark" name="uploadBtn">Guardar</button></center>
+          <br>
+        </form>
 
-               <h5 class="display-7 fw-normal me-2">Estado del permiso:</h5> 
-                   <select border-radius: 9px; input class="form-control me-2" type="text" placeholder="Ingrese su presentación" name="edopermiso" style="text-transform:uppercase;" required value>
-                                                                        
-                                                                        <option>Inactivo</option>
-                                                                        <option>Activo</option>
-                  </select> -->
-               <br>
+        <center>
+        <br>
+        <div class="back-to-shop" onclick="regresar()">
+          <a class="a2" href="MenuAdmn.php">&leftarrow; <span>Regresar</span></a>
+        </div>
+      </center>
 
-               <center> <button  type="submit" class="btn btn-outline-dark"  name="uploadBtn" >Guardar</button></center><br>
-            </form>
-
-            <div class="back-to-shop" onclick="regresar()"><a class= "a2" href="#" >&leftarrow; </a><span class="text-muted" >Regresar</span></div>
-            <?php }}
-
-?>
-           
-             </ul>  
-
-
-
-            </div>
+        <?php } } ?>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<div>
-  </div> 
-
-  </div>
-                </div>
+<!-- Fin de la seccion de permisos -->
                 <!--Footer -->
 <?php include("creditos.php");?> 
 
