@@ -228,7 +228,7 @@ body {
   <h1 class="titulo">Menú administrador</h1>
 
   <div class="menu-items">
-    <a href="VerVentasClientes.php" class="menu-card">
+    <a href="verVentasClientes_admin.php" class="menu-card">
       <img src="img/ver_ventas_admin.png" alt="Registrar Ventas">
       <span>Ver ventas</span>
     </a>

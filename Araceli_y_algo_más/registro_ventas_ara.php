@@ -347,7 +347,7 @@ $granTotal = 0;
 
   <div class="px-4 py-3 my-3 text-center">
   <h1 class="titulo">Registrar ventas </h1><br>
-  <img class="d-block mx-auto mb-4" src="img/caja-registradora.png" alt="" width="110" height="110">
+  <img class="d-block mx-auto mb-4" src="img/caja_registradora_roja.png" alt="" width="110" height="110">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <ul class=" mx-auto mb-2 mb-lg-0">
