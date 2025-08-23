@@ -246,7 +246,7 @@ $con = $db->conectar();
 }
   </style>
 
-  
+
 <body>
   <main>
     <!--Header -->
@@ -369,8 +369,9 @@ $con = $db->conectar();
       </div>
       <hr class="featurette-divider" style="color:  #CC6645; " size="2">
     </nav>
+    
     <!--Ver pedidos / empleados  -->
-<!----- PEDIDOS REGISTRADAS --->
+<!----- PEDIDOS REGISTRADOS --->
 <div class="px-4 py-3 my-3 text-center">
   <h1 class="titulo">PEDIDOS</h1>
   <img class="d-block mx-auto mb-4" src="img/ver_pedidos_naranja.png" alt="" width="110" height="110">
