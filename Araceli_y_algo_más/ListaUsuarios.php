@@ -41,118 +41,157 @@ $con = $db->conectar();
   <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
   <style>
-    .titulo {
-      font-size: 45px;
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      color: #CC6645;
-      text-decoration: underline;
-    }
+ /* Tipografía general */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9f9;
+  color: #111;
+  margin: 0;
+  padding: 0;
+}
 
-    .price {
-      background: url(img/local.jpg) no-repeat center;
-      background-attachment: fixed;
-      background-size: cover;
-      text-align: center;
-      height: 400px;
-    }
+/* Título */
+.titulo {
+  font-size: 48px;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  color: #111;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
 
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
+/* Numeración de pasos */
+.paso {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-right: 10px;
+  color: #111;
+}
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
+/* Inputs y selects */
+form .form-control {
+  border-radius: 10px;
+  border: 2px solid #111;
+  font-size: 1rem;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
 
-    .containerCredi {
-      background-color: #333333;
-    }
+form .form-control:focus {
+  border-color: #cfcdbeff;
+  box-shadow: 0 0 8px rgba(224, 221, 200, 0.8);
+}
 
+/* Botones */
+button, .btn {
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
 
-    .b-example-divider {
-      height: 3rem;
-      background-color: rgba(0, 0, 0, .1);
-      border: solid rgba(0, 0, 0, .15);
-      border-width: 1px 0;
-      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-    }
+button:hover, .btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
 
-    .b-example-vr {
-      flex-shrink: 0;
-      width: 1.5rem;
-      height: 100vh;
-    }
+/* Tabla de USUARIOS estilo dorado con efecto 3D */
+.tablausuarios {
+  width: 90%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
 
-    .bi {
-      vertical-align: -.125em;
-      fill: currentColor;
-    }
+.tablausuarios thead {
+  background: linear-gradient(45deg, #FFD700, #C9A400); /* dorado degradado */
+  color: #111;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
 
-    .nav-scroller {
-      position: relative;
-      z-index: 2;
-      height: 2.75rem;
-      overflow-y: hidden;
-    }
+.tablausuarios th,
+.tablausuarios td {
+  border: none;
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
 
-    .nav-scroller .nav {
-      display: flex;
-      flex-wrap: nowrap;
-      padding-bottom: 1rem;
-      margin-top: -1px;
-      overflow-x: auto;
-      text-align: center;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-    }
+.tablausuarios tbody tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
 
-    .feature-icon {
-      width: 4rem;
-      height: 4rem;
-      border-radius: .75rem;
-    }
-  </style>
+.tablausuarios tbody tr:hover {
+  background: rgba(255, 215, 0, 0.2);
+  transform: scale(1.01);
+  transition: 0.3s;
+}
 
-  <!--ESTILOS TABLA-->
-  <style>
-    button {
-      background: #2B307C;
-      color: #FFF;
-      font-size: 10px;
-      margin-bottom: 1px;
-      position: relative;
-      top: 10%;
-    }
+/* Celdas específicas si quieres un estilo distinto */
+.tablausuarios2 {
+  font-weight: 500;
+  text-align: center;
+}
 
+/* Total con diseño */
+.total-box {
+  background: #111;
+  color: #FFD700;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
 
-    .tablausuarios2 {
-      border: 0.15em solid #DF5E47;
-      width: 500px;
-      border-radius: 3em;
-    }
+/* Contenedor del botón */
+.back-to-shop {
+  display: inline-block;
+  margin: 20px 0;
+}
 
-    .D1 {
-      margin-bottom: 6%;
-      margin-top: 3%;
-      text-align: left;
-    }
+/* Estilo del enlace */
+.back-to-shop .a2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #e0e0e0;
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.6s ease, background 0.3s, color 0.3s;
+  transform-style: preserve-3d;
+}
 
-    .table-responsive {
+/* Texto dentro */
+.back-to-shop .a2 span {
+  font-size: 1rem;
+}
 
-      margin: 1em;
-      height: 60%;
+/* Hover con animación espejo */
+.back-to-shop .a2:hover {
+  background: #ccc;
+  color: #000;
+  transform: scaleX(-1);
+}
 
-      border-radius: 0em;
+/* Re-invertimos el texto para que sea legible */
+.back-to-shop .a2:hover span {
+  transform: scaleX(-1);
+  display: inline-block;
+}
 
-      width: auto;
-    }
   </style>
 
 <body>
@@ -273,144 +312,88 @@ $con = $db->conectar();
       <hr class="featurette-divider" style="color:  #CC6645; " size="2">
     </nav>
 
-    <div class="px-4 py-3 my-3 text-center">
-      <h1 class="titulo">Cuentas registradas</h1><br>
-      <img class="d-block mx-auto mb-4" src="img/personas.png" alt="" width="110" height="110">
+  <!-- Inicio de la seccion de usuarios registrados -->
 
-      <!-- BUSCAR -->
+<!----- CUENTAS REGISTRADAS --->
+<div class="px-4 py-3 my-3 text-center">
+  <h1 class="titulo">Cuentas registradas</h1>
+  <img class="d-block mx-auto mb-4" src="img/personas.png" alt="" width="110" height="110">
 
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-          <ul class=" mx-auto mb-2 mb-lg-0">
-
-            <div>
-              <form ction="buscar.php" method="POST" class="d-flex" role="search">
-                <h3 class="display-7 fw-normal me-2">Correo del usuario:</h3>
-                <input class="form-control me-2" name="buscar" id="" type="search" placeholder="Ingrese correo del usuario" aria-label="Search">
-                <input class="btn btn-outline-dark" type="submit" value="Buscar">
-              </form>
-            </div>
-
-
-
-          </ul>
-
-
+  <!-- BUSCAR -->
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="mx-auto mb-2 mb-lg-0">
+        <div>
+          <form action="buscar.php" method="POST" class="d-flex" role="search">
+            <h3 class="display-7 fw-normal me-2">Correo del usuario:</h3>
+            <input class="form-control me-2" name="buscar" type="search" placeholder="Ingrese correo del usuario" aria-label="Search">
+            <input class="btn btn-outline-dark" type="submit" value="Buscar">
+          </form>
         </div>
-      </div> <!-- BUSCAR -->
+      </ul>
+    </div>
+  </div> <!-- BUSCAR -->
 
+  <!----- TABLA --->
+  <div class="datosP">
+    <div class="D1">
+      <div class="table-responsive">
+        <table class="tablausuarios">
+          <thead>
+            <tr>
+              <th class="tablausuarios2">Código</th>
+              <th class="tablausuarios2">Nombre(s)</th>
+              <th class="tablausuarios2">Apellido(s)</th>
+              <th class="tablausuarios2">Correo</th>
+              <th class="tablausuarios2">Domicilio</th>
+              <th class="tablausuarios2">Teléfono</th>
+              <th class="tablausuarios2">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            $buscar = $_POST['buscar'];
+            $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
+            $sql = "SELECT id,nombre,apellido,correo,domicilio,telefono FROM usuarios WHERE correo LIKE '$buscar%'";
+            $rta = mysqli_query($conexion, $sql);
+            while ($mostrar = mysqli_fetch_row($rta)) {
+            ?>
+            <tr>
+              <td class="tablausuarios2"><?php echo $mostrar[0]; ?></td>
+              <td class="tablausuarios2"><?php echo $mostrar[1]; ?></td>
+              <td class="tablausuarios2"><?php echo $mostrar[2]; ?></td>
+              <td class="tablausuarios2"><?php echo $mostrar[3]; ?></td>
+              <td class="tablausuarios2"><?php echo $mostrar[4]; ?></td>
+              <td class="tablausuarios2"><?php echo $mostrar[5]; ?></td>
+              <td class="tablausuarios2">
+                <div class="d-flex justify-content-center gap-2">
+                  <a href="EliminarUsuarios.php?id=<?php echo $mostrar[0]; ?>">
+                    <button class="btn btn-outline-dark">Eliminar</button>
+                  </a>
+                  <a href="AgregarPermisos.php?id=<?php echo $mostrar[0]; ?>">
+                    <button class="btn btn-outline-dark">Permiso</button>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
 
-
-
-      <!----- TABLA--->
-
-      <div class="datosP">
-        <div class="D1">
-
-          <div class="table-responsive">
-
-            <table class="tablausuarios">
-
-              <tr>
-                <th class="tablausuarios2">
-                  <center>Código</center>
-                </th>
-                <th class="tablausuarios2">
-                  <center>Nombre(s)</center>
-                </th>
-                <th class="tablausuarios2">
-                  <center>Apellido(s)</center>
-                </th>
-                <th class="tablausuarios2">
-                  <center>Correo</center>
-                </th>
-                <th class="tablausuarios2">
-                  <center>Domicilio</center>
-                </th>
-                <th class="tablausuarios2">
-                  <center>Télefono</center>
-                </th>
-                <th class="tablausuarios2">
-                  <center>Opción</center>
-                </th>
-              </tr>
-              <?php
-              $buscar = $_POST['buscar'];
-              $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
-              $sql = "SELECT id,nombre,apellido,correo,domicilio,telefono FROM usuarios where correo like '$buscar' '%' ";
-              $rta = mysqli_query($conexion, $sql);
-              while ($mostrar = mysqli_fetch_row($rta)) {
-              ?>
-
-                <tr>
-                  <td class="tablausuarios2" readonly>
-                    <center>
-                      <p> <?php echo $mostrar['0'] ?> </p>
-                    </center>
-                  </td>
-
-                  <td class="tablausuarios2" readonly>
-                    <center>
-                      <p> <?php echo $mostrar['1'] ?> </p>
-                    </center>
-                  </td>
-
-                  <td class="tablausuarios2" readonly>
-                    <center>
-                      <p> <?php echo $mostrar['2'] ?></p>
-                    </center>
-                  </td>
-
-                  <td class="tablausuarios2" readonly>
-                    <center>
-                      <p> <?php echo $mostrar['3'] ?></p>
-                    </center>
-                  </td>
-
-                  <td class="tablausuarios2" readonly>
-                    <center>
-                      <p> <?php echo $mostrar['4'] ?></p>
-                    </center>
-                  </td>
-                  <td class="tablausuarios2" readonly>
-                    <center> <?php echo $mostrar['5'] ?></p>
-                    </center>
-                  </td>
-
-                  <td class="tablausuarios2">
-                    <!--a que archivo quiero que se vaya para modificar los datos y el id de la tabla en la que estamos 
-                              trabajando-->
-                    <center> <a href="EliminarUsuarios.php?id=<?php echo $mostrar['0']; ?>">
-                        <button class="btn btn-outline-dark" onclick="getElementsByTagName('textareaa').readonly:false;">Eliminar</button> </a> </center>
-
-                    <center> <a href="AgregarPermisos.php?id=<?php echo $mostrar['0']; ?>">
-                        <button class="btn btn-outline-dark" onclick="getElementsByTagName('textareaa').readonly:false;">Permiso</button> </a> </center>
-                  </td>
-
-                </tr>
-              <?php
-              }
-              ?>
-
-
-
-            </table>
-
-
-
-
-            </center>
-            </table>
-            <center>
-              <br>
-              <div class="back-to-shop" onclick="regresar()"><a class="a2" href="#">&leftarrow; </a><span class="text-muted">Regresar</span></div>
-            </center>
-          </div>
+        <center>
+        <br>
+        <div class="back-to-shop" onclick="regresar()">
+          <a class="a2" href="MenuAdmn.php">&leftarrow; <span>Regresar</span></a>
         </div>
+      </center>
+    </div>
       </div>
+    </div>
+  </div>
+</div>
 
-      <!----- TABLA--->
+
+  <!-- Fin de la seccion de usuarios registrados -->
 
 
 
