@@ -400,31 +400,6 @@ button:hover, .btn:hover {
     </nav>
     <!----- INICIO DE VER VENTAS ADMIN --->
 
-<div class="container my-4">
-  <div class="row">
-
-    <!-- Ventas Generadas por los Empleados -->
-    <div class="col-md-6 text-center mb-4 mb-md-0">
-      <h1 class="titulo">Ventas Generadas por los Empleados</h1><br>
-      <img class="d-block mx-auto mb-4" src="img/icono_ventas.png" alt="Ventas clientes" width="110" height="110">
-      <a class="btn btn-success" href="./verVentasAdmin.php">Ver ventas de empleados</a>
-    </div>
-
-    <!-- Graficas -->
-    <div class="col-md-6">
-      <div class="panel shadow-lg rounded-3 p-3 h-100">
-        <div class="panel-heading text-center mb-3">
-          <h5 class="titulo subtitulo-grafica">Gráficas de las Ventas Generadas por los Pedidos de Clientes en el Mes</h5>
-        </div>
-        <div class="panel-body">
-          <div id="cargaBarras" style="width:100%; height:350px;"></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 <!-- Sección Buscador debajo de ambas -->
 <div class="container my-5">
   <div class="px-4 py-3 text-center">
@@ -470,6 +445,33 @@ button:hover, .btn:hover {
     </div>
   </div>
 </div>
+
+
+<div class="container my-4">
+  <div class="row">
+
+    <!-- Ventas Generadas por los Empleados -->
+    <div class="col-md-6 text-center mb-4 mb-md-0">
+      <h1 class="titulo">Ventas Generadas por los Empleados</h1><br>
+      <img class="d-block mx-auto mb-4" src="img/icono_ventas.png" alt="Ventas clientes" width="110" height="110">
+      <a class="btn btn-success" href="./verVentasEmpleados_admin.php">Ver ventas de empleados</a>
+    </div>
+
+    <!-- Graficas -->
+    <div class="col-md-6">
+      <div class="panel shadow-lg rounded-3 p-3 h-100">
+        <div class="panel-heading text-center mb-3">
+          <h5 class="titulo subtitulo-grafica">Gráficas de las Ventas Generadas por los Pedidos de Clientes en el Mes</h5>
+        </div>
+        <div class="panel-body">
+          <div id="cargaBarras" style="width:100%; height:350px;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
  <center>
         <br>

@@ -12,6 +12,13 @@ $db = new Database();
 $con = $db->conectar();
 ?>
 
+
+<?php
+include_once "base_de_datos.php";
+$sentencia = $base_de_datos->query("SELECT ventas.total, ventas.fecha, ventas.id, GROUP_CONCAT( productos.codigo, '..',  productos.nombre, '..', productos_vendidos.cantidad SEPARATOR '__') AS productos FROM ventas INNER JOIN productos_vendidos ON productos_vendidos.id_venta = ventas.id INNER JOIN productos ON productos.id = productos_vendidos.id_producto GROUP BY ventas.id ORDER BY ventas.id;");
+$ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,252 +39,174 @@ $con = $db->conectar();
   <script type="text/javascript" src="librerias/jquery.js"></script>
   <script type="text/javascript" src="js/main-scripts.js"> </script>
 
-  <script src="librerias/plotly-2.20.0.min.js"></script>
-
 </head>
 <style>
-/* Tipografía general */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f9f9f9;
-  color: #111;
-  margin: 0;
-  padding: 0;
-}
+   /* Tipografía general */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #111;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Título */
-.titulo {
-  font-size: 36px;
-  text-align: center;
-  font-family: 'Merriweather', serif;
-  color: #111;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
-}
+    /* Título */
+    .titulo {
+      font-size: 48px;
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      color: #111;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
 
-/* Inputs y selects */
-form .form-control {
-  border-radius: 10px;
-  border: 2px solid #111;
-  font-size: 1rem;
-  padding: 8px;
-  transition: all 0.3s ease;
-}
+    /* Numeración de pasos */
+    .paso {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-right: 10px;
+      color: #111;
+    }
 
-form .form-control:focus {
-  border-color: #cfcdbeff;
-  box-shadow: 0 0 8px rgba(224, 221, 200, 0.8);
-}
+    /* Inputs y selects */
+    form .form-control {
+      border-radius: 10px;
+      border: 2px solid #111;
+      font-size: 1rem;
+      padding: 8px;
+      transition: all 0.3s ease;
+    }
 
-/* Botones */
-button, .btn {
-  font-family: 'Merriweather', serif;
-  font-weight: bold;
-  letter-spacing: 1px;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
+    form .form-control:focus {
+      border-color: #cfcdbeff;
+      box-shadow: 0 0 8px rgba(224, 221, 200, 0.8);
+    }
 
-button:hover, .btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-}
+    /* Botones */
+    button, .btn {
+      font-family: 'Merriweather', serif;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
 
-/* Tabla principal */
-.tablaventas {
-  width: 90%;
-  margin: 30px auto;
-  border-collapse: collapse;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  border-radius: 15px;
-  overflow: hidden;
-}
+    button:hover, .btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
 
-.tablaventas thead {
-  background: linear-gradient(45deg, #FFD700, #C9A400);
-  color: #111;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-}
+    /* Tabla en dorado con efecto 3D */
+    .tablaventas {
+      width: 90%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border-radius: 15px;
+      overflow: hidden;
+    }
 
-.tablaventas th, 
-.tablaventas td {
-  border: none;
-  padding: 14px 18px;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 500;
-}
+    .tablaventas thead {
+      background: linear-gradient(45deg, #FFD700, #C9A400);
+      color: #111;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
 
-.tablaventas tbody tr:nth-child(even) {
-  background-color: #f6f6f6;
-}
+    .tablaventas th, 
+    .tablaventas td {
+      border: none;
+      padding: 14px 18px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 500;
+    }
 
-.tablaventas tbody tr:hover {
-  background: rgba(255, 215, 0, 0.2);
-  transform: scale(1.01);
-  transition: 0.3s;
-}
+    .tablaventas tbody tr:nth-child(even) {
+      background-color: #f6f6f6;
+    }
 
-/* Tabla secundaria */
-.tablaventas-simple {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 10px 0;
-}
+    .tablaventas tbody tr:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: scale(1.01);
+      transition: 0.3s;
+    }
 
-.tablaventas-simple th, 
-.tablaventas-simple td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  font-size: 0.9rem;
-}
+    /* Total con diseño */
+    .total-box {
+      background: #111;
+      color: #FFD700;
+      padding: 15px 30px;
+      border-radius: 15px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
 
-.tablaventas-simple thead {
-  background: #e0e0e0;
-  color: #111;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-/* Total */
-.total-box {
-  background: #111;
-  color: #FFD700;
-  padding: 15px 30px;
-  border-radius: 15px;
-  font-size: 1.6rem;
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 20px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-}
-
-/* Botón regresar */
+/* Contenedor del botón */
 .back-to-shop {
   display: inline-block;
   margin: 20px 0;
 }
 
+/* Estilo del enlace */
 .back-to-shop .a2 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 12px 20px;
-  background: #e0e0e0;
+  background: #e0e0e0;         /* gris */
   color: #333;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 50px;
+  border-radius: 50px;         /* esquinas redondeadas tipo pill */
   box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
   transition: transform 0.6s ease, background 0.3s, color 0.3s;
-  transform-style: preserve-3d;
+  transform-style: preserve-3d; /* necesario para el efecto espejo */
 }
 
+/* Texto dentro */
 .back-to-shop .a2 span {
   font-size: 1rem;
 }
 
+/* Hover con animación espejo */
 .back-to-shop .a2:hover {
   background: #ccc;
   color: #000;
-  transform: scaleX(-1);
+  transform: scaleX(-1);  /* efecto espejo horizontal */
 }
 
+/* Como el flip invierte todo, re-invertimos el texto para que sea legible */
 .back-to-shop .a2:hover span {
   transform: scaleX(-1);
   display: inline-block;
 }
 
-/* Panel de gráficas */
-.panel {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  padding: 20px;
-  margin-bottom: 30px;
-}
-
-.panel-heading {
-  border-bottom: 2px solid #FFD700;
-  margin-bottom: 15px;
-}
-
-.panel-body {
-  padding: 15px;
-}
-
-/* Contenedor de la gráfica */
-#cargaBarras {
+.tablaventas-simple {
   width: 100%;
-  min-height: 400px;
-  background: #fefefe;
-  border-radius: 12px;
-  box-shadow: inset 0 4px 10px rgba(0,0,0,0.08);
-  padding: 15px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
 }
 
-/* Responsividad */
-@media (max-width: 992px) {
-  .titulo {
-    font-size: 32px;
-  }
-  .tablaventas {
-    width: 100%;
-    font-size: 0.9rem;
-  }
-  .total-box {
-    font-size: 1.2rem;
-    padding: 10px 20px;
-  }
+.tablaventas-simple th,
+.tablaventas-simple td {
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  text-align: left;
 }
 
-@media (max-width: 576px) {
-  .titulo {
-    font-size: 24px;
-    letter-spacing: 1px;
-  }
-  form .form-control {
-    font-size: 0.9rem;
-  }
-  .tablaventas th, .tablaventas td {
-    padding: 8px;
-    font-size: 0.85rem;
-  }
-  #cargaBarras {
-    min-height: 250px;
-  }
+.tablaventas-simple th {
+  background-color: #f5f5f5;
+  font-weight: 500;
 }
 
-/* Subtítulo específico para gráficas */
-.subtitulo-grafica {
-  font-family: "Arial", sans-serif; /* puedes poner otra como Roboto, Poppins, etc */
-  font-size: 1rem;  /* más pequeño que los h1/h2 */
-  font-weight: 600;
-  color: #444;
+.tablaventas-simple td {
+  background-color: #fff;
 }
-
-
-/* Estilo único para el botón de buscar */
-.btn-buscar {
-  background-color: #000;      /* Fondo negro */
-  color: #fff;                 /* Texto blanco */
-  border: 2px solid #000;      /* Borde negro */
-  font-weight: bold;           /* Texto en negrita */
-  padding: 8px 20px;           /* Espaciado interno */
-  border-radius: 8px;          /* Bordes redondeados */
-  transition: all 0.3s ease;   /* Animación suave */
-}
-
-.btn-buscar:hover {
-  background-color: #fff;      /* Fondo blanco al pasar */
-  color: #000;                 /* Texto negro */
-  border-color: #000;
-  transform: scale(1.05);      /* Ligeramente más grande */
-}
-
-</style>
-
+</style> <!--ESTILOS TABLA-->
 
 <body>
 
@@ -307,6 +236,10 @@ button:hover, .btn:hover {
                 <li><a class="dropdown-item" style="color: #6E0023;" href="productos_herbales.php">Herbales</a></li>
                 <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricionales.php">Nutricionales</a></li>
                 <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricosmeticos.php">Nutricosmenticos</a></li>
+                <li>
+                  <hr class="dropdown-divider" style="color: #f0cea5">
+                </li>
+                <li><a class="dropdown-item" style="color: #6E0023;" href="#">Extras</a></li>
               </ul>
             </li>
            <li><a href="blog.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
@@ -398,89 +331,102 @@ button:hover, .btn:hover {
       </div>
       <hr class="featurette-divider" style="color:  #CC6645; " size="2">
     </nav>
-    <!----- INICIO DE VER VENTAS ADMIN --->
+    <!----- Ver ventas REGISTRADAS --->
+<div class="px-4 py-3 my-3 text-center">
+  <h1 class="titulo">VENTAS EMPLEADOS</h1>
+  <img class="d-block mx-auto mb-4" src="img/icono_ventas.png" alt="" width="110" height="110">
+  <br>
 
-<div class="container my-4">
-  <div class="row">
+    <?php
+  // ALERTAS DE ESTADO
+  if (isset($_GET["status"])) {
+      $mensaje = "";
+      $tipo = "";
 
-    <!-- Ventas Generadas por los Empleados -->
-    <div class="col-md-6 text-center mb-4 mb-md-0">
-      <h1 class="titulo">Ventas Generadas por los Empleados</h1><br>
-      <img class="d-block mx-auto mb-4" src="img/icono_ventas.png" alt="Ventas clientes" width="110" height="110">
-      <a class="btn btn-success" href="./verVentasAdmin.php">Ver ventas de empleados</a>
-    </div>
+      switch($_GET["status"]) {
+          case "1":
+              $mensaje = "¡Correcto! Venta eliminada"; 
+              $tipo = "success";
+              break;
+          case "2":
+              $mensaje = "Error al eliminar la venta";
+              $tipo = "danger";
+              break;
+      }
+  ?>
+  <div class="alert alert-<?php echo $tipo ?> alert-dismissible fade show" role="alert">
+      <?php echo $mensaje; ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <?php } ?>
 
-    <!-- Graficas -->
-    <div class="col-md-6">
-      <div class="panel shadow-lg rounded-3 p-3 h-100">
-        <div class="panel-heading text-center mb-3">
-          <h5 class="titulo subtitulo-grafica">Gráficas de las Ventas Generadas por los Pedidos de Clientes en el Mes</h5>
-        </div>
-        <div class="panel-body">
-          <div id="cargaBarras" style="width:100%; height:350px;"></div>
-        </div>
+  <div class="datosP">
+    <div class="D1">
+      <div class="table-responsive">
+        <table class="tablaventas">
+          <thead>
+            <tr>
+              <th>Número</th>
+              <th>Fecha</th>
+              <th>Productos vendidos</th>
+              <th>Total</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach($ventas as $venta){ ?>
+            <tr>
+              <td><?php echo $venta->id ?></td>
+              <td><?php echo $venta->fecha ?></td>
+              <td>
+                <div class="table-responsive">
+                  <table class="tablaventas-simple">
+                    <thead>
+                      <tr>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach(explode("__", $venta->productos) as $productosConcatenados){ 
+                      $producto = explode("..", $productosConcatenados) ?>
+                      <tr>
+                        <td><?php echo $producto[0] ?></td>
+                        <td><?php echo $producto[1] ?></td>
+                        <td><?php echo $producto[2] ?></td>
+                      </tr>
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+              <td><?php echo $venta->total ?></td>
+              <td>
+                <a class="btn btn-danger" 
+                href="<?php echo 'eliminarVenta.php?id=' . $venta->id ?>" 
+                onclick="return confirmarEliminar();">
+                <i class="fa fa-trash"></i>
+              </a>
+              </td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
       </div>
-    </div>
 
-  </div>
-</div>
-
-<!-- Sección Buscador debajo de ambas -->
-<div class="container my-5">
-  <div class="px-4 py-3 text-center">
-    <h1 class="titulo">Ventas Generadas por los Pedidos de Clientes</h1><br>
-    <img class="d-block mx-auto mb-4" src="img/icono_terminal.png" alt="Ventas clientes" width="110" height="110">
-
-    <!-- Formulario buscador -->
-    <div class="d-flex flex-wrap align-items-center justify-content-center mb-4">
-      <form action="buscar.php" method="POST" class="d-flex flex-wrap gap-2" role="search">
-        <label class="fw-bold align-self-center">Código:</label>
-        <input class="form-control me-2" name="buscar" type="search" placeholder="Ingrese el código" aria-label="Search">
-        <input class="btn btn-buscar" type="submit" value="Buscar">
-      </form>
-    </div>
-
-    <!-- Tabla resultados -->
-    <div class="table-responsive">
-      <table class="tablaventas">
-        <thead class="table-dark">
-          <tr>
-            <th>Código</th>
-            <th>Nombre del producto</th>
-            <th>Cantidad Vendida</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          if (isset($_POST['buscar'])) {
-            $buscar = $_POST['buscar'];
-            $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
-            $sql = "SELECT id,nombre,cantidad FROM detalle_pedido WHERE id LIKE '$buscar%'";
-            $rta = mysqli_query($conexion, $sql);
-            while ($mostrar = mysqli_fetch_row($rta)) {
-          ?>
-          <tr>
-            <td><?php echo $mostrar[0] ?></td>
-            <td><?php echo $mostrar[1] ?></td>
-            <td><?php echo $mostrar[2] ?></td>
-          </tr>
-          <?php } } ?>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
- <center>
+      <center>
         <br>
         <div class="back-to-shop" onclick="regresar()">
-          <a class="a2" href="MenuAdmn.php">&leftarrow; <span>Regresar</span></a>
+          <a class="a2" href="verVentasClientes_admin.php">&leftarrow; <span>Regresar</span></a>
         </div>
-  </center>
+      </center>
+    </div>
+  </div>
+</div>
 
 
-    <!-- FIN DE VER VENTAS ADMIN --->
-
+    <!----- Fin de ver ventas REGISTRADAS --->
     <!--Footer -->
     <?php include("creditos.php"); ?>
 
@@ -489,12 +435,12 @@ button:hover, .btn:hover {
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
- 
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-        $('#cargaBarras').load('barras.php');
-    });
+  <script>
+function confirmarEliminar() {
+    return confirm("¿Estás seguro de que deseas eliminar esta venta?");
+}
 </script>
 
+ 
 </html>

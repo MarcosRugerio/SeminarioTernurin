@@ -184,6 +184,28 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
   transform: scaleX(-1);
   display: inline-block;
 }
+
+.tablaventas-simple {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.tablaventas-simple th,
+.tablaventas-simple td {
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  text-align: left;
+}
+
+.tablaventas-simple th {
+  background-color: #f5f5f5;
+  font-weight: 500;
+}
+
+.tablaventas-simple td {
+  background-color: #fff;
+}
 </style> <!--ESTILOS TABLA-->
 
 <body>
@@ -312,7 +334,31 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
     <!----- Ver ventas REGISTRADAS --->
 <div class="px-4 py-3 my-3 text-center">
   <h1 class="titulo">Ver ventas</h1>
+  <img class="d-block mx-auto mb-4" src="img/icono_ventas.png" alt="" width="110" height="110">
   <br>
+
+    <?php
+  // ALERTAS DE ESTADO
+  if (isset($_GET["status"])) {
+      $mensaje = "";
+      $tipo = "";
+
+      switch($_GET["status"]) {
+          case "1":
+              $mensaje = "¡Correcto! Venta eliminada"; 
+              $tipo = "success";
+              break;
+          case "2":
+              $mensaje = "Error al eliminar la venta";
+              $tipo = "danger";
+              break;
+      }
+  ?>
+  <div class="alert alert-<?php echo $tipo ?> alert-dismissible fade show" role="alert">
+      <?php echo $mensaje; ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <?php } ?>
 
   <div class="datosP">
     <div class="D1">
@@ -334,7 +380,7 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
               <td><?php echo $venta->fecha ?></td>
               <td>
                 <div class="table-responsive">
-                  <table class="tablaventas">
+                  <table class="tablaventas-simple">
                     <thead>
                       <tr>
                         <th>Código</th>
@@ -357,9 +403,11 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
               </td>
               <td><?php echo $venta->total ?></td>
               <td>
-                <a class="btn btn-danger" href="<?php echo "eliminarVenta.php?id=" . $venta->id?>">
-                  <i class="fa fa-trash"></i>
-                </a>
+                <a class="btn btn-danger" 
+                href="<?php echo 'eliminarVenta.php?id=' . $venta->id ?>" 
+                onclick="return confirmarEliminar();">
+                <i class="fa fa-trash"></i>
+              </a>
               </td>
             </tr>
             <?php } ?>
@@ -387,5 +435,12 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  <script>
+function confirmarEliminar() {
+    return confirm("¿Estás seguro de que deseas eliminar esta venta?");
+}
+</script>
+
  
 </html>
