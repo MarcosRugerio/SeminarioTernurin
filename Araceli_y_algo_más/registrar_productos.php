@@ -4,26 +4,6 @@ require 'php/confi.php';
 require 'confi/database.php';
 $db = new Database();
 $con = $db->conectar();
-?>
-
-<?php
-////////////////// CONEXION A LA BASE DE DATOS //////////////////
-
-$host = 'localhost';
-$basededatos = 'araceli_tienda';
-$usuario = 'root';
-$contraseña = '';
-
-
-$conexion = new mysqli($host, $usuario, $contraseña, $basededatos);
-if ($conexion->connect_errno) {
-  die("Fallo la conexión : (" . $conexion->mysqli_connect_errno()
-    . ") " . $conexion->mysqli_connect_error());
-}
-///////////////////CONSULTA DE LA TABLA paquete///////////////////////
-
-$paquete = "SELECT * FROM paquete order by id_alumno";
-$querypaquete = $conexion->query($paquete);
 
 ?>
 
@@ -34,7 +14,7 @@ $querypaquete = $conexion->query($paquete);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>paquete</title>
+  <title>Registrar productos</title>
 
   <!--REFERENCIAR LIBRERIAS-->
   <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
@@ -47,37 +27,30 @@ $querypaquete = $conexion->query($paquete);
   <script type="text/javascript" src="librerias/jquery.js"></script>
   <script type="text/javascript" src="js/main-scripts.js"> </script>
 
-  <!-- Optional theme -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
-
-  <script>
-    $(function() {
-      // Clona la fila oculta que tiene los campos base, y la agrega al final de la tabla
-      $("#adicional").on('click', function() {
-        $("#tabla tbody tr:eq(0)").clone().removeClass('fila-fija').appendTo("#tabla");
-      });
-
-      // Evento que selecciona la fila y la elimina 
-      $(document).on("click", ".eliminar", function() {
-        var parent = $(this).parents().get(0);
-        $(parent).remove();
-      });
-    });
-  </script>
-
 </head>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+/* Tipografía general */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #111;
+      margin: 0;
+      padding: 0;
+    }
 
-  .titulo {
-    font-size: 45px;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    color: #CC6645;
-    text-decoration: underline;
-  }
 
+    
+    /* Título */
+    .titulo {
+      font-size: 48px;
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      color: #111;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
 
   .price {
     background: url(img/local.jpg) no-repeat center;
@@ -149,11 +122,82 @@ $querypaquete = $conexion->query($paquete);
     border-radius: .75rem;
   }
 
-  .container {
-    text-align: left;
-  }
+/* Contenedor del botón */
+.back-to-shop {
+  display: inline-block;
+  margin: 20px 0;
+}
+
+/* Estilo del enlace */
+.back-to-shop .a2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #e0e0e0;         /* gris */
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;         /* esquinas redondeadas tipo pill */
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.6s ease, background 0.3s, color 0.3s;
+  transform-style: preserve-3d; /* necesario para el efecto espejo */
+}
+
+/* Texto dentro */
+.back-to-shop .a2 span {
+  font-size: 1rem;
+}
+
+/* Hover con animación espejo */
+.back-to-shop .a2:hover {
+  background: #ccc;
+  color: #000;
+  transform: scaleX(-1);  /* efecto espejo horizontal */
+}
+
+/* Como el flip invierte todo, re-invertimos el texto para que sea legible */
+.back-to-shop .a2:hover span {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
 </style>
 
+<!--ESTILOS TABLA-->
+<style>
+  button {
+    background: #2B307C;
+    color: #FFF;
+    font-size: 10px;
+    margin-bottom: 1px;
+    position: relative;
+    top: 10%;
+  }
+
+
+  .tablausuarios2 {
+    border: 0.15em solid #DF5E47;
+    width: 500px;
+    border-radius: 3em;
+  }
+
+  .D1 {
+    margin-bottom: 6%;
+    margin-top: 3%;
+    text-align: left;
+  }
+
+  .table-responsive {
+
+    margin: 1em;
+    height: 60%;
+
+    border-radius: 0em;
+
+    width: auto;
+  }
+</style> <!--ESTILOS TABLA-->
 
 <body>
   <!--Header -->
@@ -198,7 +242,6 @@ $querypaquete = $conexion->query($paquete);
         <div class="text-end">
           <button type="button" class="btn" onclick="search_producto()">Buscar</button>
         </div>
-
         <a href="carrito.php" class="btn" style="font-family:'Monserrat', sans-serif;">
           Mi Carrito <span style="background:#6E0023; color:white;" id="num_cart" class="badge text-bg-secondary"><?php echo $num_cart; ?></span>
         </a>
@@ -274,148 +317,191 @@ $querypaquete = $conexion->query($paquete);
   </nav>
 
   <div class="px-4 py-3 my-3 text-center">
-    <h1 class="titulo">Agregar Nueva Receta</h1><br>
-    <a href="Lpaquete.php">
-      <img class="d-block mx-auto mb-4" src="img/libro-de-paquete.png" alt="" width="110" height="110" title="Lista paquete">
-    </a>
+    <h1 class="titulo">Registrar productos</h1><br>
+    <img class="d-block mx-auto mb-4" src="img/registro_produc.png" alt="" width="110" height="110">
 
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <!----INICIO DEL FORMULARIO DE REGISTRO--->
 
-        <ul class=" mx-auto mb-2 mb-lg-0">
+<!---- INCIO PHP DE REGISTRO--->
+<?php
+    // PROCESO DE REGISTRO
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-          <form method="post">
-            <table class="table" id="tabla">
-              <tr class="fila-fija">
-                <h5 class="display-7 fw-normal me-2">Nombre de la Bebida o Alimento:</h5>
+        if (
+            !empty($_POST["codigo"]) &&
+            !empty($_POST["nombre"]) &&
+            !empty($_POST["descripcion"]) &&
+            !empty($_POST["precio1"]) &&
+            !empty($_POST["existencia"]) &&
+            !empty($_POST["categoria"]) &&
+            isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0
+        ) {
 
-                <select class="form-control me-2" name="id_producto" required>
-                  <?php
-                  $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
-                  $query1 = ("Select id, nombre from productos");
-                  $consulta = mysqli_query($conexion, $query1); ?>
+            $codigo      = $_POST["codigo"];
+            $nombre      = $_POST["nombre"];
+            $descripcion = $_POST["descripcion"];
+            $precio1     = $_POST["precio1"];
+            $existencia  = $_POST["existencia"];
+            $categoria   = $_POST["categoria"];
 
-                  <?php
-                  while ($obj = mysqli_fetch_object($consulta)) {
-                  ?>
-                    <option value="<?php echo $obj->id ?>"><?php echo $obj->nombre; ?></option>
-                  <?php
-                  }
-                  ?>
-                </select>
+            // VERIFICAR DUPLICADOS
+            $check_sql = "SELECT COUNT(*) FROM productos WHERE codigo = :codigo";
+            $check_stmt = $con->prepare($check_sql);
+            $check_stmt->bindValue(':codigo', $codigo);
+            $check_stmt->execute();
+            $count = $check_stmt->fetchColumn();
 
-                <br>
-                <h5 class="display-7 fw-normal me-2">Ingredientes para esta Bebida/Alimento:</h5>
-
-
-                <td>
-                  <select class="form-control me-2" name="id_ingrediente[]" required>
-                    <?php
-                    $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
-                    $query1 = ("Select id, nombre from inventario");
-                    $consulta = mysqli_query($conexion, $query1); ?>
-
-                    <?php
-                    while ($obj = mysqli_fetch_object($consulta)) {
-                    ?>
-                      <option value="<?php echo $obj->id ?>"><?php echo $obj->nombre; ?></option>
-                    <?php
-                    }
-                    ?>
-                  </select>
-                </td>
-                <td>
-                  <input required name="cantidad[]" placeholder="#Rebanadas/Piezas/Shots Usados de este ingrediente:" />
-                </td>
-                <td class="eliminar"><input type="button" value="Menos -" /></td>
-              </tr>
-            </table>
-            <center>
-              <button id="adicional" name="adicional" type="button" class="btn btn-warning"> Más + </button>
-            </center>
-
-            <div class="btn-der">
-              <br><br>
-              <center>
-                <input type="submit" name="insertar" value="Guardar Receta" class="btn btn-info" />
-              </center>
-            </div>
-            <br>
-
-          </form>
-
-          <?php
-
-          //////////////////////// PRESIONAR EL BOTÓN //////////////////////////
-          if (isset($_POST['insertar'])) {
-
-            //$items1 = ($_POST['id_producto']);
-            $items2 = ($_POST['id_ingrediente']);
-            $items3 = ($_POST['cantidad']);
-
-            $id_producto = $_POST["id_producto"];
-
-            ///////////// SEPARAR VALORES DE ARRAYS, EN ESTE CASO SON 3 ARRAYS UNO POR CADA INPUT ////////////////////)
-            while (true) {
-
-              //// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
-              // $item1 = current($items1);
-              $item2 = current($items2);
-              $item3 = current($items3);
-
-              ////// ASIGNARLOS A VARIABLES ///////////////////
-              // $prod=(( $item1 !== false) ? $item1 : ", &nbsp;");
-              $ingr = (($item2 !== false) ? $item2 : ", &nbsp;");
-              $cant = (($item3 !== false) ? $item3 : ", &nbsp;");
-
-              //// CONCATENAR LOS VALORES EN ORDEN PARA SU FUTURA INSERCIÓN ////////
-              $valores = '("' . $id_producto . '","' . $ingr . '","' . $cant . '"),';
-
-              //////// YA QUE TERMINA CON COMA CADA FILA, SE RESTA CON LA FUNCIÓN SUBSTR EN LA ULTIMA FILA /////////////////////
-              $valoresQ = substr($valores, 0, -1);
-
-              ///////// QUERY DE INSERCIÓN ////////////////////////////
-
-              $sql = "INSERT INTO receta (productos_id,inventario_id,cantidad_inventario) 
-					VALUES $valoresQ";
-
-              $sqlRes = $conexion->query($sql) or mysql_error();
-              echo '<script language="javascript">alert("Receta Guardada con Exito!");window.location.href="Lpaquete.php"</script>';
-
-
-              // Up! Next Value
-              // $item1 = next( $items1 );
-              $item2 = next($items2);
-              $item3 = next($items3);
-
-              // Check terminator
-              if ($item2 === false && $item3 === false) break;
+            if ($count > 0) {
+                echo "<script>alert('⚠️ Producto ya en existencia'); window.location.href = window.location.href;</script>";
+                exit;
             }
-          }
 
-          ?>
+            // CARPETAS
+            switch ($categoria) {
+                case "1": $carpeta_fisica = "img/Productos_Ara/NutriCosmeti/"; $carpeta_db = "NutriCosmeti/"; break;
+                case "2": $carpeta_fisica = "img/Productos_Ara/herbales/";  $carpeta_db = "herbales/"; break;
+                case "3": $carpeta_fisica = "img/Productos_Ara/NutriCion/";  $carpeta_db = "NutriCion/"; break;
+                default: $carpeta_fisica = "img/Productos_Ara/Otros/";       $carpeta_db = "Otros/"; break;
+            }
 
-        </ul>
+            if (!is_dir($carpeta_fisica)) mkdir($carpeta_fisica, 0777, true);
+
+            $nombre_img = basename($_FILES["imagen"]["name"]);
+            $ruta_fisica = $carpeta_fisica . $nombre_img;
+            $ruta_img_db = $carpeta_db . $nombre_img;
+
+            // SUBIR IMAGEN
+            if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta_fisica)) {
+
+                // INSERTAR EN DB
+                $sql = "INSERT INTO productos (codigo, nombre, descripcion, precio1, existencia, categoria_id, ruta_img)
+                        VALUES (:codigo, :nombre, :descripcion, :precio1, :existencia, :categoria, :ruta_img)";
+                $stmt = $con->prepare($sql);
+                $stmt->bindValue(':codigo', $codigo);
+                $stmt->bindValue(':nombre', $nombre);
+                $stmt->bindValue(':descripcion', $descripcion);
+                $stmt->bindValue(':precio1', $precio1);
+                $stmt->bindValue(':existencia', $existencia);
+                $stmt->bindValue(':categoria', $categoria);
+                $stmt->bindValue(':ruta_img', $ruta_img_db);
+
+                if ($stmt->execute()) {
+                    echo "<div class='alert alert-success text-center'>✅ Producto registrado correctamente</div>";
+                } else {
+                    $error = $stmt->errorInfo();
+                    echo "<div class='alert alert-danger text-center'>❌ Error: " . $error[2] . "</div>";
+                }
+
+            } else {
+                echo "<div class='alert alert-danger text-center'>❌ Error al subir la imagen</div>";
+            }
+
+        } else {
+            echo "<div class='alert alert-warning text-center'>⚠️ Todos los campos son requeridos</div>";
+        }
+    }
+    ?>
+
+<!--FIN PHP DE REGISTRO--->
+    <form action="" method="POST" enctype="multipart/form-data">
+
+      <!-- Código del producto -->
+      <div class="mb-3">
+        <label for="codigo" class="form-label fw-bold">Código del producto</label>
+        <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Ej. 01_Algasilicio" required>
       </div>
 
-      <center>
+      <!-- Nombre del producto -->
+      <div class="mb-3">
+        <label for="nombre" class="form-label fw-bold">Nombre completo</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej. Algasilicio" required>
+      </div>
+
+      <!-- Descripción -->
+      <div class="mb-3">
+        <label for="descripcion" class="form-label fw-bold">Descripción</label>
+        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Escribe la descripción..." required></textarea>
+      </div>
+
+      <!-- Categoría -->
+      <div class="mb-3">
+        <label for="categoria" class="form-label fw-bold">Categoría</label>
+        <select class="form-select" id="categoria" name="categoria" required onchange="actualizarRuta()">
+          <option value="">-- Selecciona una categoría --</option>
+          <option value="1">Nutricosmeticos</option>
+          <option value="2">Herbales</option>
+          <option value="3">Nutricionales</option>
+        </select>
+      </div>
+
+      <!-- Ruta automática -->
+      <div class="mb-3">
+        <label for="ruta" class="form-label fw-bold">Ruta de imagen</label>
+        <input type="text" class="form-control" id="ruta" readonly required>
+      </div>
+
+      <!-- Subir archivo -->
+      <div class="mb-3">
+        <label for="imagen" class="form-label fw-bold">Seleccionar imagen</label>
+        <input class="form-control" type="file" id="imagen" name="imagen" accept="image/*" required onchange="mostrarVistaPrevia(event)">
+      </div>
+
+      <!-- Vista previa -->
+      <div class="text-center mb-3">
+        <img id="preview" src="" alt="Vista previa" class="img-thumbnail" style="max-width: 150px; display:none;">
+      </div>
+
+      <!-- Precio -->
+      <div class="mb-3">
+        <label for="precio1" class="form-label fw-bold">Precio</label>
+        <input type="number" step="0.01" class="form-control" id="precio1" name="precio1" placeholder="Ej. 499.00" required>
+      </div>
+
+      <!-- Existencia -->
+      <div class="mb-3">
+        <label for="existencia" class="form-label fw-bold">Existencia</label>
+        <input type="number" class="form-control" id="existencia" name="existencia" placeholder="Ej. 10" required>
+      </div>
+
+      <!-- Botón -->
+      <div class="d-grid">
+        <button type="submit" class="btn btn-success">Registrar producto</button>
+      </div>
+    </form>
+  </div>
+
+<center>
         <br>
-        <div class="back-to-shop" onclick="regresar()"><a class="a2" href="#">&leftarrow; </a><span class="text-muted">Regresar</span></div>
+        <div class="back-to-shop" onclick="regresar()">
+          <a class="a2" href="MenuProductos.php">&leftarrow; <span>Regresar</span></a>
+        </div>
       </center>
-    </div>
+
+ </div>
+    <!----FIN DEL FORMULARIO DE REGISTRO--->
 
   </div>
-
-  </div>
+  <!--Footer -->
   <?php include("creditos.php"); ?>
 
 </body>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-<script type="text/javascript">
-  function regresar(regresar) {
-    window.history.back();
-  }
+<script>
+function actualizarRuta() {
+    const categoria = document.getElementById("categoria").value;
+    let ruta = "";
+    if (categoria == "1") ruta = "NutriCosmeti/"; // ruta relativa
+    else if (categoria == "2") ruta = "herbales/";
+    else if (categoria == "3") ruta = "NutriCion/";
+    document.getElementById("ruta").value = ruta;
+}
+
+function mostrarVistaPrevia(event) {
+    const preview = document.getElementById("preview");
+    preview.src = URL.createObjectURL(event.target.files[0]);
+    preview.style.display = "block";
+}
 </script>
 
 </html>

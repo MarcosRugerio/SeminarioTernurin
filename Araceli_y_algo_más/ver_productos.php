@@ -4,7 +4,9 @@ require 'php/confi.php';
 require 'confi/database.php';
 $db = new Database();
 $con = $db->conectar();
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +14,7 @@ $con = $db->conectar();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menú productos</title>
+  <title>Ver productos</title>
 
   <!--REFERENCIAR LIBRERIAS-->
   <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
@@ -20,88 +22,92 @@ $con = $db->conectar();
   <link rel="stylesheet" type="text/css" href="librerias/bootstrap/css/bootstrap.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="librerias/jquery.js"></script>
-  <script type="text/javascript" src="js/main-scripts.js"> </script>
 
   <link rel="shortcut icon" href="img/logotipo_araceli.png">
-
+  <script type="text/javascript" src="librerias/jquery.js"></script>
+  <script type="text/javascript" src="js/main-scripts.js"> </script>
 
 </head>
 
 <style>
-/* Tipografía */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #fff;
-  margin: 0;
-  padding: 0;
-}
+ /* Tipografía general */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #111;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Contenedor principal */
-.menu-container {
-  text-align: center;
-  padding: 20px;
-  max-width: 1000px;
-  margin: auto;
-}
+  .price {
+    background: url(img/local.jpg) no-repeat center;
+    background-attachment: fixed;
+    background-size: cover;
+    text-align: center;
+    height: 400px;
+  }
 
-/* Título */
-.menu-container .titulo {
-  font-size: 2.5rem; /* más grande */
-  margin-bottom: 50px;
-  color: #222;
-  font-weight: 700;
-}
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
 
-/* Contenedor de items */
-.menu-items {
-  display: flex;
-  justify-content: center;
-  gap: 70px; /* más espacio entre opciones */
-  flex-wrap: wrap;
-}
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
 
-/* Tarjetas de menú */
-.menu-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  transition: transform 0.3s, color 0.3s;
-}
+  .containerCredi {
+    background-color: #333333;
+  }
 
-/* Imágenes responsivas manteniendo la forma original */
-.menu-card img {
-  width: clamp(120px, 18vw, 220px);   /* mínimo 120px, se ajusta al ancho de pantalla y máximo 220px */
-  height: auto;                        /* altura automática para respetar proporciones */
-  object-fit: contain;                 /* mantiene la imagen completa sin recortar */
-  background: #f0f0f0;
-  padding: 12px;
-  margin-bottom: 18px;
-  transition: transform 0.3s;
-  box-shadow: 0px 6px 14px rgba(0,0,0,0.25);
-}
 
-/* Texto responsivo */
-.menu-card span {
-  font-size: clamp(1rem, 2vw, 1.6rem); /* mínimo 1rem, ajusta según ancho y máximo 1.6rem */
-  font-weight: 600;
-  color: #333;
-  letter-spacing: 0.5px;
-}
+  .b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
 
-/* Hover */
-.menu-card:hover {
-  transform: translateY(-8px);
-}
+  .b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+  }
 
-.menu-card:hover img {
-  transform: scale(1.1);
-}
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
 
-.menu-card:hover span {
-  color: #555;
-}
+  .nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+  }
+
+  .nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .feature-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: .75rem;
+  }
 
 /* Contenedor del botón */
 .back-to-shop {
@@ -143,8 +149,67 @@ body {
   display: inline-block;
 }
 
-
 </style>
+
+<style>
+/* Contenedor general centrado */
+.productos-container {
+    text-align: center;
+    padding: 20px;
+}
+   /* Título */
+    .titulo {
+      font-size: 48px;
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      color: #111;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+.header-img {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor con scroll horizontal */
+.table-container {
+    overflow-x: auto;
+    margin: 0 auto 20px auto;
+}
+
+/* Imagenes pequeñas centradas */
+.img-producto {
+    max-width: 50px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Media queries para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .tablaproductos th, .tablaproductos td {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+    .img-producto {
+        max-width: 35px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .tablaproductos th, .tablaproductos td {
+        padding: 6px;
+        font-size: 0.75rem;
+    }
+    .img-producto {
+        max-width: 30px;
+    }
+}
+</style>
+
 
 <body>
   <!--Header -->
@@ -189,7 +254,6 @@ body {
         <div class="text-end">
           <button type="button" class="btn" onclick="search_producto()">Buscar</button>
         </div>
-
         <a href="carrito.php" class="btn" style="font-family:'Monserrat', sans-serif;">
           Mi Carrito <span style="background:#6E0023; color:white;" id="num_cart" class="badge text-bg-secondary"><?php echo $num_cart; ?></span>
         </a>
@@ -264,38 +328,111 @@ body {
     <hr class="featurette-divider" style="color:  #CC6645; " size="2">
   </nav>
 
-  <!-- Inicio del menu administrador -->
-<div class="menu-container">
-  <h1 class="titulo">Menú productos</h1>
+   <!----INICIO DE LA TABLA DE VER PRODUCTOS--->
+<div class="productos-container">
+    <h1 class="titulo">Ver productos</h1>
+    <img class="header-img" src="img/ver_produc.png" alt="Productos" width="110" height="110">
 
-  <div class="menu-items">
-    <a href="registrar_productos.php" class="menu-card">
-      <img src="img/menu_agregarprod.png" alt="Registrar Ventas">
-      <span>Registrar productos</span>
-    </a>
+    <?php
+if (isset($_GET['mensaje'])) {
+    $mensaje = $_GET['mensaje'];
+    if ($mensaje == "eliminado") {
+        echo "<div id='alerta-mensaje' class='alert alert-success text-center'>✅ Producto eliminado correctamente</div>";
+    }
+    if ($mensaje == "actualizado") {
+        echo "<div id='alerta-mensaje' class='alert alert-success text-center'>✅ Producto actualizado correctamente</div>";
+    }
+}
+?>
 
-    <a href="ver_productos.php" class="menu-card">
-      <img src="img/menu_verprod.png" alt="Ver Ventas">
-      <span>Ver productos</span>
-    </a>
-  </div>
+   <div class="table-container shadow p-3 rounded bg-white">
+        <table class="table table-bordered table-hover align-middle tablaproductos">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Existencia</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $sql = "SELECT * FROM productos";
+                $stmt = $con->prepare($sql);
+                $stmt->execute();
+                $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      <center>
+                foreach ($productos as $producto) {
+                    switch ($producto['categoria_id']) {
+                        case 1: $categoria = "Nutricosmeticos"; break;
+                        case 2: $categoria = "Herbales"; break;
+                        case 3: $categoria = "Nutricionales"; break;
+                        default: $categoria = "Otros"; break;
+                    }
+
+                    echo "<tr class='text-center'>";
+                    echo "<td>{$producto['codigo']}</td>";
+                    echo "<td>{$producto['nombre']}</td>";
+                    echo "<td class='descripcion'>{$producto['descripcion']}</td>";
+                    echo "<td>{$categoria}</td>";
+                    echo "<td>$ {$producto['precio1']}</td>";
+                    echo "<td>{$producto['existencia']}</td>";
+                    echo "<td><img src='img/Productos_Ara/{$producto['ruta_img']}' class='img-producto'></td>";
+                    echo "<td>
+                            <a href='editar_producto.php?id={$producto['id']}' class='btn btn-sm btn-primary mb-1'>Editar</a>
+                            <a href='eliminar_producto.php?id={$producto['id']}' class='btn btn-sm btn-danger mb-1' onclick='return confirm(\"¿Estás seguro de eliminar este producto?\");'>Eliminar</a>
+                          </td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <center>
         <br>
-        <div class="back-to-shop" onclick="regresar()">
-          <a class="a2" href="MenuAdmn.php">&leftarrow; <span>Regresar</span></a>
+        <div class="back-to-shop">
+          <a class="a2" href="MenuProductos.php">&leftarrow; <span>Regresar</span></a>
         </div>
-      </center>
-
+    </center>
 </div>
 
-<br>
-<br>
-  <!-- Fin del menu administrador -->
   <!--Footer -->
   <?php include("creditos.php"); ?>
 
 </body>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function actualizarRuta() {
+    const categoria = document.getElementById("categoria").value;
+    let ruta = "";
+    if (categoria == "1") ruta = "NutriCosmeti/"; // ruta relativa
+    else if (categoria == "2") ruta = "herbales/";
+    else if (categoria == "3") ruta = "NutriCion/";
+    document.getElementById("ruta").value = ruta;
+}
+
+function mostrarVistaPrevia(event) {
+    const preview = document.getElementById("preview");
+    preview.src = URL.createObjectURL(event.target.files[0]);
+    preview.style.display = "block";
+}
+</script>
+
+<script>
+setTimeout(function() {
+    const alerta = document.getElementById('alerta-mensaje');
+    if (alerta) {
+        alerta.style.transition = "opacity 1s";
+        alerta.style.opacity = "0";
+        setTimeout(() => alerta.remove(), 1000);
+    }
+}, 6000);
+</script>
 
 </html>

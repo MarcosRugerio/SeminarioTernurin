@@ -19,7 +19,7 @@ $con = $db->conectar();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista Recetas</title>
+  <title>Lista paquete</title>
 
   <!--REFERENCIAR LIBRERIAS-->
   <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
@@ -275,9 +275,9 @@ $con = $db->conectar();
     </nav>
 
     <div class="px-4 py-3 my-3 text-center">
-      <h1 class="titulo">Lista de Recetas</h1><br>
+      <h1 class="titulo">Lista de paquete</h1><br>
       <a href="https://drive.google.com/file/d/1TrijsjQYUDFFC49Eo1VEBGCMUs8ufquc/view?usp=drive_link">
-      <img class="d-block mx-auto mb-4" src="img/libro-de-recetas.png" alt="" width="110" height="110" title="Ver Recetas">
+      <img class="d-block mx-auto mb-4" src="img/libro-de-paquete.png" alt="" width="110" height="110" title="Ver paquete">
               </a>
       <!-- BUSCAR -->
 
