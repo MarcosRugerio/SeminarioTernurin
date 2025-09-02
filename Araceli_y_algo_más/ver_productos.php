@@ -333,7 +333,24 @@ $con = $db->conectar();
     <h1 class="titulo">Ver productos</h1>
     <img class="header-img" src="img/ver_produc.png" alt="Productos" width="110" height="110">
 
+<!-- BUSCAR -->
+<div class="d-flex justify-content-center mb-4">
+  <form id="form-buscar-productos" class="d-flex flex-column flex-md-row align-items-center gap-2" role="search">
+    <label for="input-buscar-productos" class="fw-bold mb-1 mb-md-0">Buscar producto:</label>
+    <input id="input-buscar-productos" class="form-control" name="buscar" type="search" placeholder="Ingrese código, nombre o descripción">
+  </form>
+</div>
+
+<div id="resultados-productos" class="d-flex justify-content-center">
+  <!-- Aquí se cargarán los resultados vía AJAX -->
+</div>
+
+  
+
+
     <?php
+/*
+    
 if (isset($_GET['mensaje'])) {
     $mensaje = $_GET['mensaje'];
     if ($mensaje == "eliminado") {
@@ -343,8 +360,10 @@ if (isset($_GET['mensaje'])) {
         echo "<div id='alerta-mensaje' class='alert alert-success text-center'>✅ Producto actualizado correctamente</div>";
     }
 }
+*/
 ?>
 
+<!--
    <div class="table-container shadow p-3 rounded bg-white">
         <table class="table table-bordered table-hover align-middle tablaproductos">
             <thead class="table-dark text-center">
@@ -360,7 +379,10 @@ if (isset($_GET['mensaje'])) {
                 </tr>
             </thead>
             <tbody>
+              
                 <?php
+                /*
+                
                 $sql = "SELECT * FROM productos";
                 $stmt = $con->prepare($sql);
                 $stmt->execute();
@@ -388,10 +410,12 @@ if (isset($_GET['mensaje'])) {
                           </td>";
                     echo "</tr>";
                 }
+              */
                 ?>
             </tbody>
         </table>
     </div>
+-->
 
     <center>
         <br>
@@ -433,6 +457,32 @@ setTimeout(function() {
         setTimeout(() => alerta.remove(), 1000);
     }
 }, 6000);
+</script>
+
+<script>
+$(document).ready(function() {
+    // Evitar recarga
+    $("#form-buscar-productos").submit(function(e) {
+        e.preventDefault();
+        let buscar = $("#input-buscar-productos").val();
+        $.ajax({
+            url: 'buscar_productos.php',
+            type: 'POST',
+            data: { buscar: buscar },
+            success: function(data) {
+                $("#resultados-productos").html(data);
+            }
+        });
+    });
+
+    // Buscar en tiempo real
+    $("#input-buscar-productos").on("input", function() {
+        $("#form-buscar-productos").submit();
+    });
+
+    // Cargar al inicio
+    $("#form-buscar-productos").submit();
+});
 </script>
 
 </html>
