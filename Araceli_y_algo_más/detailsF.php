@@ -440,7 +440,7 @@ if ($id == '' || $token == '') {
                             <h6 class="detalle-precio"><?php echo $precio1; ?> MXN</h6>
                             <br /><br />
                             <div class="d-grid gap-3 col-8 mx-auto">
-                                <a href="pagoPaypal.php" class="btn btn-verde">Comprar ahora</a>
+                                <a href="pagoMercadoLibre.php" class="btn btn-verde">Comprar ahora</a>
                                 <button class="btn btn-verde-outline" type="button"
                                     onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Agregar a
                                     carrito</button>

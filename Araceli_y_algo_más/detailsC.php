@@ -220,7 +220,7 @@ if ($id == '' || $token == '') {
                                <br>
                                <br>
                                     <div class="d-grid gap-3 col-8 mx-auto">
-                                    <a href="pagoPaypal.php" class="btn btn-dark">Comprar ahora</a>
+                                    <a href="pagoMercadoLibre.php" class="btn btn-dark">Comprar ahora</a>
                                         <button class="btn btn" type="button" onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Agregar a carrito</button>
                                     </div>
                                     <br>

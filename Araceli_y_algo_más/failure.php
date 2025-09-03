@@ -1,25 +1,15 @@
 <?php
 session_start();
-//session_destroy();
-require 'php/confi.php';
-require 'confi/database.php';
 
-$db = new Database();
-$con = $db->conectar();
+// Obtener productos del carrito
+$productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : [];
+$num_cart = count($productos); // Número de productos en el carrito
 
-$productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
-
-//session_destroy();
-$lista_carrito = array();
-if ($productos != null) {
-  foreach ($productos as $clave => $cantidad) {
-    $sql = $con->prepare("SELECT id, nombre, ruta_img, precio1, precio2, precio3,  $cantidad AS cantidad FROM productos WHERE id=?  LIMIT 1");
-    $sql->execute([$clave]);
-    $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
-  }
-}
-
+$payment_id = isset($_GET['payment_id']) ? $_GET['payment_id'] : '';
+$status = isset($_GET['status']) ? $_GET['status'] : '';
+$external_reference = isset($_GET['external_reference']) ? $_GET['external_reference'] : '';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +17,7 @@ if ($productos != null) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tu pedido GABCY</title>
+  <title>Pago exitoso</title>
 
   <!--REFERENCIAR LIBRERIAS-->
 
@@ -35,10 +25,6 @@ if ($productos != null) {
   <link rel="stylesheet" type="text/css" href="estilos/estiloCarrito.css">
   <link rel="stylesheet" href="estilos/estilosHeader.css">
   <link rel="shortcut icon" href="img/logotipo_araceli.png">
-  <link rel="stylesheet" type="text/css" href="estilos/estilosCatalogoAretes.css">
-     <link rel="stylesheet" type="text/css" href="estilos/botonTrans.css">
-     <script type="text/javascript" src="librerias/jquery.js"></script>
-    <script type="text/javascript" src="js/main-scripts.js"> </script>
 
 
   <style>
@@ -81,7 +67,9 @@ if ($productos != null) {
               <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricionales.php">Nutricionales</a></li>
               <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricosmeticos.php">Nutricosmenticos</a></li>
               <li>
+                <hr class="dropdown-divider" style="color: #f0cea5">
               </li>
+              <li><a class="dropdown-item" style="color: #6E0023;" href="#">Extras</a></li>
             </ul>
           </li>
          <li><a href="blog.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
@@ -104,7 +92,8 @@ if ($productos != null) {
         <a href="carrito.php" class="btn" style="font-family:'Monserrat', sans-serif;">
           Mi Carrito <span style="background:#6E0023; color:white;" id="num_cart" class="badge text-bg-secondary"><?php echo $num_cart; ?></span>
         </a>
-        
+
+
         <div class="dropdown text-end">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
@@ -175,175 +164,27 @@ if ($productos != null) {
     <hr class="featurette-divider" style="color:  #CC6645; " size="2">
   </nav>
 
-
-
-  <!-- Carrito -->
-<main>
-  <div class="cart-wrapper">
-    <div class="cart-header">
-      <h2>🛒 Tu carrito</h2>
-    </div>
-    <div class="cart-body">
-      <table class="cart-table">
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php if ($lista_carrito == null): ?>
-            <tr><td colspan="6" class="empty-cart">Carrito vacío</td></tr>
-          <?php else:
-            $total = 0;
-            foreach ($lista_carrito as $producto):
-              $_id = $producto['id'];
-              $nombre = $producto['nombre'];
-              $precio1 = $producto['precio1'];
-              $cantidad = $producto['cantidad'];
-              $ruta_img = $producto['ruta_img'];
-
-              $carpeta = isset($carpetas[$_id]) ? $carpetas[$_id] : '';
-              $rutaImagen = 'img/Productos_Ara/' . $carpeta . '/' . $ruta_img;
-
-              $subtotal = $cantidad * $precio1;
-              $total += $subtotal;
-          ?>
-            <tr data-id="<?= $_id ?>">
-              <td>
-              <img src="img/Productos_Ara/<?= htmlspecialchars($producto['ruta_img']) ?>" 
-              alt="<?= htmlspecialchars($producto['nombre']) ?>" width="80">
-              </td>
-              <td><?= htmlspecialchars($nombre) ?></td>
-              <td><?= MONEDA . number_format($precio1, 2, '.', ',') ?></td>
-              <td>
-                <input type="number" min="1" max="20" value="<?= $cantidad ?>" onchange="actualizaCantidad(this.value, <?= $_id ?>)" />
-              </td>
-              <td>
-                <div id="subtotal_<?= $_id ?>"><?= MONEDA . number_format($subtotal, 2, '.', ',') ?></div>
-              </td>
-              <td>
-                <button class="btn-remove" data-bs-id="<?= $_id ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">
-                  <!-- Aquí va el ícono SVG o texto eliminar -->
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-          <?php endforeach; ?>
-            <tr class="total-row">
-              <td colspan="4" class="text-end"><strong>Total:</strong></td>
-              <td colspan="2" class="total-value"><?= MONEDA . number_format($total, 2, '.', ',') ?></td>
-            </tr>
-          <?php endif; ?>
-        </tbody>
-      </table>
-    </div>
-
-    <?php if ($lista_carrito != null): ?>
-      <div class="cart-actions">
-        <a href="pagoMercadoLibre.php" class="btn-finish">Finalizar compra</a>
-        <a class="btn-back mt-3" href="index.php">&leftarrow; Seguir comprando</a>
-      </div>
-    <?php endif; ?>
+<body>
+  <div style="text-align:center; margin-top:50px;">
+    <h1>❌ Pago cancelado o fallido</h1>
+    <p>Tu pago no pudo completarse. Intenta nuevamente.</p>
+    <p><b>ID del pago:</b> <?= htmlspecialchars($payment_id) ?></p>
+    <p><b>Referencia del pedido:</b> <?= htmlspecialchars($external_reference) ?></p>
+    <p><b>Estado:</b> <?= htmlspecialchars($status) ?></p>
+    <a href="pagoMercadoLibre.php" style="text-decoration:none; color:white; background:#CC6645; padding:10px 20px; border-radius:5px;">Intentar de nuevo</a>
   </div>
-</main>
-<!-- Modal -->
-<div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="eliminaModalLabel">Eliminar producto</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ¿Está seguro de que desea eliminar el producto?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button id="btn-elimina" type="button" class="btn btn-dark" onclick="elimina()">Eliminar</button>
-      </div>
-    </div>
-  </div>
-</div>
+</body>
 
 
   <br><br>
   <!--Creditos  -->
   <?php include("creditos.php"); ?>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-  <script>
-    let eliminaModal = document.getElementById('eliminaModal')
-    eliminaModal.addEventListener('show.bs.modal', function(event) {
-      let button = event.relatedTarget
-      let id = button.getAttribute('data-bs-id')
-      let buttonElimina = eliminaModal.querySelector('.modal-footer #btn-elimina')
-      buttonElimina.value = id
-    })
-
-    function actualizaCantidad(cantidad, id) {
-  let url = 'php/actualizaCarrito.php';
-  let formData = new FormData();
-  formData.append('action', 'agregar');
-  formData.append('cantidad', cantidad);
-  formData.append('id', id);
-
-  fetch(url, {
-    method: 'POST',
-    body: formData,
-    mode: 'cors'
-  }).then(response => response.json())
-    .then(data => {
-      if (data.ok) {
-        // Actualiza el subtotal del producto cambiado
-        let divsubtotal = document.getElementById('subtotal_' + id);
-        divsubtotal.innerHTML = data.subtotal;
-
-        // Recalcular el total sumando todos los subtotales
-        let subtotales = document.querySelectorAll('[id^="subtotal_"]');
-        let total = 0;
-        subtotales.forEach(function(div) {
-          // Remover símbolo de moneda y comas antes de convertir
-          let val = div.textContent.replace(/[^0-9.-]+/g,"");
-          total += parseFloat(val);
-        });
-
-        // Formatear total con 2 decimales y moneda
-        total = total.toFixed(2);
-        document.querySelector('.total-value').textContent = '<?php echo MONEDA; ?>' + total;
-      }
-    })
-    .catch(error => console.error('Error:', error));
-}
+  <!-- Include the PayPal JavaScript SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID; ?>&currency=<?php echo CURRENCY; ?>"></script>
 
 
-    function elimina() {
-      let botonElimina = document.getElementById('btn-elimina')
-      let id = botonElimina.value
-
-      let url = 'php/actualizaCarrito.php'
-      let formData = new FormData()
-      formData.append('action', 'eliminar')
-      formData.append('id', id)
-
-      fetch(url, {
-          method: 'POST',
-          body: formData,
-          mode: 'cors'
-        }).then(response => response.json())
-        .then(data => {
-          if (data.ok) {
-            location.reload()
-          
-          }
-
-        })
-    }
-  </script>
 
 </body>
 

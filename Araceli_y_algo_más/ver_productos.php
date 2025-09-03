@@ -16,17 +16,19 @@ $con = $db->conectar();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ver productos</title>
 
-  <!--REFERENCIAR LIBRERIAS-->
-  <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
-  <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/themes/default.css">
-  <link rel="stylesheet" type="text/css" href="librerias/bootstrap/css/bootstrap.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
 
-  <link rel="shortcut icon" href="img/logotipo_araceli.png">
-  <script type="text/javascript" src="librerias/jquery.js"></script>
-  <script type="text/javascript" src="js/main-scripts.js"> </script>
+    <link rel=" shortcut icon" href="img/logotipo_araceli.png" type="image/x-icon">
+    <script src="js-global/FancyZoom.js" type="text/javascript"></script>
+    <script src="js-global/FancyZoomHTML.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/7f4ac6925c.js" crossorigin="anonymous"></script>
 
+    <script type="text/javascript" src="librerias/jquery.js"></script>
+    <script type="text/javascript" src="js/main-scripts.js"> </script>
 </head>
 
 <style>
@@ -484,5 +486,10 @@ $(document).ready(function() {
     $("#form-buscar-productos").submit();
 });
 </script>
+
+ <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ 
 
 </html>

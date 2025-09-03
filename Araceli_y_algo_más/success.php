@@ -1,135 +1,17 @@
 <?php
-session_start();
-if (!isset($_SESSION['id'])) {
-  echo '
-  <!DOCTYPE html>
-  <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Sesión requerida</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: #f0f4f8;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-      }
-      .modal-overlay {
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0, 0, 0, 0.4);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-      }
-      .modal {
-        position: relative;
-        background: url("img/redirigir.png") no-repeat center center / cover;
-        width: 90%;
-        max-width: 380px;
-        padding: 2.5rem 3rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        color: #fff;
-        text-align: center;
-        background-color: rgba(0,0,0,0.6);
-        background-blend-mode: darken;
-        box-sizing: border-box;
-      }
-      .modal h2 {
-        margin-bottom: 1rem;
-        font-weight: 700;
-        font-size: 1.8rem;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.7);
-      }
-      .modal p {
-        font-size: 1.1rem;
-        line-height: 1.4;
-        margin-bottom: 2rem;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.7);
-      }
-      .modal button {
-        background-color: #ffffffcc;
-        border: none;
-        color: #135836;
-        font-weight: 700;
-        font-size: 1rem;
-        padding: 0.7rem 1.8rem;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: 0 4px 6px rgba(19, 88, 54, 0.4);
-        transition: background-color 0.3s ease;
-      }
-      .modal button:hover {
-        background-color: #fff;
-      }
-      @media (max-width: 400px) {
-        .modal {
-          padding: 2rem 1.5rem;
-        }
-        .modal h2 {
-          font-size: 1.5rem;
-        }
-        .modal p {
-          font-size: 1rem;
-        }
-        .modal button {
-          width: 100%;
-          padding: 0.7rem 0;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="modal-overlay">
-      <div class="modal">
-        <h2>Espera</h2>
-        <p>Para seguir comprando, por favor inicia sesión y regístrate.</p>
-        <button onclick="window.location.href=\'inicioSesion.php\'">Iniciar Sesión</button>
-        <p>Serás redirigido automáticamente en 7 segundos.</p>
-      </div>
-    </div>
-    <script>
-      setTimeout(() => {
-        window.location.href = "inicioSesion.php";
-      }, 7000);
-    </script>
-  </body>
-  </html>
-  ';
-  exit;
-}
-//session_destroy();
 require 'php/confi.php';
 require 'confi/database.php';
+//session_destroy();
 
 $db = new Database();
 $con = $db->conectar();
 
-$productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
-
-//session_destroy();
-
-$lista_carrito = array();
-if ($productos != null) {
-
-  foreach ($productos as $clave => $cantidad) {
-
-    $sql = $con->prepare("SELECT id, nombre, ruta_img, precio1, precio2, precio3,  $cantidad AS cantidad FROM productos WHERE id=?  LIMIT 1");
-    $sql->execute([$clave]);
-    $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
-  }
-} else {
-  header("Location:index.php");
-  exit;
-}
+// Obtener parámetros enviados por Mercado Pago
+$payment_id = isset($_GET['payment_id']) ? $_GET['payment_id'] : '';
+$status = isset($_GET['status']) ? $_GET['status'] : '';
+$external_reference = isset($_GET['external_reference']) ? $_GET['external_reference'] : '';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -137,7 +19,7 @@ if ($productos != null) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pago</title>
+  <title>Pago exitoso</title>
 
   <!--REFERENCIAR LIBRERIAS-->
 
@@ -284,137 +166,14 @@ if ($productos != null) {
     <hr class="featurette-divider" style="color:  #CC6645; " size="2">
   </nav>
 
-
-
-  <!-- Carrito -->
- <main>
-  <div class="cart-wrapper">
-
-    <div class="cart-header">
-      <h2>🛒 Tu pedido</h2>
-    </div>
-
-    <div class="cart-body">
-      <div class="table-responsive">
-        <table class="table cart-table">
-          <thead>
-            <tr>
-              <th scope="col">Imagen</th>
-              <th scope="col">Producto</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Subtotal</th>
-            </tr>
-          </thead>
-         <tbody class="table-group-divider">
-  <?php if ($lista_carrito == null): ?>
-    <tr>
-      <td colspan="4" class="empty-cart">🛒 <b>Carrito vacío</b></td>
-    </tr>
-  <?php else:
-    $total = 0;
-    foreach ($lista_carrito as $producto):
-      $_id = $producto['id'];
-      $nombre = $producto['nombre'];
-      $ruta_img = $producto['ruta_img'];
-      $precio1 = $producto['precio1'];
-      $cantidad = $producto['cantidad'];
-      $subtotal = $cantidad * $precio1;
-      $total += $subtotal;
-  ?>
-    <tr data-id="<?= $_id ?>">
-      <td>
-        <img src="img/Productos_Ara/<?= htmlspecialchars($ruta_img) ?>" alt="<?= htmlspecialchars($nombre) ?>" width="80" />
-      </td>
-      <td><?= htmlspecialchars($nombre) ?></td>
-      <td><?= $cantidad ?></td>  <!-- Aquí sólo el texto sin input -->
-      <td>
-        <div id="subtotal_<?= $_id ?>" name="subtotal[]"><?= MONEDA . number_format($subtotal, 2, '.', ',') ?></div>
-      </td>
-    </tr>
-  <?php endforeach; ?>
-    <tr class="total-row">
-      <td colspan="2"></td>
-      <td><b>TOTAL</b></td>
-      <td class="total-value" id="total"><?= MONEDA . number_format($total, 2, '.', ',') ?></td>
-    </tr>
-  <?php endif; ?>
-</tbody>
-
-        </table>
-      </div>
-    </div>
-
-    <div class="cart-actions" style="flex-direction: column; align-items: stretch; gap: 2rem; padding: 2rem; background: #e6faef;">
-
-      <div style="background: white; padding: 1.5rem; border-radius: 1rem; box-shadow: 0 0 12px rgba(0,0,0,0.05);">
-        <h5 style="color:#135836; font-weight: bold; margin-bottom: 1rem; text-align:center;">🏠 Domicilio de entrega</h5>
-
-        <form action="php/actualizarUsu.php" method="POST">
-          <?php
-          require_once "php/conexion.php";
-          $conexion = conexion();
-          $usuario_id = $_SESSION['id'];
-          $query = ("SELECT * FROM usuarios WHERE id='$usuario_id'");
-          $result = mysqli_query($conexion, $query);
-          if (!$result) {
-            die(mysqli_error($conexion));
-          }
-
-          if (mysqli_num_rows($result) > 0) {
-            while ($rowData = mysqli_fetch_array($result)) {
-              $nom = $rowData["nombre"];
-              $ap = $rowData["apellido"];
-              $dom = $rowData["domicilio"];
-          ?>
-
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="nombre" required value="<?php echo $nom ?>">
-                <label>Nombre(s):</label>
-              </div>
-
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="apellido" required value="<?php echo $ap ?>">
-                <label>Apellido(s):</label>
-              </div>
-
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="domicilio" required value="<?php echo $dom ?>">
-                <label>Domicilio de entrega:</label>
-              </div>
-
-              <div class="text-center">
-                <p class="text-muted small" style="font-family: 'Playfair Display', serif;">
-                  ¿Deseas modificar tu domicilio de entrega?
-                </p>
-                <a href="perfil.php" class="btn btn-sm" style="background: #178A5B; color:white; border-radius: 0.5rem;">
-                  Modificar dirección
-                </a>
-              </div>
-          <?php }
-          } ?>
-        </form>
-      </div>
-
-      <!-- PayPal -->
-      <div class="text-center" style="margin-top: 2rem;">
-        <h5 style="color:#135836; font-weight: bold;">💳 Método de pago</h5>
-        <div style="display: flex; justify-content: center; margin-top: 1rem;">
-          <div id="paypal-button-conteiner"></div>
-        </div>
-      </div>
-
-      <!-- Botón de regreso -->
-      <div class="text-center">
-        <a class="btn-back mt-3" href="index.php">
-          <span class="arrow">&leftarrow;</span> Seguir comprando
-        </a>
-      </div>
-
-    </div>
-
-  </div> <!-- .cart-wrapper -->
-</main>
-
+ <div style="text-align:center; margin-top:50px;">
+    <h1>✅ ¡Pago realizado con éxito!</h1>
+    <p>Gracias por tu compra. Tu pedido se está procesando.</p>
+    <p><b>ID del pago:</b> <?= htmlspecialchars($payment_id) ?></p>
+    <p><b>Referencia del pedido:</b> <?= htmlspecialchars($external_reference) ?></p>
+    <p><b>Estado:</b> <?= htmlspecialchars($status) ?></p>
+    <a href="index.php" style="text-decoration:none; color:white; background:#178A5B; padding:10px 20px; border-radius:5px;">Volver al inicio</a>
+  </div>
 
 
   <br><br>
@@ -425,53 +184,6 @@ if ($productos != null) {
   <!-- Include the PayPal JavaScript SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID; ?>&currency=<?php echo CURRENCY; ?>"></script>
 
-
-  <script>
-    ///paypal///
-    paypal.Buttons({
-      style: {
-        color: 'blue',
-        shape: 'pill',
-        label: 'pay'
-      },
-      createOrder: function(data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: <?php echo $total; ?>
-            }
-          }]
-        })
-      },
-
-      onApprove: function(data, actions) {
-        let url = 'php/captura.php'
-        actions.order.capture().then(function(detalles) {
-          console.log(detalles);
-
-          let url = 'php/captura.php'
-
-          return fetch(url, {
-            method: 'POST',
-            headers: {
-              'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-              detalles: detalles
-            })
-          }).then(function(response) {
-            window.location.href = "completado.php?key=" + detalles['id'];
-          })
-
-        });
-      },
-
-      onCancel: function(data) {
-        alert("Pago cancelado");
-        console.log(data);
-      }
-    }).render('#paypal-button-conteiner')
-  </script>
 
 </body>
 
