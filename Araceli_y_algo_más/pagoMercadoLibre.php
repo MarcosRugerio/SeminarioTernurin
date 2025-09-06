@@ -1,92 +1,26 @@
 <?php
 session_start();
+
+// ================= VERIFICAR SESIÓN =================
 if (!isset($_SESSION['id'])) {
-  echo '
-  <!DOCTYPE html>
-  <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
+    // Mostrar modal y redirigir si no hay sesión
+    echo '<!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8">
     <title>Sesión requerida</title>
     <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: #f0f4f8;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-      }
-      .modal-overlay {
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0, 0, 0, 0.4);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-      }
-      .modal {
-        position: relative;
-        background: url("img/redirigir.png") no-repeat center center / cover;
-        width: 90%;
-        max-width: 380px;
-        padding: 2.5rem 3rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        color: #fff;
-        text-align: center;
-        background-color: rgba(0,0,0,0.6);
-        background-blend-mode: darken;
-        box-sizing: border-box;
-      }
-      .modal h2 {
-        margin-bottom: 1rem;
-        font-weight: 700;
-        font-size: 1.8rem;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.7);
-      }
-      .modal p {
-        font-size: 1.1rem;
-        line-height: 1.4;
-        margin-bottom: 2rem;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.7);
-      }
-      .modal button {
-        background-color: #ffffffcc;
-        border: none;
-        color: #135836;
-        font-weight: 700;
-        font-size: 1rem;
-        padding: 0.7rem 1.8rem;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: 0 4px 6px rgba(19, 88, 54, 0.4);
-        transition: background-color 0.3s ease;
-      }
-      .modal button:hover {
-        background-color: #fff;
-      }
-      @media (max-width: 400px) {
-        .modal {
-          padding: 2rem 1.5rem;
-        }
-        .modal h2 {
-          font-size: 1.5rem;
-        }
-        .modal p {
-          font-size: 1rem;
-        }
-        .modal button {
-          width: 100%;
-          padding: 0.7rem 0;
-        }
-      }
+      html, body { height:100%; margin:0; font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f0f4f8; display:flex; justify-content:center; align-items:center; }
+      .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.4); display:flex; justify-content:center; align-items:center; }
+      .modal { background:url("img/redirigir.png") no-repeat center/cover; width:90%; max-width:380px; padding:2.5rem 3rem; border-radius:15px; color:#fff; text-align:center; background-color:rgba(0,0,0,0.6); background-blend-mode:darken; }
+      .modal h2 { font-size:1.8rem; margin-bottom:1rem; font-weight:700; }
+      .modal p { font-size:1.1rem; margin-bottom:2rem; }
+      .modal button { background:#ffffffcc; border:none; color:#135836; font-weight:700; font-size:1rem; padding:0.7rem 1.8rem; border-radius:25px; cursor:pointer; }
+      .modal button:hover { background:#fff; }
+      @media(max-width:400px){ .modal{padding:2rem 1.5rem;} .modal h2{font-size:1.5rem;} .modal p{font-size:1rem;} .modal button{width:100%;} }
     </style>
-  </head>
-  <body>
+    </head>
+    <body>
     <div class="modal-overlay">
       <div class="modal">
         <h2>Espera</h2>
@@ -95,17 +29,14 @@ if (!isset($_SESSION['id'])) {
         <p>Serás redirigido automáticamente en 7 segundos.</p>
       </div>
     </div>
-    <script>
-      setTimeout(() => {
-        window.location.href = "inicioSesion.php";
-      }, 7000);
-    </script>
-  </body>
-  </html>
-  ';
-  exit;
+    <script>setTimeout(() => { window.location.href = "inicioSesion.php"; }, 7000);</script>
+    </body>
+    </html>';
+    exit;
 }
 
+// ================= USUARIO =================
+$usuario_id = $_SESSION['id']; // Solo una vez, aquí se asigna
 require 'php/confi.php';
 require 'confi/database.php';
 require 'mercado/vendor/autoload.php';
@@ -151,19 +82,19 @@ if (empty($items)) {
 }
 
 // ================= MERCADO PAGO =================
-MercadoPagoConfig::setAccessToken("APP_USR-1519204933863506-090221-5ca2b3b567dbdd39224ad215cc8394c2-2663126345"); // <- pon tu token
+MercadoPagoConfig::setAccessToken("APP_USR-8621993643828158-090517-dcd305e1c2b8502c719826c537e65f65-2669336485"); // <- pon tu token
 $client = new PreferenceClient();
 
 // URLs de ngrok (local)
-$base_url = "https://38464ecc3cb3.ngrok-free.app"; // reemplaza por tu ngrok actual
+$base_url = "https://fae55a766a8a.ngrok-free.app/SeminarioTernurin/Araceli_y_algo_más"; // reemplaza por tu ngrok actual
 
 try {
     $preference = $client->create([
         "items" => $items,
         "back_urls" => [
-            "success" => "https://38464ecc3cb3.ngrok-free.app/exito.php",
-            "failure" => "https://38464ecc3cb3.ngrok-free.app/fallo.php",
-            "pending" => "https://38464ecc3cb3.ngrok-free.app/pendiente.php"
+            "success" => "$base_url/success.php",
+            "failure" => "$base_url/failure.php",
+            "pending" => "$base_url/pending.php"
         ],
         "auto_return" => "approved"
     ]);
@@ -464,22 +395,18 @@ try {
 <script src="https://sdk.mercadopago.com/js/v2"></script>
 
 <script>
-  // Inicializa Mercado Pago con tu PUBLIC KEY
-  const mp = new MercadoPago("APP_USR-1fd1554a-5845-47f3-a9d4-0f87fe9d155c", {
-    locale: 'es-MX'
-  });
-
-  // Crea el Wallet Brick
-  mp.bricks().create("wallet", "wallet_container", {
-    initialization: {
-      preferenceId: "<?php echo $preference->id; ?>" // Viene de PHP
-    },
-    customization: {
-      texts: {
-        valueProp: 'smart_option'
-      }
+const mp = new MercadoPago("APP_USR-5c7a4102-e4ec-4093-b5e3-492a16ed2700", { locale: 'es-MX' });
+mp.bricks().create("wallet", "wallet_container", {
+    initialization: { preferenceId: "<?= $preference->id ?>" },
+    callbacks: {
+        onPaymentApproved: function() {
+            window.location.href = "<?= $base_url ?>/success.php?external_reference=<?= $usuario_id ?>";
+        },
+        onError: function() {
+            window.location.href = "<?= $base_url ?>/failure.php";
+        }
     }
-  });
+});
 </script>
 </div>
 
@@ -507,21 +434,26 @@ try {
  <script src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js"></script>
 
 <script>
-    const mp = new MercadoPago("APP_USR-1fd1554a-5845-47f3-a9d4-0f87fe9d155c", {
-      locale: 'es-MX'
-    });
+const mp = new MercadoPago("APP_USR-5c7a4102-e4ec-4093-b5e3-492a16ed2700", { locale: 'es-MX' });
 
-    mp.bricks().create("wallet", "wallet_container", {
-      initialization: {
+mp.bricks().create("wallet", "wallet_container", {
+    initialization: {
         preferenceId: "<?php echo $preference->id; ?>"
-      },
-      customization: {
-        texts: {
-          valueProp: 'smart_option'
+    },
+    customization: {
+        texts: { valueProp: 'smart_option' }
+    },
+    callbacks: {
+        onPaymentApproved: function(payment) {
+            // Redirige a tu success.php con parámetros
+            window.location.href = "<?php echo $base_url; ?>/success.php?external_reference=PEDIDO12345";
+        },
+        onError: function(error) {
+            window.location.href = "<?php echo $base_url; ?>/failure.php";
         }
-      }
-    });
-  </script>
+    }
+});
+</script>
 
 </body>
 

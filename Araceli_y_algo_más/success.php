@@ -1,15 +1,60 @@
 <?php
+session_start();
 require 'php/confi.php';
 require 'confi/database.php';
-//session_destroy();
 
 $db = new Database();
 $con = $db->conectar();
 
-// Obtener parámetros enviados por Mercado Pago
-$payment_id = isset($_GET['payment_id']) ? $_GET['payment_id'] : '';
-$status = isset($_GET['status']) ? $_GET['status'] : '';
-$external_reference = isset($_GET['external_reference']) ? $_GET['external_reference'] : '';
+// ================= DATOS DE MERCADO PAGO =================
+$usuario_id = $_SESSION['id'] ?? null;
+$payment_id = $_GET['payment_id'] ?? null;
+$collection_status = $_GET['collection_status'] ?? null;
+
+if (!$usuario_id || !$payment_id || $collection_status !== 'approved') {
+    die("Pago no válido o incompleto.");
+}
+
+// ================= RECUPERAR CARRITO =================
+$productos = $_SESSION['carrito']['productos'] ?? [];
+
+if (!$productos) {
+    die("No se encontraron productos para este pedido.");
+}
+
+// ================= CALCULAR TOTAL =================
+$total = 0;
+$detalle_productos = [];
+
+foreach ($productos as $id => $cantidad) {
+    $stmt = $con->prepare("SELECT nombre, precio1 FROM productos WHERE id=?");
+    $stmt->execute([$id]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        $total += $row['precio1'] * $cantidad;
+        $detalle_productos[] = [
+            'id' => $id,
+            'nombre' => $row['nombre'],
+            'precio' => $row['precio1'],
+            'cantidad' => $cantidad
+        ];
+    }
+}
+
+// ================= INSERTAR PEDIDO =================
+$stmt = $con->prepare("INSERT INTO pedido (idtransaccion, fecha, statusPaypal, usuario_id, total) VALUES (?, NOW(), ?, ?, ?)");
+$stmt->execute([$payment_id, $collection_status, $usuario_id, $total]);
+$pedido_id = $con->lastInsertId();
+
+// ================= INSERTAR DETALLE PEDIDO =================
+foreach ($detalle_productos as $p) {
+    $stmt = $con->prepare("INSERT INTO detalle_pedido (pedido_id, producto_id, nombre, precio, cantidad) VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([$pedido_id, $p['id'], $p['nombre'], $p['precio'], $p['cantidad']]);
+}
+
+// ================= LIMPIAR CARRITO =================
+unset($_SESSION['carrito']);
 ?>
 
 <!DOCTYPE html>
@@ -165,14 +210,13 @@ $external_reference = isset($_GET['external_reference']) ? $_GET['external_refer
     </div>
     <hr class="featurette-divider" style="color:  #CC6645; " size="2">
   </nav>
-
  <div style="text-align:center; margin-top:50px;">
-    <h1>✅ ¡Pago realizado con éxito!</h1>
-    <p>Gracias por tu compra. Tu pedido se está procesando.</p>
-    <p><b>ID del pago:</b> <?= htmlspecialchars($payment_id) ?></p>
-    <p><b>Referencia del pedido:</b> <?= htmlspecialchars($external_reference) ?></p>
-    <p><b>Estado:</b> <?= htmlspecialchars($status) ?></p>
-    <a href="index.php" style="text-decoration:none; color:white; background:#178A5B; padding:10px 20px; border-radius:5px;">Volver al inicio</a>
+    <h1 class="text-success">✅ ¡Pago realizado con éxito!</h1>
+    <p><b>ID de la transacción:</b> <?= htmlspecialchars($payment_id) ?></p>
+    <p><b>Estado:</b> <?= htmlspecialchars($collection_status) ?></p>
+    <p><b>ID del pedido:</b> <?= htmlspecialchars($pedido_id) ?></p>
+    <p><b>Total:</b> $<?= number_format($total, 2) ?></p>
+    <a href="index.php" class="btn btn-success mt-3">Volver al inicio</a>
   </div>
 
 
@@ -181,9 +225,16 @@ $external_reference = isset($_GET['external_reference']) ? $_GET['external_refer
   <?php include("creditos.php"); ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <!-- Include the PayPal JavaScript SDK -->
-  <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID; ?>&currency=<?php echo CURRENCY; ?>"></script>
 
+<script>
+  // Reinicia el contador del carrito
+  document.addEventListener('DOMContentLoaded', function() {
+    var numCart = document.getElementById('num_cart');
+    if (numCart) {
+      numCart.textContent = '0';
+    }
+  });
+</script>
 
 </body>
 
