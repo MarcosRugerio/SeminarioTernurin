@@ -55,7 +55,7 @@ session_start();
           <div class="col-md-2">
             <div class="position-sticky" style="top: 2rem;">
             <br><br>
-            <h4 style="color: #6E0023; font-family: 'Playfair Display', serif;"> Expreso y Café </h4>
+            <h4 style="color: #000000ff; font-family: 'Playfair Display', serif;"> Expreso y Café </h4>
           <table class="table"  id="list">
             
           </table> 
@@ -100,7 +100,7 @@ session_start();
   '<aside class="col-xs-12 col-sm-4 col-md-3 col-lg-8">'+
   '<br> <br>'+
   '<h3 id="nombre">'+data.datos[i].nombre+'</h3> '+
- '<hr  style="color: #6E0023;">'+
+ '<hr  style="color: #000000ff;">'+
   '<table class="table" >'+
   '<tr>'+
      '<th style="color:#8d4925;"> <rigth>Chico =</th> </rigth>'+
@@ -118,10 +118,10 @@ session_start();
       '<th scope="col" style="font-family:Playfair Display, serif;">Cantidad:</th>'+
     '</tr>'+
   '</thead>'+
-  '<tbody class="table-group-divider" style="color: #6E0023;">'+
+  '<tbody class="table-group-divider" style="color: #000000ff;">'+
     '<tr>'+
       '<td>'+
-        '<select name="precio" class="form-select form-select-sm" aria-label=".form-select-sm example" style="border: 0.05em solid #6E0023; border-radius: 1em;" >'+
+        '<select name="precio" class="form-select form-select-sm" aria-label=".form-select-sm example" style="border: 0.05em solid #000000ff; border-radius: 1em;" >'+
           '<option>Selecciona el Tamaño</option>'+
           '<option value="data.datos[i].precio1">Chico</option>'+
           '<option value="data.datos[i].precio2">Mediano</option>'+
@@ -129,7 +129,7 @@ session_start();
         '</select>'+
       '</td>'+
       '<td>'+
-       '<select name="cantidad" class="form-select form-select-sm" aria-label=".form-select-sm example" style="border: 0.05em solid #6E0023; border-radius: 1em;" >'+
+       '<select name="cantidad" class="form-select form-select-sm" aria-label=".form-select-sm example" style="border: 0.05em solid #000000ff; border-radius: 1em;" >'+
           '<option>Cuántos deseas</option>'+
           '<option>1</option>'+
           '<option>2</option>'+

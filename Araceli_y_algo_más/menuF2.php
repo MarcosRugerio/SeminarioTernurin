@@ -39,7 +39,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
 <!--Header -->
-<nav class="p-3 text-dark" class="navbar" style="background-color: white">
+<nav  id="navegacion" class="p-3 text-dark" class="navbar" style="background-color: white">
 
   <!-----Nav con fondo de color y letras blancas
 <header class="p-3 text-white" style="background-color:  #CC6645;"> --->
@@ -53,27 +53,27 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
         >
 
         <li><a href="index.php" class="nav-link px-3 text"
-            style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff">INICIO</a>
+            style="color: #000000ff; display:inline; border-right: 2px solid  #36642fff">INICIO</a>
         </li>
 
 
         <li>
           <a class="nav-link dropdown-toggle"
-            style=" color:#6E0023; display:inline;  border-right: 2px solid  #36642fff"  href=" #"
+            style=" color:#000000ff; display:inline;  border-right: 2px solid  #36642fff"  href=" #"
             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            MENÚ
+            PRODUCTOS
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_herbales.php">Herbales</a></li>
-            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricionales.php">Nutricionales</a></li>
-            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricosmeticos.php">Nutricosmenticos</a></li>
+            <li><a class="dropdown-item" style="color: #000000ff;" href="productos_herbales.php">Herbales</a></li>
+            <li><a class="dropdown-item" style="color: #000000ff;" href="productos_nutricionales.php">Nutricionales</a></li>
+            <li><a class="dropdown-item" style="color: #000000ff;" href="productos_nutricosmeticos.php">Nutricosmenticos</a></li>
           </ul>
         </li>
        <li><a href="blog.php" class="nav-link px-3 text"
-            style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
+            style="color: #000000ff; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
         </li>
 
-        <li><a href="conocenos.php" class="nav-link px-3 text" style=" color: #6E0023; display:inline; ">ACERCA
+        <li><a href="conocenos.php" class="nav-link px-3 text" style=" color: #000000ff; display:inline; ">ACERCA
             DE</a></li>
 
       </ul>
@@ -87,7 +87,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <a href="carrito.php" class="btn" style="font-family:'Monserrat', sans-serif;">
-          Mi Carrito <span style="background:#6E0023; color:white;" id="num_cart" class="badge text-bg-secondary"><?php echo $num_cart; ?></span>
+          Mi Carrito <span style="background:#000000ff; color:white;" id="num_cart" class="badge text-bg-secondary"><?php echo $num_cart; ?></span>
         </a>
         <div class="dropdown text-end">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -97,54 +97,54 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                 if($_SESSION['permiso']==1){
                 echo
                 '<li>
-                <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#6E0023; " href="#"
+                <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#000000ff; " href="#"
                   id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="img/usuario.png" width="25" height="25" title="Cuenta">'.$_SESSION['nombre'].
               '</a>
-              <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
-               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Cliente...</a></li>
-               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
+              <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #000000ff;">
+               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" disbled>Cliente...</a></li>
+               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="perfil.php"> Mi Perfil</a></li>
                <hr class="dropdown-divider" style="color: #f0cea5">
-               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
+               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="destroySesion.php">Cerrar Sesión</a></li>';
             }if($_SESSION['permiso']==2){
               echo
               '<li>
-              <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#6E0023; " href="#"
+              <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#000000ff; " href="#"
                 id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="img/usuario.png" width="25" height="25" title="Cuenta">'.$_SESSION['nombre'].
             '</a>
-            <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Empleado...</a></li>
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="Menu_empleado.php">Menú Empleado</a></li>
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
+            <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #000000ff;">
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" disbled>Empleado...</a></li>
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="Menu_empleado.php">Menú Empleado</a></li>
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="perfil.php"> Mi Perfil</a></li>
              <hr class="dropdown-divider" style="color: #f0cea5">
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="destroySesion.php">Cerrar Sesión</a></li>';
           }if($_SESSION['permiso']==3){
             echo
             '<li>
-            <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#6E0023; " href="#"
+            <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#000000ff; " href="#"
               id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="img/usuario.png" width="25" height="25" title="Cuenta">'.$_SESSION['nombre'].
           '</a>
-          <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Administrador...</a></li>
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="MenuAdmn.php">Menú Administrador</a></li>
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
+          <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #000000ff;">
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" disbled>Administrador...</a></li>
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="MenuAdmn.php">Menú Administrador</a></li>
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="perfil.php"> Mi Perfil</a></li>
            <hr class="dropdown-divider" style="color: #f0cea5">
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="destroySesion.php">Cerrar Sesión</a></li>';
         }
           }else{
                 ?>
           <li>
-            <a class="nav-link dropdown-toggle" style="font-family:'Monserrat', sans-serif; color:#6E0023; " href="#"
+            <a class="nav-link dropdown-toggle" style="font-family:'Monserrat', sans-serif; color:#000000ff; " href="#"
               id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="img/usuario.png" width="25" height="25" title="Cuenta">
             </a>
 
-            <ul class="dropdown-menu text-small" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;">
-              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;" href="inicioSesion.php">Iniciar Sesión</a></li>
+            <ul class="dropdown-menu text-small" style=" font-family:'Monserrat', sans-serif;  color: #000000ff;">
+              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #000000ff;" href="inicioSesion.php">Iniciar Sesión</a></li>
               <hr class="dropdown-divider" style="color: #f0cea5">
-              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;" href="registro.php" >Crear Cuenta</a></li>
+              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #000000ff;" href="registro.php" >Crear Cuenta</a></li>
               <?php
               }
               ?>
@@ -155,7 +155,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
   </div>
-  <hr class="featurette-divider" style="color:  #CC6645; " size="2">
+  <hr class="featurette-divider" style="color:  #356431ff; " size="2">
 </nav>
 
 
@@ -179,7 +179,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
           <div class="col-md-2">
             <div class="position-sticky" style="top: 2rem;">
             <br><br>
-            <h4 style="color: #6E0023; font-family: 'Playfair Display', serif;"> Bebidas Heladas</h4>
+            <h4 style="color: #000000ff; font-family: 'Playfair Display', serif;"> Bebidas Heladas</h4>
           <table class="table"  id="list">
             
           </table> 
@@ -201,7 +201,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                             <img class="card-img-top" src="img/Productos_Ara/<?php echo $row['ruta_img']; ?>">
                             <div class="card-body">
                                 <h3 class="card-tittle text-center"> <?php echo $row['nombre']; ?></h3>
-                                <h4 style="color:#6E0023;  font-family: 'Playfair Display'; ">Precio</p>
+                                <h4 style="color:#000000ff;  font-family: 'Playfair Display'; ">Precio</p>
                                     <table class="table">
                                         <tbody class="table-group-divider">
                                             <tr>

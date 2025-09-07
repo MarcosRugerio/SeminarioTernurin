@@ -74,10 +74,10 @@
 
   .btn {
     font-family: 'Monserrat', sans-serif;
-    border-color: #6E0023;
+    border-color: #000000ff;
     border-radius: 250px;
     background-color: white;
-    color: #6E0023;
+    color: #000000ff;
     -webkit-transition-duration: 0.4s;
     /* Safari */
     transition-duration: 0.4s;
@@ -85,7 +85,7 @@
 
   .btn:hover {
 
-    background-color: #6E0023;
+    background-color: #000000ff;
     color: white;
   }
 

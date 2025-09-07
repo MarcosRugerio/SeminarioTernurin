@@ -22,25 +22,162 @@ require 'php/confi.php'
 
   <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
-  <style>
+     <style>
     @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  background-color: #fffdfb;
+}
 
-    H2 {
+/* Títulos principales */
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #0c0a0bff;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  text-decoration: underline;
+}
+
+/* Subtítulos */
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #235519ff;
+  margin-top: 20px;
+}
+
+/* Párrafos */
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Palabras destacadas */
+.highlight {
+  color: #4f5c06ff;
+  font-weight: 600;
+}
+
+/* Separador */
+.divider {
+  border-top: 2px solid #000000ff;
+  margin: 2rem 0;
+}
+
+/* NUEVO: contenedor específico para el body */
+.body-content {
+  max-width: 900px;
+  margin: 0 auto;   /* centra el contenido */
+  padding: 20px;    /* espacio interno */
+}
 
 
-      font-size: 45px;
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      color: #CC6645;
-      text-decoration: underline;
+.body-content {
+  max-width: 900px;
+  margin: auto;
+  padding: 15px;
+}
+
+.body-content ul {
+  padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .body-content {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .body-content {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+}
+</style>
+<style>
+/* Navegación principal */
+#navegacion {
+    background-color: #ffffff; /* fondo blanco */
+    font-family: 'Poppins', sans-serif; /* tipografía elegante y moderna */
+    font-weight: 700; /* más negrita */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* sombra sutil */
+    padding: 1rem;
+}
+
+/* Botones dentro de la navegación: borde verde, fondo transparente */
+#navegacion .btn {
+    background-color: transparent; /* sin fondo */
+    color: #5f9e6dff; /* verde para texto y borde */
+    border: 2px solid #5f9e6dff; /* borde verde */
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Efecto hover: relleno verde pastel y texto blanco */
+#navegacion .btn:hover {
+    background-color: #a8d5ba; /* verde pastel */
+    color: #fff; /* texto blanco */
+    transform: scale(1.05);
+    border-color: #a8d5ba;
+}
+
+/* Badge de carrito */
+#navegacion #num_cart {
+    background-color: #000; /* fondo negro */
+    color: #fff; /* texto blanco */
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    vertical-align: top;
+}
+
+/* Alineación para el botón de Buscar (text-end) y Mi Carrito */
+#navegacion .text-end {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 576px) {
+    #navegacion {
+        text-align: center;
     }
-    </style>
-<body>
+    #navegacion .text-end {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+
+</style>
 
   <!--Header -->
  
 <!-----Nav con fondo blanco y letras negras--->
-<nav class="p-3 text-dark" class="navbar" style="background-color: white">
+<nav  id="navegacion" class="p-3 text-dark" class="navbar" style="background-color: white">
 
 <!-----Nav con fondo de color y letras blancas
 <header class="p-3 text-white" style="background-color:  #CC6645;"> --->
@@ -52,24 +189,24 @@ require 'php/confi.php'
 
     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-      <li><a href="index.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff">INICIO</a>
+      <li><a href="index.php" class="nav-link px-3 text" style="color: #000000ff; display:inline; border-right: 2px solid  #36642fff">INICIO</a>
       </li>
 
 
       <li>
-        <a class="nav-link dropdown-toggle" style=" color:#6E0023; display:inline;  border-right: 2px solid  #36642fff" href=" #" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          MENÚ
+        <a class="nav-link dropdown-toggle" style=" color:#000000ff; display:inline;  border-right: 2px solid  #36642fff" href=" #" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          PRODUCTOS
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" style="color: #6E0023;" href="productos_herbales.php">Herbales</a></li>
-            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricionales.php">Nutricionales</a></li>
-            <li><a class="dropdown-item" style="color: #6E0023;" href="productos_nutricosmeticos.php">Nutricosmenticos</a></li>
+        <li><a class="dropdown-item" style="color: #000000ff;" href="productos_herbales.php">Herbales</a></li>
+            <li><a class="dropdown-item" style="color: #000000ff;" href="productos_nutricionales.php">Nutricionales</a></li>
+            <li><a class="dropdown-item" style="color: #000000ff;" href="productos_nutricosmeticos.php">Nutricosmenticos</a></li>
         </ul>
       </li>
-     <li><a href="blog.php" class="nav-link px-3 text" style="color: #6E0023; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
+     <li><a href="blog.php" class="nav-link px-3 text" style="color: #000000ff; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
       </li>
 
-      <li><a href="conocenos.php" class="nav-link px-3 text" style=" color: #6E0023; display:inline; ">ACERCA
+      <li><a href="conocenos.php" class="nav-link px-3 text" style=" color: #000000ff; display:inline; ">ACERCA
           DE</a></li>
 
     </ul>
@@ -83,7 +220,7 @@ require 'php/confi.php'
     </div>
 
     <a href="carrito.php" class="btn" style="font-family:'Monserrat', sans-serif;">
-      Mi Carrito <span style="background:#6E0023; color:white;" id="num_cart" class="badge text-bg-secondary"><?php echo $num_cart; ?></span>
+      Mi Carrito <span style="background:#000000ff; color:white;" id="num_cart" class="badge text-bg-secondary"><?php echo $num_cart; ?></span>
     </a>
 
     <div class="dropdown text-end">
@@ -94,55 +231,55 @@ require 'php/confi.php'
           if ($_SESSION['permiso'] == 1) {
             echo
             '<li>
-              <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#6E0023; " href="#"
+              <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#000000ff; " href="#"
                 id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="img/usuario.png" width="25" height="25" title="Cuenta">' . $_SESSION['nombre'] .
               '</a>
-            <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Cliente...</a></li>
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
+            <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #000000ff;">
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" disbled>Cliente...</a></li>
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="perfil.php"> Mi Perfil</a></li>
              <hr class="dropdown-divider" style="color: #f0cea5">
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="destroySesion.php">Cerrar Sesión</a></li>';
           }
           if ($_SESSION['permiso'] == 2) {
             echo
             '<li>
-            <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#6E0023; " href="#"
+            <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#000000ff; " href="#"
               id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="img/usuario.png" width="25" height="25" title="Cuenta">' . $_SESSION['nombre'] .
               '</a>
-          <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Empleado...</a></li>
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="#">Menú Empleado</a></li>
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
+          <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #000000ff;">
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" disbled>Empleado...</a></li>
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="#">Menú Empleado</a></li>
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="perfil.php"> Mi Perfil</a></li>
            <hr class="dropdown-divider" style="color: #f0cea5">
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="destroySesion.php">Cerrar Sesión</a></li>';
           }
           if ($_SESSION['permiso'] == 3) {
             echo
             '<li>
-          <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#6E0023; " href="#"
+          <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#000000ff; " href="#"
             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="img/usuario.png" width="25" height="25" title="Cuenta">' . $_SESSION['nombre'] .
               '</a>
-        <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
-         <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Administrador...</a></li>
-         <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="MenuAdmn.php">Menú Administrador</a></li>
-         <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
+        <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #000000ff;">
+         <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" disbled>Administrador...</a></li>
+         <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="MenuAdmn.php">Menú Administrador</a></li>
+         <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="perfil.php"> Mi Perfil</a></li>
          <hr class="dropdown-divider" style="color: #f0cea5">
-         <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
+         <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="destroySesion.php">Cerrar Sesión</a></li>';
           }
         } else {
         ?>
           <li>
-            <a class="nav-link dropdown-toggle" style="font-family:'Monserrat', sans-serif; color:#6E0023; " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" style="font-family:'Monserrat', sans-serif; color:#000000ff; " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="img/usuario.png" width="25" height="25" title="Cuenta">
             </a>
 
-            <ul class="dropdown-menu text-small" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;">
-              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;" href="inicioSesion.php">Iniciar Sesión</a></li>
+            <ul class="dropdown-menu text-small" style=" font-family:'Monserrat', sans-serif;  color: #000000ff;">
+              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #000000ff;" href="inicioSesion.php">Iniciar Sesión</a></li>
               <hr class="dropdown-divider" style="color: #f0cea5">
-              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;" href="registro.php">Crear Cuenta</a></li>
+              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #000000ff;" href="registro.php">Crear Cuenta</a></li>
             <?php
           }
             ?>
@@ -153,143 +290,73 @@ require 'php/confi.php'
   </div>
 
 </div>
-<hr class="featurette-divider" style="color:  #CC6645; " size="2">
+<hr class="featurette-divider" style="color:  #356431ff; " size="2">
 </nav>
 
-  <h2>Aviso de privacidad</h2>
+<div class="body-content">
+  <h2>Aviso de Privacidad</h2>
+  <div class="divider"></div>
 
-  <div class="container marketing">
-    <hr class="featurette-divider" style="color:  #CC6645;" size="2">
-    <p class="text fw-lighter ">
-      “Cafeteria GABCY””, con domicilio ubicado en Calle Miguel Hidalgo 18, Cañada de Cisneros, CP 54650. EdoMex, suscribe el presente aviso de privacidad en cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en lo sucesivo la “Ley”). Los datos personales que usted (en lo sucesivo “el Titular”) ha proporcionado directamente, a través de medios electrónicos o en papel a “Cafeteria GABCY” (En lo sucesivo “el Responsable”), han sido recabados y serán tratados por “Cafeteria GABCY” bajo los principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad, de conformidad con lo dispuesto por la Ley.
-      En “Cafeteria GABCY”, respetamos la privacidad de nuestros usuarios y estamos totalmente comprometidos con la protección de su información personal. Este aviso describe cómo podemos recopilar y utilizar información personal, así como los derechos y opciones disponibles para nuestros visitantes y usuarios con respecto a dicha información.
-    </p>
-    <p class="text fw-lighter ">
-      Recomendamos lea este aviso y se asegure estar de acuerdo con ella, antes de acceder a o utilizar cualquiera de nuestros servicios. Si no lee, entiende completamente y está de acuerdo con este aviso, debe salir inmediatamente de este sitio web, aplicación o servicio y evitar o suspender todo uso de cualquiera de nuestras plataformas.
-    </p>
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
+  <p>
+    <span class="highlight">“Araceli y Algo Más”</span>, con domicilio en México y responsable del sitio web 
+    <a href="https://www.araceli_y_algo_mas.com" target="_blank">www.araceli_y_algo_mas.com</a>, 
+    suscribe el presente Aviso de Privacidad en cumplimiento con la Ley Federal de Protección de Datos Personales 
+    en Posesión de los Particulares.
+  </p>
 
-      ¿QUÉ TIPO DE INFORMACIÓN RECIBIMOS, RECOPILAMOS Y ALMACENAMOS?
-    </p>
+  <p>
+    En <span class="highlight">“Araceli y Algo Más”</span> respetamos la privacidad de nuestros usuarios y 
+    estamos comprometidos con la protección de su información personal. Este aviso describe cómo recopilamos y usamos 
+    su información, así como los derechos y opciones disponibles para nuestros visitantes y clientes.
+  </p>
 
-    <p class="text  fw-lighter">
-      Podremos recopilar información o datos personales sensibles acerca de nuestros Visitantes y Usuarios:
-      Datos que el usuario nos proporciona podremos recopilar diferentes datos del usuario o sobre este, en función de cómo utilice los servicios. A continuación, se muestran algunos ejemplos para ayudar al usuario a comprender mejor los datos que recopilamos.
-      Al crear una cuenta o utilizar los servicios, incluido a través de una plataforma de terceros, podremos recopilar los datos que el usuario nos proporciona directamente, lo que incluye:
-    </p>
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">Datos de la cuenta: </p>
-    <p class="text  fw-lighter">
-      Al crear o actualizar la cuenta del usuario, recopilamos y almacenamos los datos que el usuario nos proporciona, como su dirección de correo electrónico y contraseña
-    </p>
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;"> Contenido compartido:</p>
-    <p class="text fw-lighter">
-      Algunas partes de los Servicios permiten al usuario compartir contenido públicamente, por ejemplo, al publicar reseñas en la página de un curso, al participar en foros o al publicar fotografías u otro trabajo que el usuario cargue. Dicho contenido compartido podrá estar visible públicamente para otros usuarios en función del lugar donde se publique.
-    </p>
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">Comunicaciones y asistencias: </p>
-    <p class="text  fw-lighter">
-      Si el usuario se pone en contacto con nosotros para solicitar asistencia o informar de un problema o inquietud, recopilaremos y almacenaremos su información de contacto, mensajes y otros datos sobre el usuario, como su nombre, dirección de correo electrónico, ubicación, sistema operativo, dirección IP y cualquier otro dato que nos proporcione o que recopilemos a través de medios automatizados (que tratamos a continuación). Utilizamos estos datos para responder al usuario e investigar su duda o inquietud, de conformidad con esta Política de privacidad.
-    </p>
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">Datos de sistema:</p>
-    <p class="text fw-lighter">
-      Datos técnicos sobre el equipo o dispositivo del usuario, como la dirección IP, el tipo de dispositivo, el tipo y la versión del sistema operativo, el identificador único del dispositivo, el navegador, el idioma del navegador, el dominio y otros datos del sistema, y los tipos de plataformas.
-    </p>
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">Datos de uso: </p>
-    <p class="text  fw-lighter">
-      Estadísticas de uso sobre las interacciones del usuario con los Servicios, el tiempo empleado en las páginas o el Servicio, las páginas visitadas, las funciones utilizadas, las consultas de búsqueda, los datos sobre los clicks, la fecha y la hora.
-    </p>
+  <h3>¿Qué tipo de información recopilamos?</h3>
+  <ul>
+    <li><strong>Datos de la cuenta:</strong> correo electrónico, contraseña y nombre completo al registrarse.</li>
+    <li><strong>Contenido compartido:</strong> comentarios, reseñas o información que decida publicar en el sitio.</li>
+    <li><strong>Comunicaciones:</strong> mensajes enviados a nuestro correo o formularios de contacto.</li>
+    <li><strong>Datos técnicos:</strong> dirección IP, tipo de navegador, sistema operativo, ubicación aproximada.</li>
+    <li><strong>Datos de uso:</strong> estadísticas de navegación, tiempo en la página, secciones visitadas.</li>
+  </ul>
 
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
-      ¿POR QUÉ RECOPILAMOS ESTA INFORMACIÓN?
-    </p>
-    <p class="text  fw-lighter">
-      Recopilamos dicha información personal y no personal para los siguientes propósitos:
+  <h3>¿Por qué recopilamos esta información?</h3>
+  <ul>
+    <li>Proveer y operar los servicios y productos solicitados.</li>
+    <li>Brindar atención al cliente y soporte.</li>
+    <li>Contactar a nuestros clientes con avisos importantes, promociones o mensajes informativos.</li>
+    <li>Generar estadísticas que nos permitan mejorar nuestros servicios.</li>
+    <li>Cumplir con obligaciones legales aplicables.</li>
+  </ul>
 
-    </p>
-    <p class="text fw-lighter fs-6">
-    • Para proporcionar y operar los servicios y productos que pudieran llegar a ser o hayan sido solicitados.
-    </p>
-    <p class="text  fw-lighter fs-6">
-    • Llevar a cabo la adquisición de los derechos o productos relacionados con los mismos.
-    </p>
-    <p class="text fw-lighter fs-6">
- 
-    • Llevar a cabo el análisis de líneas de crédito solicitadas por el Titular.
-    </p>
-    <p class="text fw-lighter fs-6">
-    • Para proporcionar a nuestros Usuarios asistencia continua al cliente y soporte.
-    </p>
-    <p class="text  fw-lighter fs-6">
-    • Para poder contactar a nuestros visitantes y usuarios con avisos generales y personalizados relacionados con el servicio y mensajes promocionales.
-    </p>
-    <p class="text fw-lighter fs-6">
-    • Para crear datos estadísticos agregados y otra información no personal agregada y / o deducida, que nosotros o nuestros socios comerciales podamos utilizar para proporcionar y mejorar nuestros servicios respectivos.
-    </p>
-   <p class="text fw-lighter fs-6">
-   • Para cumplir con las leyes y regulaciones aplicables
-   </p> 
+  <h3>¿Cómo nos comunicamos con los usuarios?</h3>
+  <p>
+    Podemos contactarle por correo electrónico para notificarle sobre su cuenta, resolver dudas, enviar promociones 
+    o comunicar cambios en nuestros servicios.
+  </p>
 
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
-      ¿CÓMO NOS COMUNICAMOS CON LOS VISITANTES DE LA WEB?
-    </p>
-    <p class="text  fw-lighter">
-      Podemos comunicarnos contigo para notificarte sobre tu cuenta, para solucionar problemas con tu cuenta, resolver una disputa, para sondear tus opiniones a través de encuestas o cuestionarios, para enviar actualizaciones sobre nuestra empresa, promociones, o cuando sea necesario para contactarte, nos comunicaremos contigo por correo electrónico.
-    </p>
+  <h3>Propiedad intelectual</h3>
+  <p>
+    Todo el contenido de este sitio web (textos, imágenes, logotipos, diseños, etc.) es propiedad de 
+    <span class="highlight">“Araceli y Algo Más”</span> o de terceros que nos han autorizado su uso. 
+    Queda prohibida su reproducción, distribución o modificación sin autorización expresa por escrito.
+  </p>
 
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
-      CONTENIDO Y USO
-    </p>
-    <p class="text  fw-lighter">
-      El Usuario queda informado, y acepta, que el acceso a esta página web, no supone el inicio de una relación comercial con “Punta del Cielo”, o con cualquiera de sus empresas filiales, quienes se reservan el derecho de efectuar sin previo aviso cuantas modificaciones vean oportunas en la misma, cambiando, eliminando o añadiendo contenidos y/o servicios prestados vía web a través de la misma, así como la forma en la que éstos aparezcan.
-    </p>
+  <h3>Actualizaciones del aviso</h3>
+  <p>
+    Este Aviso de Privacidad puede ser modificado o actualizado en cualquier momento. Cualquier cambio será publicado 
+    en este mismo sitio web y entrará en vigor de manera inmediata.
+  </p>
 
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
-      PROPIEDAD INDUSTRIAL E INTELECTUAL
-    </p>
-    <p class="text  fw-lighter">
-      Todos los elementos de esta web (incluyendo textos, imágenes, etc.) son titularidad de “Cafeteria GABCY” o de terceros que le han dado permiso para su uso, al igual que el logo, y cualesquiera otros contenidos protegidos como propiedad industrial.
-      Salvo que expresamente se indique lo contrario, queda prohibida cualquier modalidad de explotación, reproducción, distribución, comunicación pública o trasformación sin la autorización expresa y por escrito de “Cafeteria GABCY” y empresas filiales, o lo dispuesto en las Condiciones de Uso para usuarios registrados.
-    </p>
+  <h3>Legislación aplicable</h3>
+  <p>
+    Las relaciones derivadas del uso de este sitio web se regirán por las leyes de los Estados Unidos Mexicanos y 
+    cualquier controversia será sometida a los tribunales competentes de México.
+  </p>
 
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
-      ACTUALIZACIONES DE LA POLÍTICA DE PRIVACIDAD
-    </p>
+  <div class="divider"></div>
+</div>
 
-    <p class="text  fw-lighter">
 
-      Nos reservamos el derecho de modificar o actualizar esta política de privacidad en cualquier momento, por lo tanto, revísala con frecuencia. Los cambios y aclaraciones tendrán efecto inmediatamente después de su publicación en la página web. Las modificaciones que se efectúen se pondrán a disposición del público a través de anuncios visibles en nuestros establecimientos, o vía nuestra página de internet.
-    </p>
-
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
-      LEGISLACIÓN APLICABLE
-
-    </p>
-
-    <p class="text  fw-lighter">
-
-      Con carácter general las relaciones entre “Cafeteria GABCY” con los usuarios de sus servicios telemáticos, presentes en esta web, se encuentran sometidas a la legislación y jurisdicción de los Estados Unidos Mexicanos.
-    </p>
-
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
-
-      CONTENIDO Y USO
-    </p>
-
-    <p class="text  fw-lighter">
-      El Usuario queda informado, y acepta, que el acceso a esta página web, no supone el inicio de una relación comercial con “Cafeteria GABCY”, o con cualquiera de sus empresas filiales, quienes se reservan el derecho de efectuar sin previo aviso cuantas modificaciones vean oportunas en la misma, cambiando, eliminando o añadiendo contenidos y/o servicios prestados vía web a través de la misma, así como la forma en la que éstos aparezcan.
-    </p>
-
-    <p class="text fw-lighter fs-6 fw-semibold" style="  font-family: 'Playfair Display', serif;">
-      PROPIEDAD INDUSTRIAL E INTELECTUAL
-    </p>
-
-    <p class="text  fw-lighter">
-      Todos los elementos de esta web (incluyendo textos, imágenes, etc.) son titularidad de “Cafeteria GABCY o de terceros que le han dado permiso para su uso, al igual que el logo, y cualesquiera otros contenidos protegidos como propiedad industrial.
-      Salvo que expresamente se indique lo contrario, queda prohibida cualquier modalidad de explotación, reproducción, distribución, comunicación pública o trasformación sin la autorización expresa y por escrito de “Cafeteria GABCY” y empresas filiales, o lo dispuesto en las Condiciones de Uso para usuarios registrados.
-    </p>
-<br>
-<hr class="featurette-divider" style="color:  #CC6645;" size="2">
-
-  </div>
   <!--Header -->
   <?php include("creditos.php"); ?>
 
