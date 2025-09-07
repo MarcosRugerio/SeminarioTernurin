@@ -349,7 +349,7 @@ echo "<div class='alert alert-danger'><p class='hidd' align=center>El archivo  "
     </div>
 
   </div>
-  <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+  
 </nav>
   <div class="px-4 py-3 my-3 text-center">
     <h1 class="titulo">Imagenes Bebidas Calientes</h1><br>
@@ -404,7 +404,9 @@ echo $listar;
 
                 </div>
  <!--Footer -->
-<?php include("creditos.php");?> 
+<?php
+require 'creditos.php';
+?> 
 </body>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </html>

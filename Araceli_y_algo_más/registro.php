@@ -402,7 +402,7 @@ $con = $db->conectar();
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
 
   <!-- Registro -->
@@ -569,7 +569,9 @@ $con = $db->conectar();
     </div>
   </div>
   <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 

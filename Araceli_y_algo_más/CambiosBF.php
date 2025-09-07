@@ -352,7 +352,7 @@ echo "<div class='alert alert-danger'><p class='hidd' align=center>El archivo  "
     </div>
 
   </div>
-  <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+  
 </nav>
  <!----- INVENTARIO --->
 
@@ -470,7 +470,9 @@ echo $listar;
   </div> <!----- INVENTARIO--->
                 </div>
                 <!--Footer -->
-<?php include("creditos.php");?> 
+<?php
+require 'creditos.php';
+?> 
 
 </body>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

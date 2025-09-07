@@ -340,7 +340,7 @@ body, html {
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
 
   <!-- Perfil de Usuario -->
@@ -413,7 +413,9 @@ body, html {
   </div>
 
   <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 

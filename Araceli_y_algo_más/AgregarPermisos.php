@@ -360,7 +360,7 @@ button:hover, .btn:hover {
     </div>
 
   </div>
-  <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+  
 </nav>
 
 <!-- Inicio de la seccion de permisos -->
@@ -453,7 +453,9 @@ button:hover, .btn:hover {
 
 <!-- Fin de la seccion de permisos -->
                 <!--Footer -->
-<?php include("creditos.php");?> 
+<?php
+require 'creditos.php';
+?> 
 
 </body>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

@@ -152,7 +152,9 @@ require 'confi/confi.php';
 
   <br><br>
   <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Include the PayPal JavaScript SDK -->

@@ -442,7 +442,7 @@ $con = $db->conectar();
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
 
    <!----INICIO DE LA TABLA DE VER PRODUCTOS--->
@@ -543,7 +543,9 @@ if (isset($_GET['mensaje'])) {
 </div>
 
   <!--Footer -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

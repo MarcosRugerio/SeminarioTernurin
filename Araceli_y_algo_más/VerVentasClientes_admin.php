@@ -448,7 +448,7 @@ button:hover, .btn:hover {
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
 
     <!----- INICIO DE VER VENTAS ADMIN --->
@@ -537,7 +537,9 @@ button:hover, .btn:hover {
     <!-- FIN DE VER VENTAS ADMIN --->
 
     <!--Footer -->
-    <?php include("creditos.php"); ?>
+   <?php
+require 'creditos.php';
+?>
 
   </body>
   

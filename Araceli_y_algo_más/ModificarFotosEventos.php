@@ -336,7 +336,7 @@ if (isset($_POST['borrarFor'])) {
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
 
   <!----- EVENTOS --->
@@ -396,7 +396,9 @@ if (isset($_POST['borrarFor'])) {
 
   </div>
   <!--Footer -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 </body>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 

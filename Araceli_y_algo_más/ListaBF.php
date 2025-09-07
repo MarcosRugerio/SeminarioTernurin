@@ -387,7 +387,7 @@ $con = $db->conectar();
         </div>
 
       </div>
-      <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+      
     </nav>
     <!----- Inventario REGISTRADAS --->
 
@@ -528,7 +528,9 @@ $con = $db->conectar();
   </main>
   <br>
   <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
   <script type="text/javascript">
     function regresar(regresar) {

@@ -277,7 +277,7 @@ body {
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
 
   <!-- Inicio del menu administrador -->
@@ -306,7 +306,9 @@ body {
 <br>
   <!-- Fin del menu administrador -->
   <!--Footer -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

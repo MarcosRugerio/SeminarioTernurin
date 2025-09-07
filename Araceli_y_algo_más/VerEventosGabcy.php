@@ -464,7 +464,7 @@ Encabezado de la página */
             </div>
 
         </div>
-        <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+        
     </nav>
     <!--Eventos  -->
 
@@ -524,7 +524,9 @@ Encabezado de la página */
     <br>
     <br>
     <!--Creditos  -->
-    <?php include("creditos.php"); ?>
+   <?php
+require 'creditos.php';
+?>
 
    
 

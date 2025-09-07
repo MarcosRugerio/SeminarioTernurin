@@ -386,7 +386,7 @@ $con = $db->conectar();
         </div>
 
       </div>
-      <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+      
     </nav>
 
     <div class="px-4 py-3 my-3 text-center">
@@ -513,7 +513,9 @@ $con = $db->conectar();
   </main>
   <br>
   <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
   <script type="text/javascript">
     function regresar(regresar) {

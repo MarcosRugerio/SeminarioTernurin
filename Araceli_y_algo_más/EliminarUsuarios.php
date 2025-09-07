@@ -381,7 +381,7 @@ button:hover, .btn:hover {
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
   
  
@@ -443,7 +443,9 @@ button:hover, .btn:hover {
 <br>
 
   <!--Footer --> 
-  <?php include("creditos.php"); ?>
+<?php
+require 'creditos.php';
+?>
 
 </body>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

@@ -529,7 +529,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
   </div>
-  <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+  
 </nav>
 
 
@@ -656,7 +656,9 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 
 <!--Creditos-->
-<?php include("creditos.php");?>
+<?php
+require 'creditos.php';
+?>
 
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 

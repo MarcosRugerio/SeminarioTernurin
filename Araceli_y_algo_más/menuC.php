@@ -78,7 +78,9 @@ session_start();
       </div>
 
 <!--Creditos-->
-<?php include("creditos.php");?>
+<?php
+require 'creditos.php';
+?>
 
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 

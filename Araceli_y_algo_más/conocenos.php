@@ -634,7 +634,7 @@ require 'php/confi.php'
   </div>
 
 </div>
-<hr class="featurette-divider" style="color:  #356431ff; " size="2">
+
 </nav>
 
 <header class="herbal-header">
@@ -780,7 +780,9 @@ require 'php/confi.php'
 </div>
 
   <!--Credito -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 

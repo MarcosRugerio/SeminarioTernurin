@@ -393,7 +393,7 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
   <!--Ver Ventas / empleados  -->
 
@@ -486,7 +486,9 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
   <br>
   <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 

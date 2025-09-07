@@ -397,7 +397,7 @@ $granTotal = 0;
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
   <!--Registrar ventas / empleados  -->
     
@@ -556,7 +556,9 @@ $granTotal = 0;
 
            <br>
   <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 

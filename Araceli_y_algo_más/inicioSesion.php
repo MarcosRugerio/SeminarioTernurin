@@ -333,7 +333,7 @@ require 'confi/database.php';
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
 
   <!--Inicio de Sesión -->
@@ -396,7 +396,9 @@ require 'confi/database.php';
 
   <br>
   <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 

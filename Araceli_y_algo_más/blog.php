@@ -525,7 +525,7 @@ Encabezado de la página */
             </div>
 
         </div>
-        <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+        
     </nav>
     <!--Inicio del blog   -->
 
@@ -600,7 +600,9 @@ Encabezado de la página */
    <!-- Fin del blog -->
     
     <!--Creditos  -->
-    <?php include("creditos.php"); ?>
+   <?php
+require 'creditos.php';
+?>
 
    
 

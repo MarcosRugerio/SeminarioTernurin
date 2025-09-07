@@ -290,7 +290,7 @@ p {
   </div>
 
 </div>
-<hr class="featurette-divider" style="color:  #356431ff; " size="2">
+
 </nav>
 
 <div class="body-content">
@@ -358,7 +358,9 @@ p {
 
 
   <!--Header -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 

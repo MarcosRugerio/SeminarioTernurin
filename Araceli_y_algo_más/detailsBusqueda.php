@@ -480,7 +480,7 @@ if ($id == '' || $token == '') {
             </div>
 
         </div>
-        <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+        
     </nav>
 
 <!-- Menu de detalles -->
@@ -564,7 +564,9 @@ integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+
 
     <br>
     <!--Creditos-->
-    <?php include("creditos.php"); ?>
+   <?php
+require 'creditos.php';
+?>
 
 
 

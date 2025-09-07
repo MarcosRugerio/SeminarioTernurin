@@ -396,7 +396,7 @@ $granTotal = 0;
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
 
 
@@ -554,7 +554,9 @@ if (isset($_GET["status"])) {
   <!-- Termina registrar ventas / empleados -->
 
   <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 

@@ -386,7 +386,7 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
         </div>
 
       </div>
-      <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+      
     </nav>
     <!----- Ver ventas REGISTRADAS --->
 <div class="px-4 py-3 my-3 text-center">
@@ -485,7 +485,9 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
     <!----- Fin de ver ventas REGISTRADAS --->
     <!--Footer -->
-    <?php include("creditos.php"); ?>
+   <?php
+require 'creditos.php';
+?>
 
   </body>
   

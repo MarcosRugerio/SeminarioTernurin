@@ -123,7 +123,29 @@ $con = $db->conectar();
   height: auto;
 }
 
+/* Carrusel full-width */
+#carouselExampleCaptions {
+    width: 100vw;                /* ocupa todo el ancho de la ventana */
+    margin-left: calc(-50vw + 50%); /* centrado correcto */
+}
+
+/* Imágenes del carrusel */
+#carouselExampleCaptions .carousel-item img {
+    width: 100%;                 /* ocupa todo el contenedor */
+    height: auto;                /* mantiene proporción */
+    max-height: 550px;           /* altura máxima en desktop */
+    object-fit: cover;           /* recorta sin deformar */
+    transition: all 0.5s ease-in-out;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    #carouselExampleCaptions .carousel-item img {
+        max-height: 300px;       /* altura más manejable en móviles */
+    }
+}
 </style>
+
 <style>
 /* Navegación principal */
 #navegacion {
@@ -181,125 +203,17 @@ $con = $db->conectar();
     }
 }
 
-</style>
-<style>
-/* Navegación principal */
+/* Navbar fijo arriba */
 #navegacion {
-    background-color: #ffffff; /* fondo blanco */
-    font-family: 'Poppins', sans-serif; /* tipografía elegante y moderna */
-    font-weight: 700; /* más negrita */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* sombra sutil */
-    padding: 1rem;
-}
-
-/* Botones dentro de la navegación: borde verde, fondo transparente */
-#navegacion .btn {
-    background-color: transparent; /* sin fondo */
-    color: #5f9e6dff; /* verde para texto y borde */
-    border: 2px solid #5f9e6dff; /* borde verde */
-    padding: 0.5rem 1.2rem;
-    font-weight: 600;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Efecto hover: relleno verde pastel y texto blanco */
-#navegacion .btn:hover {
-    background-color: #a8d5ba; /* verde pastel */
-    color: #fff; /* texto blanco */
-    transform: scale(1.05);
-    border-color: #a8d5ba;
-}
-
-/* Badge de carrito */
-#navegacion #num_cart {
-    background-color: #000; /* fondo negro */
-    color: #fff; /* texto blanco */
-    padding: 2px 6px;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    vertical-align: top;
-}
-
-/* Alineación para el botón de Buscar (text-end) y Mi Carrito */
-#navegacion .text-end {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-/* Responsive para móviles */
-@media (max-width: 576px) {
-    #navegacion {
-        text-align: center;
-    }
-    #navegacion .text-end {
-        display: block;
-        margin: 0.5rem 0;
-    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    transition: top 0.3s;
 }
 
 </style>
-<style>
-/* Navegación principal */
-#navegacion {
-    background-color: #ffffff; /* fondo blanco */
-    font-family: 'Poppins', sans-serif; /* tipografía elegante y moderna */
-    font-weight: 700; /* más negrita */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* sombra sutil */
-    padding: 1rem;
-}
-
-/* Botones dentro de la navegación: borde verde, fondo transparente */
-#navegacion .btn {
-    background-color: transparent; /* sin fondo */
-    color: #5f9e6dff; /* verde para texto y borde */
-    border: 2px solid #5f9e6dff; /* borde verde */
-    padding: 0.5rem 1.2rem;
-    font-weight: 600;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Efecto hover: relleno verde pastel y texto blanco */
-#navegacion .btn:hover {
-    background-color: #a8d5ba; /* verde pastel */
-    color: #fff; /* texto blanco */
-    transform: scale(1.05);
-    border-color: #a8d5ba;
-}
-
-/* Badge de carrito */
-#navegacion #num_cart {
-    background-color: #000; /* fondo negro */
-    color: #fff; /* texto blanco */
-    padding: 2px 6px;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    vertical-align: top;
-}
-
-/* Alineación para el botón de Buscar (text-end) y Mi Carrito */
-#navegacion .text-end {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-/* Responsive para móviles */
-@media (max-width: 576px) {
-    #navegacion {
-        text-align: center;
-    }
-    #navegacion .text-end {
-        display: block;
-        margin: 0.5rem 0;
-    }
-}
-
-</style>
-
-
 <body>
 
 <!--Header -->
@@ -421,47 +335,36 @@ $con = $db->conectar();
     </div>
 
   </div>
-  <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+  
 </nav>
 
 <!-----Carrucel--->
 <section>
-    <div class="container">
-      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" style="background-color: #333333;" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" style="background-color: #333333;" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" style="background-color: #333333;" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active ">
-            <img src="img/BANNER2.png " class="d-block w-100" width="80" height="550">
-            <div class="carousel-caption d-none d-md-block text-dark">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="img/BANNEREUCALIPTO.png" class="d-block w-100" width="80" height="550">
-            <div class="carousel-caption d-none d-md-block text-dark">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="img/BANNERSUPLE.png" class="d-block w-100" width="80" height="550">
-            <div class="carousel-caption d-none d-md-block">
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
     </div>
-  </section>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/BANNER2.png" class="d-block w-100">
+      </div>
+      <div class="carousel-item">
+        <img src="img/BANNEREUCALIPTO.png" class="d-block w-100">
+      </div>
+      <div class="carousel-item">
+        <img src="img/BANNERSUPLE.png" class="d-block w-100">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
 
   <!-- Sección de Video Silencioso -->
 <section class="video-section mt-5">
@@ -585,7 +488,23 @@ $con = $db->conectar();
 
 
 <!--Creditos -->
-<?php include("creditos.php");?>
+<?php
+require 'creditos.php';
+?>
+<script>
+function ajustarPaddingNavbar() {
+    const navbar = document.getElementById('navegacion');
+    const alturaNavbar = navbar.offsetHeight; // altura real del navbar
+    const primerContenido = document.querySelector('section:first-of-type'); // sección justo debajo del navbar
+    primerContenido.style.paddingTop = alturaNavbar + 'px';
+}
+
+// Ejecutar al cargar la página
+window.addEventListener('load', ajustarPaddingNavbar);
+
+// Ejecutar al redimensionar ventana (para móviles o cambios de tamaño)
+window.addEventListener('resize', ajustarPaddingNavbar);
+</script>
 
     </div>
   </footer>

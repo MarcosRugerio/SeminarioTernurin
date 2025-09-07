@@ -218,7 +218,7 @@ $external_reference = isset($_GET['external_reference']) ? $_GET['external_refer
       </div>
 
     </div>
-    <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+    
   </nav>
 
 <body>
@@ -235,7 +235,9 @@ $external_reference = isset($_GET['external_reference']) ? $_GET['external_refer
 
   <br><br>
   <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <!-- Include the PayPal JavaScript SDK -->

@@ -366,7 +366,7 @@ button:hover, .btn:hover {
         </div>
 
       </div>
-      <hr class="featurette-divider" style="color:  #356431ff; " size="2">
+      
     </nav>
 
   <!-- Inicio de la seccion de usuarios registrados -->
@@ -490,7 +490,9 @@ $(document).ready(function() {
 
 
  <!--Creditos  -->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
 
 </body>
 </html>
