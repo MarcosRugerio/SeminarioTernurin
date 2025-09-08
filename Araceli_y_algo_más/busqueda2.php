@@ -90,6 +90,47 @@ session_start();
 require 'creditos.php';
 ?>
 
+<script>
+const navbar = document.getElementById('navegacion');
+const body = document.body;
+let lastScroll = 0;
+const threshold = 15; // píxeles mínimos de scroll para activar
+
+// Función para ajustar padding del body según altura del navbar
+function ajustarPaddingNavbar() {
+  body.style.paddingTop = navbar.offsetHeight + 'px';
+}
+
+// Ejecutar al cargar la página y al redimensionar ventana
+window.addEventListener('load', ajustarPaddingNavbar);
+window.addEventListener('resize', ajustarPaddingNavbar);
+
+// Scroll: ocultar/mostrar navbar
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  // Scroll pequeño no hace nada
+  if (Math.abs(currentScroll - lastScroll) < threshold) return;
+
+  if (currentScroll <= 0) {
+    navbar.style.top = '0';
+    lastScroll = 0;
+    return;
+  }
+
+  if (currentScroll > lastScroll) {
+    // Scroll hacia abajo → ocultar navbar
+    navbar.style.top = `-${navbar.offsetHeight}px`;
+  } else {
+    // Scroll hacia arriba → mostrar navbar
+    navbar.style.top = '0';
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+
+
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">

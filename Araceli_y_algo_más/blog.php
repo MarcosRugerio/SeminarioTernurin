@@ -346,32 +346,32 @@ $con = $db->conectar();
 
     </style>
 <style>
-/* ==========================
-   ESTILOS ESENCIALES DEL NAVBAR
-   ========================== */
-
-/* Tipografía y color del navbar */
+/* Navegación principal */
 #navegacion {
     background-color: #ffffff; /* fondo blanco */
     font-family: 'Poppins', sans-serif; /* tipografía elegante y moderna */
-    font-weight: 700; /* negrita */
-    color: #000; /* texto negro */
+    font-weight: 700; /* más negrita */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* sombra sutil */
+    padding: 1rem;
 }
 
-/* Botones dentro de la navegación */
+/* Botones dentro de la navegación: borde verde, fondo transparente */
 #navegacion .btn {
     background-color: transparent; /* sin fondo */
     color: #5f9e6dff; /* verde para texto y borde */
     border: 2px solid #5f9e6dff; /* borde verde */
-    font-family: 'Poppins', sans-serif;
+    padding: 0.5rem 1.2rem;
     font-weight: 600;
+    border-radius: 8px;
     transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Hover de los botones */
+/* Efecto hover: relleno verde pastel y texto blanco */
 #navegacion .btn:hover {
     background-color: #a8d5ba; /* verde pastel */
     color: #fff; /* texto blanco */
+    transform: scale(1.05);
     border-color: #a8d5ba;
 }
 
@@ -379,10 +379,38 @@ $con = $db->conectar();
 #navegacion #num_cart {
     background-color: #000; /* fondo negro */
     color: #fff; /* texto blanco */
+    padding: 2px 6px;
     border-radius: 50%;
     font-size: 0.8rem;
+    vertical-align: top;
 }
 
+/* Alineación para el botón de Buscar (text-end) y Mi Carrito */
+#navegacion .text-end {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 576px) {
+    #navegacion {
+        text-align: center;
+    }
+    #navegacion .text-end {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+
+/* Navbar fijo arriba */
+#navegacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    transition: top 0.3s;
+}
 </style>
 </head>
 
@@ -397,8 +425,7 @@ Encabezado de la página */
         <!-----Nav con fondo de color y letras blancas
 <header class="p-3 text-white" style="background-color:  #CC6645;"> --->
         <div class="container-fluid">
-  <div class="d-flex align-items-center justify-content-between flex-wrap">
-
+            <div class="d-flex align-items-center justify-content-between flex-wrap">
                 <a href="index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
                     <img src="img/logotipo_araceli.png" width="150" height="200" alt="" title="Página Principal">
                 </a>
@@ -586,8 +613,47 @@ Encabezado de la página */
 require 'creditos.php';
 ?>
 
-<script> const navbar = document.getElementById('navegacion'); const contenido = document.querySelector('body'); // Aplicar a todo el body // Ajusta el padding del body según la altura del nav function ajustarPaddingNavbar() { const alturaNavbar = navbar.offsetHeight; contenido.style.paddingTop = alturaNavbar + 'px'; } // Ejecutar al cargar la página y al redimensionar ventana window.addEventListener('load', ajustarPaddingNavbar); window.addEventListener('resize', ajustarPaddingNavbar); // Control de aparición al hacer scroll let lastScroll = 0; window.addEventListener('scroll', () => { const currentScroll = window.pageYOffset; if (currentScroll <= 0) { navbar.style.top = '0'; return; } if (currentScroll > lastScroll) { // Scroll hacia abajo → ocultar navbar navbar.style.top = -${navbar.offsetHeight}px; } else { // Scroll hacia arriba → mostrar navbar navbar.style.top = '0'; } lastScroll = currentScroll; }); </script>
-  <!-- JavaScript Bundle with Popper -->
+<script>
+const navbar = document.getElementById('navegacion');
+const body = document.body;
+let lastScroll = 0;
+const threshold = 15; // píxeles mínimos de scroll para activar
+
+// Función para ajustar padding del body según altura del navbar
+function ajustarPaddingNavbar() {
+  body.style.paddingTop = navbar.offsetHeight + 'px';
+}
+
+// Ejecutar al cargar la página y al redimensionar ventana
+window.addEventListener('load', ajustarPaddingNavbar);
+window.addEventListener('resize', ajustarPaddingNavbar);
+
+// Scroll: ocultar/mostrar navbar
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  // Scroll pequeño no hace nada
+  if (Math.abs(currentScroll - lastScroll) < threshold) return;
+
+  if (currentScroll <= 0) {
+    navbar.style.top = '0';
+    lastScroll = 0;
+    return;
+  }
+
+  if (currentScroll > lastScroll) {
+    // Scroll hacia abajo → ocultar navbar
+    navbar.style.top = `-${navbar.offsetHeight}px`;
+  } else {
+    // Scroll hacia arriba → mostrar navbar
+    navbar.style.top = '0';
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+  
+<!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
  
