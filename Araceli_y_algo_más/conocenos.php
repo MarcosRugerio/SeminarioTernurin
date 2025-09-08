@@ -760,7 +760,7 @@ require 'php/confi.php'
       <!-- Video al lado derecho -->
       <div class="video-wrapper">
         <video autoplay muted loop playsinline>
-          <source src="mp4/valores_conoceme.mp4" type="video/mp4" />
+          <source src="mp4/gracias_visita.mp4" type="video/mp4" />
           Tu navegador no soporta la etiqueta de video.
         </video>
       </div>
@@ -773,7 +773,7 @@ require 'php/confi.php'
 
 
 <br>
-    <h2 class="display-4" style="background:white; text-align: center;">Conoceme</h2>
+    <h2 class="display-4" style="background:white; text-align: center;">Conóceme</h2>
 
     <div class="body2">
   <div class="card">

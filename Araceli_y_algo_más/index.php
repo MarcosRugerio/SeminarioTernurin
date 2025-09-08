@@ -338,136 +338,102 @@ $con = $db->conectar();
   
 </nav>
 
-<!-----Carrucel--->
-<div class="container-fluid">
-<section>
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+<!-- Carousel -->
+<div class="container-fluid p-0">
+  <section>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/BANNER2.png" class="d-block w-100 img-fluid">
+        </div>
+        <div class="carousel-item">
+          <img src="img/BANNEREUCALIPTO.png" class="d-block w-100 img-fluid">
+        </div>
+        <div class="carousel-item">
+          <img src="img/BANNERSUPLE.png" class="d-block w-100 img-fluid">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="img/BANNER2.png" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="img/BANNEREUCALIPTO.png" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="img/BANNERSUPLE.png" class="d-block w-100">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
-</section>
+  </section>
+</div>
 
-  <!-- Sección de Video Silencioso -->
+<!-- Video Silencioso -->
 <section class="video-section mt-5">
-  <div class="container text-center">
-    <video autoplay muted loop playsinline width="100%" style="max-height: 1500px; object-fit: cover; border-radius: 10px;">
+  <div class="container">
+    <video autoplay muted loop playsinline class="w-100">
       <source src="mp4/presentacion.mp4" type="video/mp4">
       Tu navegador no soporta el video HTML5.
     </video>
   </div>
 </section>
 
-  <div class="container marketing">
-
-    <!--Categoria--->
-
-    <div class="px-4 py-5 my-5 text-center">
-      <h1 class="display-5 fw-bold" style="color:  #070707be">Hechale un viztazo a</h1>
-      <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4"> </p>
-      </div>
-      <?php include("categorias.php"); ?>
-      <hr class="featurette-divider" style="color:  #2f8d26be;" size="2">
-      <br>
+<!-- Sección de Categorías -->
+<div class="container marketing mt-5">
+  <div class="px-4 py-5 text-center">
+    <h1 class="display-5 fw-bold" style="color: #070707be;">Hechale un vistazo a</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"></p>
     </div>
-    <div>
+    <?php include("categorias.php"); ?>
+    <hr class="featurette-divider" style="color: #2f8d26be;" size="2">
+  </div>
 
-      <!--Fin de Categoria--->
-      <!--IMAGEN  -->
+  <!-- Sección Skincare -->
+  <section class="content price">
+    <article class="contain mx-auto p-4" style="max-width: 800px; background-color: rgba(0,0,0,0.4); border-radius: 1rem;">
+      <h2 class="display-1 text-white" style="font-family: 'Playfair Display', serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">¿Eres fan del skincare?</h2>
+      <h3 class="display-3 text-white text-center" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Tu nueva rutina de cuidado aquí</h3>
+      <div class="zoom text-center mt-3">
+        <a class="img2" href="blog.php">
+          <img src="img/gotero.png" width="70" height="70">
+        </a>
+      </div>
+    </article>
+  </section>
 
-     <section class="content price">
-  <article class="contain" style="max-width: 800px; margin: 0 auto; background-color: rgba(0, 0, 0, 0.4); padding: 2rem; border-radius: 1rem;">
-    <h2 class="display-1" style="color: white; font-family: 'Playfair Display', serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">
-      ¿Eres fan del skincare?
-    </h2>
-    <h3 class="display-3" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">
-      <center>Tu nueva rutina de cuidado aquí</center>
-    </h3>
-    <center>
-    <div class="zoom" style="margin-top: 2rem;">
-      <a class="img2" href="blog.php">
-        <img src="img/gotero.png" width="70" height="70" style="transition: transform 0.3s ease;">
-      </a>
-    </div>
-    </center>
-  </article>
-</section>
-
-      <br>
-<br>
-      <!--INICIO conteiner marketing---->
-      <div class="container marketing">
-
-        <div class="row featurette">
-          <div class="col-md-7">
-            <br>
-            <h2 class="featurette-heading">Los famosisimos jabones artesanales
-            </h2>
-            <br><br>
-            <center>
-              <h3 class="featurette-heading"><span class="text-muted">Diferentes tipos para diferentes necesidades</span>
-              </h3>
-              <p class="lead">Están contenidos en cajas elaboradas con papel ecológico fácil de reciclar y con un diseño increíble, y con mensajes especialmente pensados en ti.¡Conocelos!</p>
-              <br>
-              <p><a class="btn btn-dark fs 4" href="Agregar aqui una URL">Visitarlos&raquo;</a></p>
-              </p>
-            </center>
-          </div>
-          <div class="col-md-4">
-            <img src="img/banner_jabones.png" width="500" height="500">
-          </div>
-        </div>
+  <!-- Featurette Jabones -->
+  <div class="container marketing mt-5">
+    <div class="row featurette align-items-center">
+      <div class="col-md-7 order-md-1">
+        <h2 class="featurette-heading">Los famosisimos jabones artesanales</h2>
+        <p class="lead">Están contenidos en cajas elaboradas con papel ecológico fácil de reciclar y con un diseño increíble, y con mensajes especialmente pensados en ti. ¡Conócelos!</p>
+        <p><a class="btn btn-dark fs-5" href="#">Visitarlos &raquo;</a></p>
       </div>
-      <br>
-    </div>
-    </div>
-
-    <!-- Galería tipo Rompecabezas -->
-<section class="rompecabezas-gallery mt-5">
-  <div class="container text-center">
-    <h2 class="mb-4" style="font-family: 'Playfair Display', serif; color: #0f0f0fff;">Una lectura rápida</h2>
-    <div class="row g-3 justify-content-center">
-      <div class="col-6 col-md-4 col-lg-3">
-        <img src="img/flotar1.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)">
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <img src="img/flotar2.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)">
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <img src="img/flotar3.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)">
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <img src="img/flotar4.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)">
-      </div>
-      <div class="col-6 col-md-4 col-lg-3">
-        <img src="img/flotar5.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)">
+      <div class="col-md-5 order-md-2">
+        <img src="img/banner_jabones.png" class="img-fluid rounded mx-auto d-block" alt="Jabones">
       </div>
     </div>
   </div>
 
-  <br>
-  <br>
+  <!-- Galería tipo Rompecabezas -->
+  <section class="rompecabezas-gallery mt-5">
+    <div class="container text-center">
+      <h2 class="mb-4" style="font-family: 'Playfair Display', serif; color: #0f0f0fff;">Una lectura rápida</h2>
+      <div class="row g-3 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-3"><img src="img/flotar1.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)"></div>
+        <div class="col-6 col-md-4 col-lg-3"><img src="img/flotar2.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)"></div>
+        <div class="col-6 col-md-4 col-lg-3"><img src="img/flotar3.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)"></div>
+        <div class="col-6 col-md-4 col-lg-3"><img src="img/flotar4.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)"></div>
+        <div class="col-6 col-md-4 col-lg-3"><img src="img/flotar5.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)"></div>
+      </div>
+    </div>
+  </section>
 </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
   <!-- Popup -->
   <div id="popup" class="popup" onclick="closePopup()">
@@ -532,6 +498,10 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 </script>
+
+<!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
     </div>

@@ -444,46 +444,50 @@ try {
         </form>
       </div>
 
-                      <!-- Dentro de tu div de acciones del carrito -->
-<div class="cart-actions" style="flex-direction: column; align-items: stretch; gap: 2rem; padding: 2rem; background: #e6faef;">
+</main>
+
+<!-- Contenedor del carrito -->
+<div class="cart-actions" style="display: flex; flex-direction: column; align-items: stretch; gap: 2rem; padding: 2rem; background: #e6faef; max-width: 100%;">
   
-  <div style="background: white; padding: 1.5rem; border-radius: 1rem; box-shadow: 0 0 12px rgba(0,0,0,0.05);">
+  <div style="background: white; padding: 1.5rem; border-radius: 1rem; box-shadow: 0 0 12px rgba(0,0,0,0.05); width: 100%;">
     <h5 style="color:#135836; font-weight: bold; margin-bottom: 1rem; text-align:center;">💳 Método de pago</h5>
     
     <!-- Contenedor oficial del botón -->
-<div id="wallet_container"></div>
+    <div id="wallet_container" style="width: 100%; max-width: 100%;"></div>
 
-<!-- SDK oficial de Mercado Pago -->
-<script src="https://sdk.mercadopago.com/js/v2"></script>
+    <!-- SDK oficial de Mercado Pago -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script>
+    const mp = new MercadoPago("APP_USR-5c7a4102-e4ec-4093-b5e3-492a16ed2700", { locale: 'es-MX' });
 
-<script>
-const mp = new MercadoPago("APP_USR-5c7a4102-e4ec-4093-b5e3-492a16ed2700", { locale: 'es-MX' });
-mp.bricks().create("wallet", "wallet_container", {
-    initialization: { preferenceId: "<?= $preference->id ?>" },
-    callbacks: {
-        onPaymentApproved: function() {
-            window.location.href = "<?= $base_url ?>/success.php?external_reference=<?= $usuario_id ?>";
+    mp.bricks().create("wallet", "wallet_container", {
+        initialization: { preferenceId: "<?= $preference->id ?>" },
+        layout: { container: 'responsive' },
+        style: { // fuerza que ocupe todo el ancho
+          button: {
+            width: '100%'
+          }
         },
-        onError: function() {
-            window.location.href = "<?= $base_url ?>/failure.php";
+        callbacks: {
+            onPaymentApproved: function() {
+                window.location.href = "<?= $base_url ?>/success.php?external_reference=<?= $usuario_id ?>";
+            },
+            onError: function() {
+                window.location.href = "<?= $base_url ?>/failure.php";
+            }
         }
-    }
-});
-</script>
-</div>
+    });
+    </script>
+  </div>
 
-
-
-    <!-- Botón de regresar (sin cambios) -->
+  <!-- Botón de regresar (sin cambios) -->
     <div class="text-center" style="margin-top: 2rem;">
       <a class="btn-back mt-3" href="index.php">
         <span class="arrow">&leftarrow;</span> Seguir comprando
       </a>
     </div>
-
   </div> <!-- .cart-wrapper -->
-</main>
-
+</div>
 
 
 
