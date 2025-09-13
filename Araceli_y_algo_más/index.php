@@ -25,7 +25,7 @@ $con = $db->conectar();
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
 
-    <link rel="shortcut icon" href="img/Gabcy_vector.png">
+    <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
     <link rel="stylesheet" href="estilos/estilosLinea.css">
     
@@ -39,7 +39,7 @@ $con = $db->conectar();
       font-size: 45px;
       text-align: center;
       font-family: 'Playfair Display', serif;
-      color: #CC6645;
+      color: #050505ff;
       text-decoration: underline;
     }
 
@@ -64,53 +64,200 @@ $con = $db->conectar();
         --escala: 1.5;
         cursor: pointer;
       }
-     
-  </style>
 
+      .puzzle-img {
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.4s;
+  }
+
+  .puzzle-img:hover {
+    transform: rotate(-2deg) scale(1.05);
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  .popup-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80vh;
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+.content.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url('img/banner_skincare.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.zoom img:hover {
+  transform: scale(1.1);
+}
+
+.img2 img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Carrusel full-width */
+#carouselExampleCaptions {
+    width: 100vw;                /* ocupa todo el ancho de la ventana */
+    margin-left: calc(-50vw + 50%); /* centrado correcto */
+}
+
+/* Imágenes del carrusel */
+#carouselExampleCaptions .carousel-item img {
+    width: 100%;                 /* ocupa todo el contenedor */
+    height: auto;                /* mantiene proporción */
+    max-height: 550px;           /* altura máxima en desktop */
+    object-fit: cover;           /* recorta sin deformar */
+    transition: all 0.5s ease-in-out;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    #carouselExampleCaptions .carousel-item img {
+        max-height: 300px;       /* altura más manejable en móviles */
+    }
+}
+</style>
+
+<style>
+/* Navegación principal */
+#navegacion {
+    background-color: #ffffff; /* fondo blanco */
+    font-family: 'Poppins', sans-serif; /* tipografía elegante y moderna */
+    font-weight: 700; /* más negrita */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* sombra sutil */
+    padding: 1rem;
+}
+
+/* Botones dentro de la navegación: borde verde, fondo transparente */
+#navegacion .btn {
+    background-color: transparent; /* sin fondo */
+    color: #5f9e6dff; /* verde para texto y borde */
+    border: 2px solid #5f9e6dff; /* borde verde */
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Efecto hover: relleno verde pastel y texto blanco */
+#navegacion .btn:hover {
+    background-color: #a8d5ba; /* verde pastel */
+    color: #fff; /* texto blanco */
+    transform: scale(1.05);
+    border-color: #a8d5ba;
+}
+
+/* Badge de carrito */
+#navegacion #num_cart {
+    background-color: #000; /* fondo negro */
+    color: #fff; /* texto blanco */
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    vertical-align: top;
+}
+
+/* Alineación para el botón de Buscar (text-end) y Mi Carrito */
+#navegacion .text-end {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 576px) {
+    #navegacion {
+        text-align: center;
+    }
+    #navegacion .text-end {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+
+/* Navbar fijo arriba */
+#navegacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    transition: top 0.3s;
+}
+
+
+</style>
 <body>
 
 <!--Header -->
-<nav class="p-3 text-dark" class="navbar" style="background-color: white">
+<nav  id="navegacion" class="p-3 text-dark" class="navbar" style="background-color: white">
 
   <!-----Nav con fondo de color y letras blancas
 <header class="p-3 text-white" style="background-color:  #CC6645;"> --->
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center justify-content-between flex-wrap">
       <a href="index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-        <img src="img/Gabcy_cafeteria.png" width="150" height="120" alt="" title="Página Principal">
+        <img src="img/logotipo_araceli.png" width="150" height="200" alt="" title="Página Principal">
       </a>
 
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-        >
+      <ul class="nav me-auto mb-2 mb-md-0">
 
         <li><a href="index.php" class="nav-link px-3 text"
-            style="color: #6E0023; display:inline; border-right: 2px solid  #f0cea5">INICIO</a>
+            style="color: #000000ff; display:inline; border-right: 2px solid  #36642fff">INICIO</a>
         </li>
 
 
         <li>
           <a class="nav-link dropdown-toggle"
-            style=" color:#6E0023; display:inline;  border-right: 2px solid  #f0cea5"  href=" #"
+            style=" color:#000000ff; display:inline;  border-right: 2px solid  #36642fff"  href=" #"
             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            MENÚ
+            PRODUCTOS
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-            <li><a class="dropdown-item" style="color: #6E0023;" href="menuC2.php">Bebidas Calientes</a></li>
-            <li><a class="dropdown-item" style="color: #6E0023;" href="menuF2.php">Bebidas Frías</a></li>
-            <li><a class="dropdown-item" style="color: #6E0023;" href="menuA2.php">Alimentos</a></li>
+            <li><a class="dropdown-item" style="color: #000000ff;" href="productos_herbales.php">Herbales</a></li>
+            <li><a class="dropdown-item" style="color: #000000ff;" href="productos_nutricionales.php">Nutricionales</a></li>
+            <li><a class="dropdown-item" style="color: #000000ff;" href="productos_nutricosmeticos.php">Nutricosmenticos</a></li>
           </ul>
         </li>
-        <li><a href="VerEventosGabcy.php" class="nav-link px-3 text"
-            style="color: #6E0023; display:inline; border-right: 2px solid  #f0cea5;">EVENTOS</a>
+       <li><a href="blog.php" class="nav-link px-3 text"
+            style="color: #000000ff; display:inline; border-right: 2px solid  #36642fff;">BLOG</a>
         </li>
 
-        <li><a href="conocenos.php" class="nav-link px-3 text" style=" color: #6E0023; display:inline; ">ACERCA
+        <li><a href="conocenos.php" class="nav-link px-3 text" style=" color: #000000ff; display:inline; ">ACERCA
             DE</a></li>
 
       </ul>
 
       
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+      <form class="mb-3 mb-lg-0 me-lg-3">
         <input type="search" class="form-control form-control-dark" placeholder="Buscar..." aria-label="Search" id="idbusqueda">
         
       </form>
@@ -119,7 +266,7 @@ $con = $db->conectar();
 </div>
 
 <a href="carrito.php" class="btn" style="font-family:'Monserrat', sans-serif;">
-          Mi Carrito <span style="background:#6E0023; color:white;" id="num_cart" class="badge text-bg-secondary"><?php echo $num_cart; ?></span>
+          Mi Carrito <span style="background:#000000ff; color:white;" id="num_cart" class="badge text-bg-secondary"><?php echo $num_cart; ?></span>
         </a>
         
       <div class="dropdown text-end">
@@ -130,54 +277,54 @@ $con = $db->conectar();
                 if($_SESSION['permiso']==1){
                 echo
                 '<li>
-                <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#6E0023; " href="#"
+                <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#000000ff; " href="#"
                   id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="img/usuario.png" width="25" height="25" title="Cuenta">'.$_SESSION['nombre'].
               '</a>
-              <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
-               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Cliente...</a></li>
-               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
+              <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #000000ff;">
+               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" disbled>Cliente...</a></li>
+               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="perfil.php"> Mi Perfil</a></li>
                <hr class="dropdown-divider" style="color: #f0cea5">
-               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
+               <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="destroySesion.php">Cerrar Sesión</a></li>';
             }if($_SESSION['permiso']==2){
               echo
               '<li>
-              <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#6E0023; " href="#"
+              <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#000000ff; " href="#"
                 id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="img/usuario.png" width="25" height="25" title="Cuenta">'.$_SESSION['nombre'].
             '</a>
-            <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Empleado...</a></li>
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="Menu_empleado.php">Menú Empleado</a></li>
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
+            <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #000000ff;">
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" disbled>Empleado...</a></li>
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="Menu_empleado.php">Menú Empleado</a></li>
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="perfil.php"> Mi Perfil</a></li>
              <hr class="dropdown-divider" style="color: #f0cea5">
-             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
+             <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="destroySesion.php">Cerrar Sesión</a></li>';
           }if($_SESSION['permiso']==3){
             echo
             '<li>
-            <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#6E0023; " href="#"
+            <a class="nav-link dropdown-toggle" style="font-family:Monserrat, sans-serif; color:#000000ff; " href="#"
               id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="img/usuario.png" width="25" height="25" title="Cuenta">'.$_SESSION['nombre'].
           '</a>
-          <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #6E0023;">
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" disbled>Administrador...</a></li>
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="MenuAdmn.php">Menú Administrador</a></li>
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="perfil.php"> Mi Perfil</a></li>
+          <ul class="dropdown-menu text-small" style=" font-family:Monserrat, sans-serif;  color: #000000ff;">
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" disbled>Administrador...</a></li>
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="MenuAdmn.php">Menú Administrador</a></li>
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="perfil.php"> Mi Perfil</a></li>
            <hr class="dropdown-divider" style="color: #f0cea5">
-           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #6E0023;" href="destroySesion.php">Cerrar Sesión</a></li>';
+           <li><a class="dropdown-item" style=" font-family:Monserrat, sans-serif;  color: #000000ff;" href="destroySesion.php">Cerrar Sesión</a></li>';
         }
           }else{
                 ?>
           <li>
-            <a class="nav-link dropdown-toggle" style="font-family:'Monserrat', sans-serif; color:#6E0023; " href="#"
+            <a class="nav-link dropdown-toggle" style="font-family:'Monserrat', sans-serif; color:#000000ff; " href="#"
               id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="img/usuario.png" width="25" height="25" title="Cuenta">
             </a>
 
-            <ul class="dropdown-menu text-small" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;">
-              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;" href="inicioSesion.php">Iniciar Sesión</a></li>
+            <ul class="dropdown-menu text-small" style=" font-family:'Monserrat', sans-serif;  color: #000000ff;">
+              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #000000ff;" href="inicioSesion.php">Iniciar Sesión</a></li>
               <hr class="dropdown-divider" style="color: #f0cea5">
-              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #6E0023;" href="registro.php" >Crear Cuenta</a></li>
+              <li><a class="dropdown-item" style=" font-family:'Monserrat', sans-serif;  color: #000000ff;" href="registro.php" >Crear Cuenta</a></li>
               <?php
               }
               ?>
@@ -188,113 +335,174 @@ $con = $db->conectar();
     </div>
 
   </div>
-  <hr class="featurette-divider" style="color:  #CC6645; " size="2">
+  
 </nav>
 
-<!-----Carrucel--->
-<section>
-    <div class="container">
-      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" style="background-color: #333333;" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" style="background-color: #333333;" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" style="background-color: #333333;" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active ">
-            <img src="img/Gabcy_cafe_portada.png " class="d-block w-100" width="80" height="550">
-            <div class="carousel-caption d-none d-md-block text-dark">
-              <h4>Cafetería GABCY</h4>
-              <p>Café con esencia de amor</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="img/coffee-imagen.jpg" class="d-block w-100" width="80" height="550">
-            <div class="carousel-caption d-none d-md-block text-dark">
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="img/fachada.jpg" class="d-block w-100" width="80" height="550">
-            <div class="carousel-caption d-none d-md-block">
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+<!-- Carousel -->
+<div class="container-fluid p-0">
+  <section>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
       </div>
-
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/BANNER2.png" class="d-block w-100 img-fluid">
+        </div>
+        <div class="carousel-item">
+          <img src="img/BANNEREUCALIPTO.png" class="d-block w-100 img-fluid">
+        </div>
+        <div class="carousel-item">
+          <img src="img/BANNERSUPLE.png" class="d-block w-100 img-fluid">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
     </div>
   </section>
+</div>
 
-  <div class="container marketing">
+<!-- Video Silencioso -->
+<section class="video-section mt-5">
+  <div class="container">
+    <video autoplay muted loop playsinline class="w-100">
+      <source src="mp4/presentacion.mp4" type="video/mp4">
+      Tu navegador no soporta el video HTML5.
+    </video>
+  </div>
+</section>
 
-    <!--Categoria--->
+<!-- Sección de Categorías -->
+<div class="container marketing mt-5">
+  <div class="px-4 py-5 text-center">
+    <h1 class="display-5 fw-bold" style="color: #070707be;">Hechale un vistazo a</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"></p>
+    </div>
+    <?php include("categorias.php"); ?>
+    <hr class="featurette-divider" style="color: #2f8d26be;" size="2">
+  </div>
 
-    <div class="px-4 py-5 my-5 text-center">
-      <h1 class="display-5 fw-bold">Productos</h1>
-      <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4"> </p>
+  <!-- Sección Skincare -->
+  <section class="content price">
+    <article class="contain mx-auto p-4" style="max-width: 800px; background-color: rgba(0,0,0,0.4); border-radius: 1rem;">
+      <h2 class="display-1 text-white" style="font-family: 'Playfair Display', serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">¿Eres fan del skincare?</h2>
+      <h3 class="display-3 text-white text-center" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Tu nueva rutina de cuidado aquí</h3>
+      <div class="zoom text-center mt-3">
+        <a class="img2" href="blog.php">
+          <img src="img/gotero.png" width="70" height="70">
+        </a>
       </div>
-      <?php include("categorias.php"); ?>
-      <hr class="featurette-divider" style="color:  #CC6645;" size="2">
-      <br>
-    </div>
-    <div>
+    </article>
+  </section>
 
-      <!--Fin de Categoria--->
-      <!--IMAGEN  -->
-
-      <section class="content price">
-
-        <article class="contain">
-          <br><br>
-          <h2 class="display-1" style="color: white;  font-family: 'Playfair Display', serif; ">¿Echamos un cafécito?</h2>
-          <h3 class="display-3" style="color: white; ">Visitanos</h3>
-          <div class="zoom"  style="overflow:hidden">
-          <a class="img2" href="https://www.google.com/maps/place/Cafeter%C3%ADa+Gabcy/@19.693799,-99.336757,10z/data=!4m6!3m5!1s0x85d219815473b387:0x5383cc770847315!8m2!3d19.6937989!4d-99.3367569!16s%2Fg%2F11tft1f6y9?hl=es-419"><img src="img/ubicacion2.png" width="50" height="50"></a>
-
-          </div>
-       
-        </article>
-
-      </section>
-      <br>
-<br>
-      <!--INICIO conteiner marketing---->
-      <div class="container marketing">
-
-        <div class="row featurette">
-          <div class="col-md-7">
-            <br>
-            <h2 class="featurette-heading">Producto destacado
-            </h2>
-            <br><br>
-            <center>
-              <h3 class="featurette-heading"><span class="text-muted">Esencias para el hogar</span>
-              </h3>
-              <p class="lead">Fórmula súper concentrada concentrada que permite una dosificación en pequeñas cantidades para la optimización y asi eliminando eficazmente malos olores de todo el hogar.</p>
-              <br>
-              <p><a class="btn btn-dark fs 4" href="#">Comprar producto &raquo;</a></p>
-              </p>
-            </center>
-          </div>
-          <div class="col-md-4">
-            <img src="img/esenciassth.jpeg" width="500" height="500">
-          </div>
-        </div>
+  <!-- Featurette Jabones -->
+  <div class="container marketing mt-5">
+    <div class="row featurette align-items-center">
+      <div class="col-md-7 order-md-1">
+        <h2 class="featurette-heading">Los famosisimos jabones artesanales</h2>
+        <p class="lead">Están contenidos en cajas elaboradas con papel ecológico fácil de reciclar y con un diseño increíble, y con mensajes especialmente pensados en ti. ¡Conócelos!</p>
+        <p><a class="btn btn-dark fs-5" href="#">Visitarlos &raquo;</a></p>
       </div>
-      <br>
+      <div class="col-md-5 order-md-2">
+        <img src="img/banner_jabones.png" class="img-fluid rounded mx-auto d-block" alt="Jabones">
+      </div>
     </div>
+  </div>
+
+  <!-- Galería tipo Rompecabezas -->
+  <section class="rompecabezas-gallery mt-5">
+    <div class="container text-center">
+      <h2 class="mb-4" style="font-family: 'Playfair Display', serif; color: #0f0f0fff;">Una lectura rápida</h2>
+      <div class="row g-3 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-3"><img src="img/flotar1.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)"></div>
+        <div class="col-6 col-md-4 col-lg-3"><img src="img/flotar2.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)"></div>
+        <div class="col-6 col-md-4 col-lg-3"><img src="img/flotar3.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)"></div>
+        <div class="col-6 col-md-4 col-lg-3"><img src="img/flotar4.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)"></div>
+        <div class="col-6 col-md-4 col-lg-3"><img src="img/flotar5.png" class="img-fluid puzzle-img" onclick="openPopup(this.src)"></div>
+      </div>
     </div>
+  </section>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- Popup -->
+  <div id="popup" class="popup" onclick="closePopup()">
+    <span class="close">&times;</span>
+    <img class="popup-content" id="popup-img">
+  </div>
+</section>
+
+<script>
+  function openPopup(src) {
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("popup-img").src = src;
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+
+
 
 <!--Creditos -->
-<?php include("creditos.php");?>
+<?php
+require 'creditos.php';
+?>
+<script>
+const navbar = document.getElementById('navegacion');
+const body = document.body;
+let lastScroll = 0;
+const threshold = 15; // píxeles mínimos de scroll para activar
+
+// Función para ajustar padding del body según altura del navbar
+function ajustarPaddingNavbar() {
+  body.style.paddingTop = navbar.offsetHeight + 'px';
+}
+
+// Ejecutar al cargar la página y al redimensionar ventana
+window.addEventListener('load', ajustarPaddingNavbar);
+window.addEventListener('resize', ajustarPaddingNavbar);
+
+// Scroll: ocultar/mostrar navbar
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  // Scroll pequeño no hace nada
+  if (Math.abs(currentScroll - lastScroll) < threshold) return;
+
+  if (currentScroll <= 0) {
+    navbar.style.top = '0';
+    lastScroll = 0;
+    return;
+  }
+
+  if (currentScroll > lastScroll) {
+    // Scroll hacia abajo → ocultar navbar
+    navbar.style.top = `-${navbar.offsetHeight}px`;
+  } else {
+    // Scroll hacia arriba → mostrar navbar
+    navbar.style.top = '0';
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+
+<!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
     </div>
   </footer>

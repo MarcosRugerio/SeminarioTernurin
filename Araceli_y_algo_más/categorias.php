@@ -64,17 +64,17 @@
 	box-shadow: 0 0 1px rgba(255,255,255,0.9);
 }
 .ch-img-1 { 
-	background-image: url(img/cafe_categoria.jpg);
-	z-index: 12;
+	background-image: url(img/categoria_herbal.png);
+	z-index: 14;
 }
 
 .ch-img-2 { 
-	background-image: url(img/frape_categoria2.jpg);
+	background-image: url(img/categoria_nutri.png);
 	z-index: 11;
 }
 
 .ch-img-3 { 
-	background-image: url(img/alimentos_categoria.jpg);
+	background-image: url(img/categoria_belleza.png);
 	z-index: 10;
 }
 .ch-info {
@@ -83,7 +83,7 @@
 	height: inherit;
 	border-radius: 50%;
 	overflow: hidden;
-	background: #c9512e url(../images/noise.png);
+	background: #85a72bff url(../images/noise.png);
 	box-shadow: inset 0 0 0 5px rgba(0,0,0,0.05);
 }
 .ch-info h3 {
@@ -147,14 +147,81 @@
 	transform: translateX(0px) rotate(0deg);
 }
 </style>
+<style>
+/* Navegación principal */
+#navegacion {
+    background-color: #ffffff; /* fondo blanco */
+    font-family: 'Poppins', sans-serif; /* tipografía elegante y moderna */
+    font-weight: 700; /* más negrita */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* sombra sutil */
+    padding: 1rem;
+}
+
+/* Botones dentro de la navegación: borde verde, fondo transparente */
+#navegacion .btn {
+    background-color: transparent; /* sin fondo */
+    color: #5f9e6dff; /* verde para texto y borde */
+    border: 2px solid #5f9e6dff; /* borde verde */
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Efecto hover: relleno verde pastel y texto blanco */
+#navegacion .btn:hover {
+    background-color: #a8d5ba; /* verde pastel */
+    color: #fff; /* texto blanco */
+    transform: scale(1.05);
+    border-color: #a8d5ba;
+}
+
+/* Badge de carrito */
+#navegacion #num_cart {
+    background-color: #000; /* fondo negro */
+    color: #fff; /* texto blanco */
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    vertical-align: top;
+}
+
+/* Alineación para el botón de Buscar (text-end) y Mi Carrito */
+#navegacion .text-end {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 576px) {
+    #navegacion {
+        text-align: center;
+    }
+    #navegacion .text-end {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+
+/* Navbar fijo arriba */
+#navegacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    transition: top 0.3s;
+}
+</style>
 
 
 <ul class="ch-grid">
 <li>
 	<div class="ch-item">	
 		<div class="ch-info">
-			<h3>Café & expreso</h3>
-			<p>Consulta <a href="menuC2.php">MENÚ</a></p>
+			<h3>Herbales</h3>
+			<p>Visita<a href="productos_herbales.php">Ir</a></p>
 		</div>
 		<div class="ch-thumb ch-img-1"></div>
 	</div>
@@ -162,8 +229,8 @@
 <li>
 	<div class="ch-item">	
 		<div class="ch-info">
-			<h3>Bebidas heladas</h3>
-			<p>Consulta<a href="menuF2.php">MENÚ</a></p>
+			<h3>Nutrición</h3>
+			<p>Visita<a href="productos_nutricionales.php">Ir</a></p>
 		</div>
 		<div class="ch-thumb ch-img-2"></div>
 	</div>
@@ -171,8 +238,8 @@
 <li>
 	<div class="ch-item">	
 		<div class="ch-info">
-			<h3>COMIDA & POSTRES</h3>
-			<p>Consulta <a href="menuA2.php">MENÚ</a></p>
+			<h3>Cuidado y belleza</h3>
+			<p>Visita<a href="productos_nutricosmeticos.php">Ir</a></p>
 		</div>
 		<div class="ch-thumb ch-img-3"></div>
 	</div>

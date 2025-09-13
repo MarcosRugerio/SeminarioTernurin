@@ -10,4 +10,4 @@ $permiso=$_POST['permiso'];
         $result = mysqli_query($conexion, $sql);
             // Alerta de registro exitoso
             //echo '<script language="javascript">alert("Registro Exitoso");</script>';     
-            echo '<script language="javascript">alert("Cambio de permiso éxitoso!");window.location.href="../AgregarProductos.php";</script>';
+            echo '<script language="javascript">alert("Cambio de permiso éxitoso!");window.location.href="../ListaUsuarios.php";</script>';

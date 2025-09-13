@@ -1,5 +1,5 @@
-CREATE DATABASE gabcy;
-USE gabcy;
+CREATE DATABASE araceli_tienda;
+USE araceli_tienda;
 
 CREATE TABLE categoria(
 

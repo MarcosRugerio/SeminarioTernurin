@@ -55,9 +55,9 @@ var trace1 = {
 }
 
 var layout = {
-    title: 'Cantidad de Bebidas/Alimentos Vendidos',
+    title: 'Cantidad de productos',
     xaxis: {
-        title: 'Nombre Bebida/Alimento Vendidos'
+        title: 'Nombre de productos'
     },
     yaxis: {
         title: 'Cantidad Vendida'

@@ -3,7 +3,7 @@
 $servidor="localhost";
 $usuario="root";
 $password="";
-$db="gabcy";
+$db="araceli_tienda";
 
 $conexion=mysqli_connect($servidor,$usuario,$password,$db);
 return $conexion;

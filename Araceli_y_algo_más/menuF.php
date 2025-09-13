@@ -22,7 +22,7 @@ session_start();
 
   <link rel="stylesheet" type="text/css" href="estilos/estilosMenuF.css">
 
-  <link rel="shortcut icon" href="img/Gabcy_vector.png">
+  <link rel="shortcut icon" href="img/logotipo_araceli.png">
 
   <script type="text/javascript" src="librerias/jquery.js"></script>
   <script type="text/javascript" src="js/main-scripts.js"> </script>
@@ -52,7 +52,7 @@ session_start();
       <div class="col-md-2">
         <div class="position-sticky" style="top: 2rem;">
           <br><br>
-          <h4 style="color: #6E0023; font-family: 'Playfair Display', serif;"> Bebidas Heladas</h4>
+          <h4 style="color: #000000ff; font-family: 'Playfair Display', serif;"> Bebidas Heladas</h4>
           <table class="table" id="list">
 
           </table>
@@ -75,7 +75,50 @@ session_start();
   </div>
 
   <!--Creditos-->
-  <?php include("creditos.php"); ?>
+ <?php
+require 'creditos.php';
+?>
+
+<script>
+const navbar = document.getElementById('navegacion');
+const body = document.body;
+let lastScroll = 0;
+const threshold = 15; // píxeles mínimos de scroll para activar
+
+// Función para ajustar padding del body según altura del navbar
+function ajustarPaddingNavbar() {
+  body.style.paddingTop = navbar.offsetHeight + 'px';
+}
+
+// Ejecutar al cargar la página y al redimensionar ventana
+window.addEventListener('load', ajustarPaddingNavbar);
+window.addEventListener('resize', ajustarPaddingNavbar);
+
+// Scroll: ocultar/mostrar navbar
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  // Scroll pequeño no hace nada
+  if (Math.abs(currentScroll - lastScroll) < threshold) return;
+
+  if (currentScroll <= 0) {
+    navbar.style.top = '0';
+    lastScroll = 0;
+    return;
+  }
+
+  if (currentScroll > lastScroll) {
+    // Scroll hacia abajo → ocultar navbar
+    navbar.style.top = `-${navbar.offsetHeight}px`;
+  } else {
+    // Scroll hacia arriba → mostrar navbar
+    navbar.style.top = '0';
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+
 
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -96,12 +139,12 @@ session_start();
             html +=
               '<article class="col-xs-12 col-sm-8 col-md-9 col-lg-4">' +
               '<br><br>' +
-              '<img src="img/productos/BebidasF/' + data.datos[i].ruta_img + '"" class="img-thumbnail"  width="1500" height="6300">' +
+              '<img src="img/Productos_Ara/' + data.datos[i].ruta_img + '"" class="img-thumbnail"  width="1500" height="6300">' +
               '</article>' +
               '<aside class="col-xs-12 col-sm-4 col-md-3 col-lg-8">' +
               '<br> <br>' +
               '<h3 id="nombre">' + data.datos[i].nombre + '</h3> ' +
-              '<hr  style="color: #6E0023;">' +
+              '<hr  style="color: #000000ff;">' +
               '<table class="table" >' +
               '<tr>' +
               '<th style="color:#8d4925;"> Precio =</th> ' +
@@ -114,10 +157,10 @@ session_start();
               '<th scope="col" style="font-family:Playfair Display, serif;">Cantidad:</th>' +
               '</tr>' +
               '</thead>' +
-              '<tbody class="table-group-divider" style="color: #6E0023;">' +
+              '<tbody class="table-group-divider" style="color: #000000ff;">' +
               '<tr>' +
               '<td>' +
-              '<select name="cantidad" class="form-select form-select-sm" aria-label=".form-select-sm example" style="border: 0.05em solid #6E0023; border-radius: 1em;" >' +
+              '<select name="cantidad" class="form-select form-select-sm" aria-label=".form-select-sm example" style="border: 0.05em solid #000000ff; border-radius: 1em;" >' +
               '<option>Cuántos deseas</option>' +
               '<option>1</option>' +
               '<option>2</option>' +
