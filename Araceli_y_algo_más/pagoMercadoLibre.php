@@ -86,7 +86,7 @@ MercadoPagoConfig::setAccessToken("APP_USR-8621993643828158-090517-dcd305e1c2b85
 $client = new PreferenceClient();
 
 // URLs de ngrok (local)
-$base_url = " https://fc6accd529a6.ngrok-free.app/SeminarioTernurin/Araceli_y_algo_más"; // reemplaza por tu ngrok actual
+$base_url = "https://fc6accd529a6.ngrok-free.app/SeminarioTernurin/Araceli_y_algo_más"; // reemplaza por tu ngrok actual
 
 try {
     $preference = $client->create([

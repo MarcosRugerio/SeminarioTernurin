@@ -41,23 +41,24 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 <style>
 /* Tipografía general de la sección */
+/* Sección herbales */
 .herbales-section {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Tipografía general */
   width: 100%;
   min-height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: url('img/banner_H.jpg');
-  background-attachment: fixed;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   padding: 80px 20px;
+  background-attachment: scroll; /* Evita distorsión en móviles */
 }
 
-/* Capa translúcida para mejorar la legibilidad */
+/* Tarjeta translúcida */
 .herbales-card {
   background: rgba(0, 0, 0, 0.4);
   padding: 30px 50px;
@@ -69,20 +70,18 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Título destacado */
+/* Contenido de la tarjeta */
 .herbales-card h2 {
   font-size: 2.2rem;
   margin-bottom: 15px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* Descripción */
 .herbales-card p {
   font-size: 1.1rem;
   margin-bottom: 20px;
 }
 
-/* Enlace llamativo */
 .herbales-card a {
   color: #ffe600;
   font-weight: 600;
@@ -95,6 +94,32 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
   color: #ffffff;
   border-color: #ffffff;
 }
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .herbales-section {
+    padding: 60px 15px;
+    min-height: 50vh;
+  }
+
+  .herbales-card {
+    padding: 20px 25px;
+    max-width: 90%;
+  }
+
+  .herbales-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .herbales-card p {
+    font-size: 1rem;
+  }
+
+  .herbales-card a {
+    font-size: 0.95rem;
+  }
+}
+
 
 /* Sidebar filtro */
 .sidebar {
