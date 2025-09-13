@@ -435,81 +435,35 @@ $con = $db->conectar();
       
     </nav>
     
-    <!--Ver pedidos / empleados  -->
-<!----- PEDIDOS REGISTRADOS --->
-<div class="px-4 py-3 my-3 text-center">
-  <h1 class="titulo">PEDIDOS</h1>
-  <img class="d-block mx-auto mb-4" src="img/ver_pedidos_naranja.png" alt="" width="110" height="110">
+<body>
+  <main>
+    <!-- Header / Navbar omitido para abreviar -->
 
-  <!-- BUSCAR -->
-  <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between flex-wrap">      <ul class="mx-auto mb-2 mb-lg-0">
-        <div>
-          <form action="buscar.php" method="POST" class="d-flex" role="search">
-            <h3 class="display-7 fw-normal me-2">Código:</h3>
-            <input class="form-control me-2" name="buscar" type="search" placeholder="Ingrese un código" aria-label="Search">
-            <input class="btn btn-outline-dark" type="submit" value="Buscar">
-          </form>
-        </div>
-      </ul>
-    </div>
-  </div> <!-- BUSCAR -->
+    <!-- PEDIDOS -->
+    <div class="px-4 py-3 my-3 text-center">
+      <h1 class="titulo">PEDIDOS</h1>
+      <img class="d-block mx-auto mb-4" src="img/ver_pedidos_naranja.png" alt="" width="110" height="110">
 
-  <!----- TABLA --->
-  <div class="datosP">
-    <div class="D1">
-      <div class="table-responsive">
-        <table class="tablapedidos">
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Código de transacción</th>
-              <th>Fecha</th>
-              <th>Estatus de Paypal</th>
-              <th>Correo</th>
-              <th>Usuario</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            $buscar = $_POST['buscar'];
-            $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
-            $sql = "SELECT id,idtransaccion,fecha,statusPaypal,correo,usuario_id,total FROM pedido WHERE id LIKE '$buscar%'";
-            $rta = mysqli_query($conexion, $sql);
-            while ($mostrar = mysqli_fetch_row($rta)) {
-            ?>
-            <tr>
-              <td><?php echo $mostrar[0] ?></td>
-              <td><?php echo $mostrar[1] ?></td>
-              <td><?php echo $mostrar[2] ?></td>
-              <td><?php echo $mostrar[3] ?></td>
-              <td><?php echo $mostrar[4] ?></td>
-              <td><?php echo $mostrar[5] ?></td>
-              <td><?php echo $mostrar[6] ?></td>
-            </tr>
-            <?php } ?>
-          </tbody>
-        </table>
-      </div>
+      <!-- BUSCAR -->
+ <div class="container-fluid">
+  <div class="d-flex align-items-center justify-content-center flex-wrap">
+    <form id="formBuscarPedidos" class="d-flex">
+      <input class="form-control me-2" name="buscar" id="buscarPedidos" type="search" placeholder="Ingrese código o usuario" aria-label="Buscar">
+      <button type="submit" class="btn btn-outline-dark">Buscar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Aquí se cargará la tabla de resultados -->
+<div id="resultadoPedidos"></div>
 
       <center>
-        <br>
-        <div class="back-to-shop" onclick="regresar()">
+        <div class="back-to-shop">
           <a class="a2" href="Menu_empleado.php">&leftarrow; <span>Regresar</span></a>
         </div>
       </center>
     </div>
-  </div>
-</div>
-
-    <!-- Fin ver pedidos / empleados  -->
-
-  
-
   </main>
-
-
 
 
   <br>
@@ -557,6 +511,35 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+
+    function cargarPedidos(buscar=''){
+        $.ajax({
+            url: 'buscar_pedido.php',
+            type: 'POST',
+            data: { buscar: buscar },
+            success: function(data){
+                $('#resultadoPedidos').html(data);
+            }
+        });
+    }
+
+    // Cargar todos al inicio
+    cargarPedidos();
+
+    // Buscar al enviar el formulario
+    $('#formBuscarPedidos').on('submit', function(e){
+        e.preventDefault();
+        let buscar = $('#buscarPedidos').val();
+        cargarPedidos(buscar);
+    });
+
+});
+</script>
+
 
 
 </body>

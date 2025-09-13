@@ -461,86 +461,122 @@ button:hover, .btn:hover {
 
     <!----- INICIO DE VER VENTAS ADMIN --->
 
-<!-- Sección Buscador debajo de ambas -->
 <div class="container my-5">
   <div class="px-4 py-3 text-center">
-    <h1 class="titulo">Ventas Generadas por los Pedidos de Clientes</h1><br>
+    <h1 class="titulo">Ventas Generadas por los Clientes</h1>
     <img class="d-block mx-auto mb-4" src="img/icono_terminal.png" alt="Ventas clientes" width="110" height="110">
 
     <!-- Formulario buscador -->
     <div class="d-flex flex-wrap align-items-center justify-content-center mb-4">
-      <form action="buscar.php" method="POST" class="d-flex flex-wrap gap-2" role="search">
-        <label class="fw-bold align-self-center">Código:</label>
-        <input class="form-control me-2" name="buscar" type="search" placeholder="Ingrese el código" aria-label="Search">
-        <input class="btn btn-buscar" type="submit" value="Buscar">
-      </form>
+      <input type="search" id="buscar" class="form-control me-2" placeholder="Ingrese código o nombre del cliente" style="max-width: 300px;">
+      <button id="btnBuscar" class="btn btn-buscar">Buscar</button>
     </div>
 
-    <!-- Tabla resultados -->
-    <div class="table-responsive">
-      <table class="tablaventas">
-        <thead class="table-dark">
-          <tr>
-            <th>Código</th>
-            <th>Nombre del producto</th>
-            <th>Cantidad Vendida</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          if (isset($_POST['buscar'])) {
-            $buscar = $_POST['buscar'];
-            $conexion = mysqli_connect("localhost", "root", "", "araceli_tienda");
-            $sql = "SELECT id,nombre,cantidad FROM detalle_pedido WHERE id LIKE '$buscar%'";
-            $rta = mysqli_query($conexion, $sql);
-            while ($mostrar = mysqli_fetch_row($rta)) {
-          ?>
-          <tr>
-            <td><?php echo $mostrar[0] ?></td>
-            <td><?php echo $mostrar[1] ?></td>
-            <td><?php echo $mostrar[2] ?></td>
-          </tr>
-          <?php } } ?>
-        </tbody>
-      </table>
+    <div class="text-center my-4">
+    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#resumenVentasModal">
+        Ver resumen de las ventas
+    </button>
+    </div>
+
+    <!-- Contenedor donde se cargará la tabla -->
+    <div id="tablaResultados">
+      <!-- Aquí se cargará la tabla por AJAX -->
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="resumenVentasModal" tabindex="-1" aria-labelledby="resumenVentasLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="resumenVentasLabel">Resumen de Productos Vendidos</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="table-dark text-center">
+              <tr>
+                <th>Producto</th>
+                <th>Cantidad Vendida</th>
+                <th>Total de Ventas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $conexion = mysqli_connect("localhost","root","","araceli_tienda");
+
+              // Resumen por producto
+              $sql = "SELECT dp.nombre, SUM(dp.cantidad) AS total_cantidad, SUM(dp.cantidad * dp.precio) AS total_ventas
+                      FROM detalle_pedido dp
+                      JOIN pedido p ON dp.pedido_id = p.id
+                      GROUP BY dp.nombre
+                      ORDER BY total_cantidad DESC";
+
+              $rta = mysqli_query($conexion, $sql);
+              while($producto = mysqli_fetch_assoc($rta)){
+                  echo "<tr class='text-center'>
+                          <td>{$producto['nombre']}</td>
+                          <td>{$producto['total_cantidad']}</td>
+                          <td>$ {$producto['total_ventas']}</td>
+                        </tr>";
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
     </div>
   </div>
 </div>
 
+  </div>
+</div>
 
 <div class="container my-4">
   <div class="row">
-
     <!-- Ventas Generadas por los Empleados -->
-    <div class="col-md-6 text-center mb-4 mb-md-0">
-      <h1 class="titulo">Ventas Generadas por los Empleados</h1><br>
-      <img class="d-block mx-auto mb-4" src="img/icono_ventas.png" alt="Ventas clientes" width="110" height="110">
-      <a class="btn btn-success" href="./verVentasEmpleados_admin.php">Ver ventas de empleados</a>
+    <div class="col-md-12 text-center mb-4">
+      <h1 class="titulo">Ventas Generadas por los Empleados</h1>
+      <img class="d-block mx-auto mb-4" src="img/icono_ventas.png" alt="Ventas empleados" width="110" height="110">
+      <a class="btn btn-success btn-lg" href="verVentasEmpleados_admin.php">Ver ventas de empleados</a>
     </div>
-
-    <!-- Graficas -->
-    <div class="col-md-6">
-      <div class="panel shadow-lg rounded-3 p-3 h-100">
-        <div class="panel-heading text-center mb-3">
-          <h5 class="titulo subtitulo-grafica">Gráficas de las Ventas Generadas por los Pedidos de Clientes en el Mes</h5>
-        </div>
-        <div class="panel-body">
-          <div id="cargaBarras" style="width:100%; height:350px;"></div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 
+<center>
+  <div class="back-to-shop">
+    <a class="a2" href="MenuAdmn.php">&leftarrow; <span>Regresar</span></a>
+  </div>
+</center>
 
- <center>
-        <br>
-        <div class="back-to-shop" onclick="regresar()">
-          <a class="a2" href="MenuAdmn.php">&leftarrow; <span>Regresar</span></a>
-        </div>
-  </center>
+<script>
+$(document).ready(function() {
+    // Cargar tabla al iniciar
+    cargarTabla('');
 
+    // Buscar al presionar botón
+    $('#btnBuscar').click(function(e) {
+        e.preventDefault();
+        var buscar = $('#buscar').val();
+        cargarTabla(buscar);
+    });
+
+    // Función para cargar tabla con AJAX
+    function cargarTabla(buscar) {
+        $.ajax({
+            url: 'buscar_pedido.php',
+            type: 'POST',
+            data: {buscar: buscar},
+            success: function(data) {
+                $('#tablaResultados').html(data);
+            }
+        });
+    }
+});
+</script>
 
     <!-- FIN DE VER VENTAS ADMIN --->
 
